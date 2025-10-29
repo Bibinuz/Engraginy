@@ -6,6 +6,8 @@ class_name Materials
 @export var is_flamable : bool
 @export var energy : float
 
+var icon : TextureRect = TextureRect.new()
+
 func _init(n : String, s : int, f : bool = false, e : float = 0.0) -> void:
 	name = n
 	max_stack = s

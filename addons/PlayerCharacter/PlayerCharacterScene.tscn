@@ -155,6 +155,7 @@ script = ExtResource("60_tu3bf")
 metadata/_custom_type_script = "uid://bhoqhv7escpyx"
 
 [node name="HUD" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("16_5jm78")
 metadata/_edit_use_anchors_ = true
 

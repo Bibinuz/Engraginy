@@ -6,10 +6,12 @@ class_name InteractionComponent extends Node
 @export var new_icon : Texture2D
 
 var parent : Node3D
+var main_object : Machine
 var outline_material : ShaderMaterial = preload("res://assets/materials/outline_material.tres")
 
 func _ready() -> void:	
 	parent = get_parent()
+	main_object = parent.get_parent()
 	connect_parent()
 
 func _process(delta: float) -> void:
@@ -24,7 +26,7 @@ func not_in_range() -> void:
 	MessageBus.interaction_unfocused.emit()
 	
 func on_interact() -> void:
-	print(parent.name)
+	main_object.interacted()
 
 	
 func connect_parent() -> void:

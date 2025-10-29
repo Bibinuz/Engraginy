@@ -63,7 +63,7 @@ func _process(delta):
 	
 	cameraTilt(delta)
 	
-	mouseMode()
+	#smouseMode()
 	
 func applies(delta : float):
 	#manage the differents camera modifications relative to a specific state, except for the FOV
