@@ -49,20 +49,65 @@ material = ExtResource("2_etmyc")
 
 [node name="GUI" parent="." instance=ExtResource("4_w47yd")]
 
-[node name="Furnace" parent="." instance=ExtResource("4_p7x60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.986126, 1.1114159, -16.951382)
-
-[node name="Furnace2" parent="." instance=ExtResource("4_p7x60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.86335, 1.1114159, -16.951382)
-
 [node name="Furnace3" parent="." instance=ExtResource("4_p7x60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.856457, 1.1114159, -16.951382)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.856457, 0.45192003, -16.951382)
 
 [node name="Furnace4" parent="." instance=ExtResource("4_p7x60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8244143, 1.1114159, -16.951382)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8244143, 0.45192003, -16.951382)
 
 [node name="shaft" parent="." instance=ExtResource("5_p7x60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 3, -15)
+
+[node name="shaft2" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.9566054, 3, -15)
+
+[node name="shaft3" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.6851773, 3, -15)
+
+[node name="shaft4" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.5767264, 3, -15)
+
+[node name="shaft5" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.424696, 3, -15)
+
+[node name="shaft6" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.33789, 3, -15)
+
+[node name="shaft7" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.113878, 3, -15)
+
+[node name="shaft8" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.070484, 3, -15)
+
+[node name="shaft9" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.799055, 3, -15)
+
+[node name="shaft10" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12.690605, 3, -15)
+
+[node name="shaft11" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13.538574, 3, -15)
+
+[node name="shaft12" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14.451768, 3, -15)
+
+[node name="shaft13" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.245534, 3, -15)
+
+[node name="shaft14" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.20214, 3, -15)
+
+[node name="shaft15" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.93071, 3, -15)
+
+[node name="shaft16" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.822262, 3, -15)
+
+[node name="shaft17" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 18.67023, 3, -15)
+
+[node name="shaft18" parent="." instance=ExtResource("5_p7x60")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19.583424, 3, -15)
 
 [node name="BoxForScale1x1" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17579603, 2, 0)
