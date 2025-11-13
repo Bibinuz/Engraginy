@@ -129,7 +129,7 @@ func gravityApply(delta : float):
 	if velocity.y >= 0.0: velocity.y += jumpGravity * delta
 	elif velocity.y < 0.0: velocity.y += fallGravity * delta
 
-func interact_cast() -> void:
+func make_cast_query() -> StaticBody3D:
 	var space_state : PhysicsDirectSpaceState3D = camera.get_world_3d().direct_space_state
 	var screen_center : Vector2 = get_viewport().size / 2
 	var origin : Vector3 = camera.project_ray_origin(screen_center) 
@@ -137,7 +137,11 @@ func interact_cast() -> void:
 	var query : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(origin,end)
 	query.collide_with_bodies = true
 	var result : Dictionary = space_state.intersect_ray(query) 
-	var current_cast_result : Node3D = result.get("collider")
+	return result.get("collider")
+
+
+func interact_cast() -> void:
+	var current_cast_result : StaticBody3D = make_cast_query()
 	if current_cast_result != interact_cast_result:
 		if interact_cast_result and interact_cast_result.has_user_signal("unfocused"):
 			interact_cast_result.emit_signal("unfocused")
