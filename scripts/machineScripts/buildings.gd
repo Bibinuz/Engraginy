@@ -3,15 +3,19 @@ class_name Building extends Node3D
 @onready var placementYesMaterial = preload("res://assets/materials/placement_yes.tres")
 @onready var placementNoMaterial = preload("res://assets/materials/placement_no.tres")
 
-@export_group("Meshes and areas of the building")
+@export_group("Meshes, areas and collistions of the building")
 @export var meshes : Array[MeshInstance3D]
 @export var areas : Array[Area3D]
+@export var collisions : Array[StaticBody3D]
+
 
 var is_placed : bool = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	for collision in collisions:
+		collision.DISABLE_MODE_KEEP_ACTIVE
 	pass # Replace with function body.
 
 
@@ -42,6 +46,8 @@ func placed() -> void:
 	is_placed = true
 	for mesh in meshes:
 		mesh.material_override = null
+	for collision in collisions:
+		collision.DISABLE_MODE_REMOVE
 
 func remove_building() -> void:
 	self.queue_free()

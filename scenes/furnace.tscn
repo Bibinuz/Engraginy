@@ -15,12 +15,13 @@ size = Vector3(5, 6, 5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_s82ge"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="Furnace" type="Node3D" node_paths=PackedStringArray("meshes", "areas")]
+[node name="Furnace" type="Node3D" node_paths=PackedStringArray("meshes", "areas", "collisions")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 script = ExtResource("1_0uoyi")
 strategy = 2
 meshes = [NodePath("StaticBody3D/FurnaceMesh")]
 areas = [NodePath("StaticBody3D/PlacementArea")]
+collisions = [NodePath("StaticBody3D")]
 metadata/_custom_type_script = "uid://drx4w0p1rvsd6"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

@@ -18,6 +18,27 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+## Versio en la que estic treballant, no funciona encara
+##func _process(_delta: float) -> void:
+##	if isPlacing and instance:
+##		var screenCenter : Vector2 = get_viewport().size / 2
+##		var rayOrigin : Vector3 = camera.project_ray_origin(screenCenter) 
+##		var rayEnd : Vector3 = rayOrigin+camera.project_ray_normal(screenCenter)*placingRange
+##		var query : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(rayOrigin,rayEnd)
+##		query.collide_with_bodies = true
+##		
+##		#query.exclude = [instance.get_rid()]
+##		var collision = camera.get_world_3d().direct_space_state.intersect_ray(query)
+##		if collision:
+##			#instance.transform.origin = Vector3(snappedf(collision.position.x, 1),collision.position.y,snappedf(collision.position.z, 1))
+##			
+##			instance.global_position.x = snappedf(collision.position.x, 0.5)
+##			instance.global_position.z = snappedf(collision.position.z, 0.5)
+##			instance.global_position.y = collision.position.y
+##			
+##			canPlace = instance.check_placement()
+			
+## Versió antiga, funciona mes o menys
 func _process(_delta: float) -> void:
 	if isPlacing:
 		var screenCenter : Vector2 = get_viewport().size / 2
@@ -68,6 +89,8 @@ func _input(event: InputEvent) -> void:
 			hotbar.deselect_all()
 			canPlace = false
 			isPlacing = false
+		if event.is_action_pressed("rotateBuilding"):
+			instance.rotate(Vector3(0,1,0), PI/2)
 
 
 
@@ -81,5 +104,8 @@ func item_selected(index: int) -> void:
 		instance = shaft.instantiate()
 	elif index == 2:
 		instance = testMotor.instantiate()
+	else:
+		isPlacing = false
+		return
 	isPlacing = true
 	get_parent().add_child(instance)

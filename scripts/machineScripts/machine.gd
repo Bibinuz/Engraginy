@@ -19,6 +19,7 @@ var current_cost : float
 @export var production_speed : float = 1.0
 
 func _ready() -> void:
+	super()
 	cost_per_speed = -1.0
 	connected_speed = 0
 	current_cost = 0

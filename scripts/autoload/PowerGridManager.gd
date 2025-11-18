@@ -8,7 +8,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func register_node(node: PowerNode) -> void:
@@ -16,13 +16,16 @@ func register_node(node: PowerNode) -> void:
 		all_power_nodes.append(node)
 		node.network_changed.connect(recalculate_all_grids)
 
-func unregister_node(node: PowerNode) -> void:
+func wunregister_node(node: PowerNode) -> void:
 	if all_power_nodes.has(node):
 		all_power_nodes.erase(node)
 		if node.is_connected("network_changed", recalculate_all_grids):
 			node.network_changed.disconnect(recalculate_all_grids)
 	
 func recalculate_all_grids() -> void:
+	# Es recalculen totes les xarxes abans d'actualitzar les velocitats del sistema
+	# Els canvis de consum no es propaguen fins al seguent canvi
+	print("Start recalculating all grids: ")
 	var processed_nodes: Array[PowerNode] = []
 	
 	for node in all_power_nodes:
@@ -34,11 +37,12 @@ func recalculate_all_grids() -> void:
 		var production_aviable: float = 0.0
 		for grid_node in grid_nodes:
 			production_aviable += grid_node.speed * grid_node.cost_per_speed
+		print(production_aviable)
 		
 		var is_overstressed: bool = production_aviable < 0
 		for grid_node in grid_nodes:
 			grid_node.is_overstressed = is_overstressed
-		
+	print("End recalculation of all grids")
 	
 
 #Afegeixo les dues versions bfs i dfs per despres fer probes de rendiment

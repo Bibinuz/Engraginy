@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://oj3blpxqf1bl"]
+[gd_scene load_steps=8 format=3 uid="uid://oj3blpxqf1bl"]
 
 [ext_resource type="PackedScene" uid="uid://bwggrf7sbmkcv" path="res://addons/PlayerCharacter/PlayerCharacterScene.tscn" id="1_oh4cu"]
 [ext_resource type="Material" uid="uid://cmlreoo2qwhp4" path="res://addons/Arts/StructureMaterial.tres" id="2_etmyc"]
-[ext_resource type="PackedScene" uid="uid://bqyrmi6xgjxyl" path="res://scenes/furnace.tscn" id="4_p7x60"]
 [ext_resource type="PackedScene" uid="uid://dnf0u2ljad6tc" path="res://scenes/gui.tscn" id="4_w47yd"]
 [ext_resource type="PackedScene" uid="uid://5ayyguytjdbd" path="res://scenes/bottom_menu.tscn" id="7_vqfbn"]
 
@@ -46,11 +45,5 @@ size = Vector3(90, 1, 86)
 material = ExtResource("2_etmyc")
 
 [node name="GUI" parent="." instance=ExtResource("4_w47yd")]
-
-[node name="Furnace3" parent="." instance=ExtResource("4_p7x60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.856457, 0.45192003, -16.951382)
-
-[node name="Furnace4" parent="." instance=ExtResource("4_p7x60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8244143, 0.45192003, -16.951382)
 
 [node name="BottomMenu" parent="." instance=ExtResource("7_vqfbn")]

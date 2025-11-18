@@ -12,10 +12,11 @@ size = Vector3(0.1, 0.1, 0.1)
 height = 0.9
 radius = 0.2
 
-[node name="shaft" type="Node3D" node_paths=PackedStringArray("meshes", "areas")]
+[node name="shaft" type="Node3D" node_paths=PackedStringArray("meshes", "areas", "collisions")]
 script = ExtResource("1_hk0ro")
 meshes = [NodePath("Cylinder")]
 areas = [NodePath("PlacementArea")]
+collisions = [NodePath("StaticBody3D")]
 
 [node name="Cylinder" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.125, 0, 0, 0, -2.1855694e-08, -0.125, 0, 0.5, -5.4639235e-09, 0, 0, 0.5)
