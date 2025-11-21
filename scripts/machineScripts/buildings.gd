@@ -14,8 +14,8 @@ var is_placed : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for collision in collisions:
-		collision.DISABLE_MODE_KEEP_ACTIVE
+##	for collision in collisions:
+	##		collision.DISABLE_MODE_KEEP_ACTIVE
 	pass # Replace with function body.
 
 
@@ -31,7 +31,7 @@ func check_placement() -> bool:
 			return false
 	placement_green()
 	return true
-	
+
 func placement_green() -> void:
 	for mesh in meshes:
 		mesh.material_override = placementYesMaterial
@@ -46,8 +46,8 @@ func placed() -> void:
 	is_placed = true
 	for mesh in meshes:
 		mesh.material_override = null
-	for collision in collisions:
-		collision.DISABLE_MODE_REMOVE
+##	for collision in collisions:
+	##		collision.DISABLE_MODE_REMOVE
 
 func remove_building() -> void:
 	self.queue_free()

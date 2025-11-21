@@ -13,7 +13,7 @@ func _ready() -> void:
 		if port is Area3D:
 			port.monitorable = false
 			port.monitoring = false
-	
+
 
 func _process(_delta: float) -> void:
 	pass
@@ -23,7 +23,7 @@ func _enter_tree() -> void:
 
 func _exit_tree() -> void:
 	PowerGridManager.unregister_node(self)
-	
+
 func _on_area_entered(area: Area3D) -> void:
 	var other_node = area.get_owner()
 	if other_node is PowerNode and other_node != self:
@@ -41,13 +41,13 @@ func _on_area_exited(area: Area3D) -> void:
 		if other_node.connections.has(self):
 			other_node.connections.erase(self)
 		emit_signal("network_changed")
-		
+
 func get_connections() ->  Array[PowerNode]:
 	return connections
-	
+
 func placed() -> void:
 	super()
-	
+
 	for port in $ConnectionPorts.get_children():
 		if port is Area3D:
 			port.area_entered.connect(_on_area_entered)
@@ -58,4 +58,3 @@ func placed() -> void:
 func check_connections() -> bool:
 
 	return true
-	

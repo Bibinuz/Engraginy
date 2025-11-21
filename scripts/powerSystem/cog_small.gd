@@ -1,6 +1,6 @@
-class_name Shaft extends PowerNode
+extends PowerNode
 
-@onready var shaftMesh = $shaftMesh
+@onready var cogMesh = $Gear
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,20 +8,12 @@ func _ready() -> void:
 	cost_per_speed = -1
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previousd frame.
 func _process(delta: float) -> void:
 	if not valid_connections():
+		self._exit_tree()
 		remove_building()
 	if not is_overstressed:
-		##if (abs(basis.get_euler().y) >= PI/2-0.01 and abs(basis.get_euler().y) <= PI/2+0.01):
-		shaftMesh.rotate(Vector3(0, 1, 0), direction * speed * delta)
-		##else:
-			##rotate(Vector3(0, 0, 1), direction * speed * delta)
-
-	pass
-
-func _physics_process(_delta: float) -> void:
+		cogMesh.rotate(Vector3(0, 1, 0), direction * speed * delta)
 	pass
 
 func valid_connections() -> bool:

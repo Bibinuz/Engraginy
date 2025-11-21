@@ -3,6 +3,7 @@ class_name BottomMenu extends Control
 @onready var furnace = preload("res://scenes/furnace.tscn")
 @onready var testMotor = preload("res://scenes/test_motor.tscn")
 @onready var shaft = preload("res://scenes/shaft.tscn")
+@onready var cogSmall = preload("res://scenes/cog_small.tscn")
 
 @onready var hotbar : ItemList = $PanelContainer/ItemList
 
@@ -22,27 +23,27 @@ func _ready() -> void:
 ##func _process(_delta: float) -> void:
 ##	if isPlacing and instance:
 ##		var screenCenter : Vector2 = get_viewport().size / 2
-##		var rayOrigin : Vector3 = camera.project_ray_origin(screenCenter) 
+##		var rayOrigin : Vector3 = camera.project_ray_origin(screenCenter)
 ##		var rayEnd : Vector3 = rayOrigin+camera.project_ray_normal(screenCenter)*placingRange
 ##		var query : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(rayOrigin,rayEnd)
 ##		query.collide_with_bodies = true
-##		
+##
 ##		#query.exclude = [instance.get_rid()]
 ##		var collision = camera.get_world_3d().direct_space_state.intersect_ray(query)
 ##		if collision:
 ##			#instance.transform.origin = Vector3(snappedf(collision.position.x, 1),collision.position.y,snappedf(collision.position.z, 1))
-##			
+##
 ##			instance.global_position.x = snappedf(collision.position.x, 0.5)
 ##			instance.global_position.z = snappedf(collision.position.z, 0.5)
 ##			instance.global_position.y = collision.position.y
-##			
+##
 ##			canPlace = instance.check_placement()
-			
+
 ## Versió antiga, funciona mes o menys
 func _process(_delta: float) -> void:
 	if isPlacing:
 		var screenCenter : Vector2 = get_viewport().size / 2
-		var rayOrigin : Vector3 = camera.project_ray_origin(screenCenter) 
+		var rayOrigin : Vector3 = camera.project_ray_origin(screenCenter)
 		var rayEnd : Vector3 = rayOrigin+camera.project_ray_normal(screenCenter)*placingRange
 		var query : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(rayOrigin,rayEnd)
 		query.collide_with_bodies = true
@@ -50,9 +51,9 @@ func _process(_delta: float) -> void:
 		if collision:
 			#instance.transform.origin = Vector3(snappedf(collision.position.x, 1),collision.position.y,snappedf(collision.position.z, 1))
 			instance.transform.origin = ceil(collision.position)
-			
+
 			canPlace = instance.check_placement()
-			
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("select1"):
@@ -82,7 +83,7 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("select9"):
 		hotbar.select(8)
 		item_selected(8)
-	
+
 	if isPlacing:
 		if event.is_action_pressed("leftClick") and canPlace:
 			instance.placed()
@@ -97,13 +98,15 @@ func _input(event: InputEvent) -> void:
 func item_selected(index: int) -> void:
 	if isPlacing:
 		instance.queue_free()
-	
+
 	if index == 0:
 		instance = furnace.instantiate()
 	elif index == 1:
 		instance = shaft.instantiate()
 	elif index == 2:
 		instance = testMotor.instantiate()
+	elif index ==  3:
+		instance = cogSmall.instantiate()
 	else:
 		isPlacing = false
 		return

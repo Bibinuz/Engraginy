@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://563d5nfb84m6" path="res://scripts/machineScripts/generator.gd" id="1_1ijy3"]
 [ext_resource type="ArrayMesh" uid="uid://5jtigcnxqhxl" path="res://assets/models3d/shaft.tres" id="2_g5cqk"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_qxltg"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1ijy3"]
+data = PackedVector3Array(0, -0.5, -0.19999999, 0.1732, 0.5, -0.099999994, 0, 0.5, -0.19999999, 0, -0.5, -0.19999999, 0.1732, -0.5, -0.099999994, 0.1732, 0.5, -0.099999994, 0.1732, -0.5, -0.099999994, 0.1732, 0.5, 0.099999994, 0.1732, 0.5, -0.099999994, 0.1732, -0.5, -0.099999994, 0.1732, -0.5, 0.099999994, 0.1732, 0.5, 0.099999994, 0.1732, -0.5, 0.099999994, 0, 0.5, 0.19999999, 0.1732, 0.5, 0.099999994, 0.1732, -0.5, 0.099999994, 0, -0.5, 0.19999999, 0, 0.5, 0.19999999, 0, -0.5, 0.19999999, -0.1732, 0.5, 0.099999994, 0, 0.5, 0.19999999, 0, -0.5, 0.19999999, -0.1732, -0.5, 0.099999994, -0.1732, 0.5, 0.099999994, 0.1732, 0.5, 0.099999994, 0, 0.5, -0.19999999, 0.1732, 0.5, -0.099999994, 0, 0.5, -0.19999999, 0.1732, 0.5, 0.099999994, -0.1732, 0.5, 0.099999994, -0.1732, 0.5, 0.099999994, 0.1732, 0.5, 0.099999994, 0, 0.5, 0.19999999, 0, 0.5, -0.19999999, -0.1732, 0.5, 0.099999994, -0.1732, 0.5, -0.099999994, -0.1732, -0.5, 0.099999994, -0.1732, 0.5, -0.099999994, -0.1732, 0.5, 0.099999994, -0.1732, -0.5, 0.099999994, -0.1732, -0.5, -0.099999994, -0.1732, 0.5, -0.099999994, -0.1732, -0.5, -0.099999994, 0, 0.5, -0.19999999, -0.1732, 0.5, -0.099999994, -0.1732, -0.5, -0.099999994, 0, -0.5, -0.19999999, 0, 0.5, -0.19999999, -0.1732, -0.5, -0.099999994, 0.1732, -0.5, -0.099999994, 0, -0.5, -0.19999999, 0.1732, -0.5, -0.099999994, -0.1732, -0.5, -0.099999994, 0, -0.5, 0.19999999, 0, -0.5, 0.19999999, -0.1732, -0.5, -0.099999994, -0.1732, -0.5, 0.099999994, 0.1732, -0.5, -0.099999994, 0, -0.5, 0.19999999, 0.1732, -0.5, 0.099999994)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ijy3"]
 albedo_color = Color(0.7029767, 0.7029767, 0.70297664, 1)
@@ -13,11 +14,11 @@ material = SubResource("StandardMaterial3D_1ijy3")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fuv05"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qxltg"]
-size = Vector3(0.9, 0.9, 1.9)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_6vl1m"]
 size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qxltg"]
+size = Vector3(0.9, 0.9, 1.9)
 
 [node name="Generator" type="Node3D" node_paths=PackedStringArray("meshes", "areas", "collisions")]
 script = ExtResource("1_1ijy3")
@@ -27,37 +28,38 @@ collisions = [NodePath("MotorShaftStatic"), NodePath("BodyStatic")]
 metadata/_custom_type_script = "uid://563d5nfb84m6"
 
 [node name="Shaft" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.125, 0, 0, 0, -2.1855694e-08, -0.125, 0, 0.5, -5.4639235e-09, 0, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 mesh = ExtResource("2_g5cqk")
 skeleton = NodePath("")
 
 [node name="MotorShaftStatic" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MotorShaftStatic"]
-transform = Transform3D(0.251, 0, 0, 0, -2.1855694e-08, -0.251, 0, 0.5, -1.0971558e-08, 0, 0, -0.5)
-shape = SubResource("CylinderShape3D_qxltg")
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_1ijy3")
 
 [node name="Body" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 mesh = SubResource("BoxMesh_g5cqk")
 
 [node name="BodyStatic" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BodyStatic"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 shape = SubResource("BoxShape3D_fuv05")
-
-[node name="PlacementArea" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlacementArea"]
-shape = SubResource("BoxShape3D_qxltg")
 
 [node name="ConnectionPorts" type="Node3D" parent="."]
 
 [node name="Port1" type="Area3D" parent="ConnectionPorts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port1"]
 shape = SubResource("BoxShape3D_6vl1m")
+
+[node name="PlacementArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlacementArea"]
+shape = SubResource("BoxShape3D_qxltg")

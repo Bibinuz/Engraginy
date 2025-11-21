@@ -3,37 +3,36 @@
 [ext_resource type="Script" uid="uid://cltn3kr5xe2u0" path="res://scripts/machineScripts/eix.gd" id="1_hk0ro"]
 [ext_resource type="ArrayMesh" uid="uid://5jtigcnxqhxl" path="res://assets/models3d/shaft.tres" id="2_k577w"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_qqpa4"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_k577w"]
+data = PackedVector3Array(0, -0.5, -0.19999999, 0.1732, 0.5, -0.099999994, 0, 0.5, -0.19999999, 0, -0.5, -0.19999999, 0.1732, -0.5, -0.099999994, 0.1732, 0.5, -0.099999994, 0.1732, -0.5, -0.099999994, 0.1732, 0.5, 0.099999994, 0.1732, 0.5, -0.099999994, 0.1732, -0.5, -0.099999994, 0.1732, -0.5, 0.099999994, 0.1732, 0.5, 0.099999994, 0.1732, -0.5, 0.099999994, 0, 0.5, 0.19999999, 0.1732, 0.5, 0.099999994, 0.1732, -0.5, 0.099999994, 0, -0.5, 0.19999999, 0, 0.5, 0.19999999, 0, -0.5, 0.19999999, -0.1732, 0.5, 0.099999994, 0, 0.5, 0.19999999, 0, -0.5, 0.19999999, -0.1732, -0.5, 0.099999994, -0.1732, 0.5, 0.099999994, 0.1732, 0.5, 0.099999994, 0, 0.5, -0.19999999, 0.1732, 0.5, -0.099999994, 0, 0.5, -0.19999999, 0.1732, 0.5, 0.099999994, -0.1732, 0.5, 0.099999994, -0.1732, 0.5, 0.099999994, 0.1732, 0.5, 0.099999994, 0, 0.5, 0.19999999, 0, 0.5, -0.19999999, -0.1732, 0.5, 0.099999994, -0.1732, 0.5, -0.099999994, -0.1732, -0.5, 0.099999994, -0.1732, 0.5, -0.099999994, -0.1732, 0.5, 0.099999994, -0.1732, -0.5, 0.099999994, -0.1732, -0.5, -0.099999994, -0.1732, 0.5, -0.099999994, -0.1732, -0.5, -0.099999994, 0, 0.5, -0.19999999, -0.1732, 0.5, -0.099999994, -0.1732, -0.5, -0.099999994, 0, -0.5, -0.19999999, 0, 0.5, -0.19999999, -0.1732, -0.5, -0.099999994, 0.1732, -0.5, -0.099999994, 0, -0.5, -0.19999999, 0.1732, -0.5, -0.099999994, -0.1732, -0.5, -0.099999994, 0, -0.5, 0.19999999, 0, -0.5, 0.19999999, -0.1732, -0.5, -0.099999994, -0.1732, -0.5, 0.099999994, 0.1732, -0.5, -0.099999994, 0, -0.5, 0.19999999, 0.1732, -0.5, 0.099999994)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k577w"]
 size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_k577w"]
 height = 0.9
-radius = 0.2
+radius = 0.25
 
 [node name="shaft" type="Node3D" node_paths=PackedStringArray("meshes", "areas", "collisions")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_hk0ro")
-meshes = [NodePath("Cylinder")]
+meshes = [NodePath("shaftMesh")]
 areas = [NodePath("PlacementArea")]
 collisions = [NodePath("StaticBody3D")]
 
-[node name="Cylinder" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.125, 0, 0, 0, -2.1855694e-08, -0.125, 0, 0.5, -5.4639235e-09, 0, 0, 0.5)
+[node name="shaftMesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_k577w")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(0.251, 0, 0, 0, -2.1855694e-08, -0.251, 0, 0.5, -1.0971558e-08, 0, 0, 0)
-shape = SubResource("CylinderShape3D_qqpa4")
+shape = SubResource("ConcavePolygonShape3D_k577w")
 
 [node name="ConnectionPorts" type="Node3D" parent="."]
 
 [node name="Port1" type="Area3D" parent="ConnectionPorts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 2
 collision_mask = 2
 
@@ -41,6 +40,7 @@ collision_mask = 2
 shape = SubResource("BoxShape3D_k577w")
 
 [node name="Port2" type="Area3D" parent="ConnectionPorts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 collision_layer = 2
 collision_mask = 2
 
@@ -50,5 +50,4 @@ shape = SubResource("BoxShape3D_k577w")
 [node name="PlacementArea" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlacementArea"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.5)
 shape = SubResource("CylinderShape3D_k577w")
