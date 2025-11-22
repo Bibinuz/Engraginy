@@ -90,9 +90,27 @@ func _input(event: InputEvent) -> void:
 			hotbar.deselect_all()
 			canPlace = false
 			isPlacing = false
-		if event.is_action_pressed("rotateBuilding"):
-			instance.rotate(Vector3(0,1,0), PI/2)
-
+		if event.is_action_pressed("rotateBuildingX"):
+			print("Before rotating X:")
+			print(instance.global_rotation_degrees)
+			instance.global_rotation_degrees.x += 90
+			instance.global_rotation_degrees.snappedf(1)
+			print("After rotating X:")
+			print(instance.global_rotation_degrees)
+		if event.is_action_pressed("rotateBuildingY"):
+			print("Before rotating Y:")
+			print(instance.global_rotation_degrees)
+			instance.global_rotation_degrees.y += 90
+			instance.global_rotation_degrees.snappedf(1)
+			print("After rotating Y:")
+			print(instance.global_rotation_degrees)
+		if event.is_action_pressed("rotateBuildingZ"):
+			print("Before rotating Z:")
+			print(instance.global_rotation_degrees)
+			instance.global_rotation_degrees.z += 90
+			instance.global_rotation_degrees.snappedf(1)
+			print("After rotating Z:")
+			print(instance.global_rotation_degrees)
 
 
 func item_selected(index: int) -> void:
