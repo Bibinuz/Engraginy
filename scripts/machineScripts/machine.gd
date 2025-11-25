@@ -20,7 +20,7 @@ var current_cost : float
 
 func _ready() -> void:
 	super()
-	cost_per_speed = -1.0
+	cost_per_speed = -1
 	connected_speed = 0
 	current_cost = 0
 
@@ -30,7 +30,7 @@ func set_power_state() -> void:
 	else:
 		production_speed = connected_speed
 		print("System overstressed")
-		
+
 	current_cost = cost_per_speed*connected_speed
 	if connected_speed == 0:
 		print("Machine is Off")

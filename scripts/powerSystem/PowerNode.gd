@@ -5,7 +5,7 @@ signal network_changed
 
 @export var cost_per_speed : int = 0
 
-var connections : Dictionary[Area3D, PowerNode] = {}
+var connections : Dictionary[PowerNodePort, PowerNode] = {}
 var speed : int = 0
 var is_overstressed : bool = false
 var is_running : bool = false
@@ -23,14 +23,15 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
+func _super_process(_delta: float) -> void:
+	pass
 func _enter_tree() -> void:
 	PowerGridManager.register_node(self)
-
 
 func _exit_tree() -> void:
 	PowerGridManager.unregister_node(self)
 
-func _on_area_entered(area: Area3D, local_port: Area3D) -> void:
+func _on_area_entered(area: Area3D, local_port: PowerNodePort) -> void:
 	var other_node = area.get_owner()
 	if other_node is PowerNode and other_node != self:
 		connections[local_port] = other_node
@@ -38,15 +39,15 @@ func _on_area_entered(area: Area3D, local_port: Area3D) -> void:
 		emit_signal("network_changed")
 
 
-func _on_area_exited(area: Area3D, local_port: Area3D) -> void:
+func _on_area_exited(area: Area3D, local_port: PowerNodePort) -> void:
 	var other_node = area.get_owner()
 	if other_node is PowerNode:
 		connections[local_port] = null
 		other_node.connections[area] = null
 		emit_signal("network_changed")
 
-func get_connections() -> Array[PowerNode]:
-	return connections.values()
+func get_connections() -> Dictionary[PowerNodePort, PowerNode]:
+	return connections
 
 func placed() -> void:
 	super()

@@ -4,6 +4,7 @@ class_name BottomMenu extends Control
 @onready var testMotor = preload("res://scenes/test_motor.tscn")
 @onready var shaft = preload("res://scenes/shaft.tscn")
 @onready var cogSmall = preload("res://scenes/cog_small.tscn")
+@onready var transmisionBox = preload("res://scenes/transmision_box.tscn")
 
 @onready var hotbar : ItemList = $PanelContainer/ItemList
 
@@ -91,26 +92,26 @@ func _input(event: InputEvent) -> void:
 			canPlace = false
 			isPlacing = false
 		if event.is_action_pressed("rotateBuildingX"):
-			print("Before rotating X:")
-			print(instance.global_rotation_degrees)
+			##  print("Before rotating X:")
+			##  print(instance.global_rotation_degrees)
 			instance.global_rotation_degrees.x += 90
 			instance.global_rotation_degrees.snappedf(1)
-			print("After rotating X:")
-			print(instance.global_rotation_degrees)
+			##  print("After rotating X:")
+			##  print(instance.global_rotation_degrees)
 		if event.is_action_pressed("rotateBuildingY"):
-			print("Before rotating Y:")
-			print(instance.global_rotation_degrees)
+			##  print("Before rotating Y:")
+			##  print(instance.global_rotation_degrees)
 			instance.global_rotation_degrees.y += 90
 			instance.global_rotation_degrees.snappedf(1)
-			print("After rotating Y:")
-			print(instance.global_rotation_degrees)
+			##  print("After rotating Y:")
+			##  print(instance.global_rotation_degrees)
 		if event.is_action_pressed("rotateBuildingZ"):
-			print("Before rotating Z:")
-			print(instance.global_rotation_degrees)
+			##  print("Before rotating Z:")
+			##  print(instance.global_rotation_degrees)
 			instance.global_rotation_degrees.z += 90
 			instance.global_rotation_degrees.snappedf(1)
-			print("After rotating Z:")
-			print(instance.global_rotation_degrees)
+			##  print("After rotating Z:")
+			##  print(instance.global_rotation_degrees)
 
 
 func item_selected(index: int) -> void:
@@ -125,6 +126,8 @@ func item_selected(index: int) -> void:
 		instance = testMotor.instantiate()
 	elif index ==  3:
 		instance = cogSmall.instantiate()
+	elif index == 4:
+		instance = transmisionBox.instantiate()
 	else:
 		isPlacing = false
 		return

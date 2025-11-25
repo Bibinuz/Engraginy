@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bto1023pw2jd3"]
+[gd_scene load_steps=8 format=3 uid="uid://bto1023pw2jd3"]
 
 [ext_resource type="PackedScene" uid="uid://fcbwytmwifmo" path="res://assets/models3d/cog_small.glb" id="1_hqeu3"]
 [ext_resource type="Script" uid="uid://dbs3rlw2bpk23" path="res://scripts/powerSystem/cog_small.gd" id="2_i8oap"]
+[ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/powerSystem/PowerNodePort.gd" id="3_xgo0e"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_i8oap"]
 height = 0.2
@@ -19,7 +20,6 @@ size = Vector3(0.9, 0.9, 0.9)
 [node name="cog_small" node_paths=PackedStringArray("meshes", "areas", "collisions") instance=ExtResource("1_hqeu3")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 script = ExtResource("2_i8oap")
-cost_per_speed = 1.0
 meshes = [NodePath("Gear")]
 areas = [NodePath("Area3D")]
 collisions = [NodePath("StaticBody3D")]
@@ -38,6 +38,8 @@ shape = SubResource("CylinderShape3D_xgo0e")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("3_xgo0e")
+metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port1" index="0"]
 shape = SubResource("BoxShape3D_i8oap")
@@ -46,45 +48,53 @@ shape = SubResource("BoxShape3D_i8oap")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("3_xgo0e")
+metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port2" index="0"]
 shape = SubResource("BoxShape3D_i8oap")
 
-[node name="GearConnections" type="Node3D" parent="." index="3"]
-
-[node name="Port1" type="Area3D" parent="GearConnections" index="0"]
+[node name="Port3" type="Area3D" parent="ConnectionPorts" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("3_xgo0e")
+metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GearConnections/Port1" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port3" index="0"]
 shape = SubResource("BoxShape3D_i8oap")
 
-[node name="Port2" type="Area3D" parent="GearConnections" index="1"]
+[node name="Port4" type="Area3D" parent="ConnectionPorts" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("3_xgo0e")
+metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GearConnections/Port2" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port4" index="0"]
 shape = SubResource("BoxShape3D_i8oap")
 
-[node name="Port3" type="Area3D" parent="GearConnections" index="2"]
+[node name="Port5" type="Area3D" parent="ConnectionPorts" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("3_xgo0e")
+metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GearConnections/Port3" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port5" index="0"]
 shape = SubResource("BoxShape3D_i8oap")
 
-[node name="Port4" type="Area3D" parent="GearConnections" index="3"]
+[node name="Port6" type="Area3D" parent="ConnectionPorts" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("3_xgo0e")
+metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GearConnections/Port4" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port6" index="0"]
 shape = SubResource("BoxShape3D_i8oap")
 
-[node name="Area3D" type="Area3D" parent="." index="4"]
+[node name="Area3D" type="Area3D" parent="." index="3"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 shape = SubResource("BoxShape3D_hqeu3")
