@@ -14,9 +14,8 @@ var is_placed : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-##	for collision in collisions:
-	##		collision.DISABLE_MODE_KEEP_ACTIVE
-	pass # Replace with function body.
+	if not is_placed:
+		toggle_collisions(false)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,8 +45,13 @@ func placed() -> void:
 	is_placed = true
 	for mesh in meshes:
 		mesh.material_override = null
-##	for collision in collisions:
-	##		collision.DISABLE_MODE_REMOVE
+		toggle_collisions(true)
 
 func remove_building() -> void:
 	self.queue_free()
+
+func toggle_collisions(enabled: bool) -> void:
+	for body:StaticBody3D in collisions:
+		for child in body.get_children():
+			if child is CollisionShape3D or child is CollisionPolygon3D:
+				child.disabled = not enabled

@@ -9,10 +9,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
-	cogMesh.rotate(Vector3(0, 1, 0), speed * delta)
+	if not is_overstressed:
+		cogMesh.rotate(Vector3(0, 1, 0), speed * delta)
 
 func placed() -> void:
 	super()
-	global_rotation = abs(global_rotation)
-	if global_rotation.y > 3.1:
-		global_rotation.y = 0

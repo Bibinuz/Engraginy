@@ -15,9 +15,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)
-	motorShaft.rotate(Vector3(0, 1, 0), speed * delta)
+	if not is_overstressed and is_running:
+		motorShaft.rotate(Vector3(0, 1, 0), speed * delta)
 	#if not is_overstressed and is_running:
 
+func interacted() -> void:
+	print(PowerGridManager.last_power_calculation)
 
 
 func placed() -> void:

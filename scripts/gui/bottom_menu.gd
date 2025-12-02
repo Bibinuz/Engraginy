@@ -6,6 +6,7 @@ class_name BottomMenu extends Control
 @onready var cogSmall = preload("res://scenes/cog_small.tscn")
 @onready var cogBig = preload("res://scenes/cog_big.tscn")
 @onready var transmisionBox = preload("res://scenes/transmision_box.tscn")
+@onready var multiplier = preload("res://scenes/multiplier.tscn")
 
 @onready var hotbar : ItemList = $PanelContainer/ItemList
 
@@ -20,39 +21,25 @@ func _ready() -> void:
 	camera = get_viewport().get_camera_3d()
 	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-## Versio en la que estic treballant, no funciona encara
-##func _process(_delta: float) -> void:
-##	if isPlacing and instance:
-##		var screenCenter : Vector2 = get_viewport().size / 2
-##		var rayOrigin : Vector3 = camera.project_ray_origin(screenCenter)
-##		var rayEnd : Vector3 = rayOrigin+camera.project_ray_normal(screenCenter)*placingRange
-##		var query : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(rayOrigin,rayEnd)
-##		query.collide_with_bodies = true
-##
-##		#query.exclude = [instance.get_rid()]
-##		var collision = camera.get_world_3d().direct_space_state.intersect_ray(query)
-##		if collision:
-##			#instance.transform.origin = Vector3(snappedf(collision.position.x, 1),collision.position.y,snappedf(collision.position.z, 1))
-##
-##			instance.global_position.x = snappedf(collision.position.x, 0.5)
-##			instance.global_position.z = snappedf(collision.position.z, 0.5)
-##			instance.global_position.y = collision.position.y
-##
-##			canPlace = instance.check_placement()
-
-## Versió antiga, funciona mes o menys
 func _process(_delta: float) -> void:
-	if isPlacing:
+	if isPlacing and instance:
 		var screenCenter : Vector2 = get_viewport().size / 2
 		var rayOrigin : Vector3 = camera.project_ray_origin(screenCenter)
-		var rayEnd : Vector3 = rayOrigin+camera.project_ray_normal(screenCenter)*placingRange
-		var query : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(rayOrigin,rayEnd)
+		var rayEnd : Vector3 = rayOrigin + camera.project_ray_normal(screenCenter) * placingRange
+		var query : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(rayOrigin, rayEnd)
 		query.collide_with_bodies = true
+		var exclusion_list: Array[RID] = []
+		if instance.get("collisions"):
+			for col in instance.collisions:
+				if col is CollisionObject3D:
+					exclusion_list.append(col.get_rid())
+		query.exclude = exclusion_list
 		var collision = camera.get_world_3d().direct_space_state.intersect_ray(query)
 		if collision:
-			#instance.transform.origin = Vector3(snappedf(collision.position.x, 1),collision.position.y,snappedf(collision.position.z, 1))
-			instance.transform.origin = ceil(collision.position)
+			var point = collision.position
+			var normal = collision.normal
+			var target_pos = point + (normal * 0.5)
+			instance.global_position = target_pos.snapped(Vector3(1, 1, 1))
 			canPlace = instance.check_placement()
 
 
@@ -130,6 +117,8 @@ func item_selected(index: int) -> void:
 		instance = cogBig.instantiate()
 	elif index == 5:
 		instance = transmisionBox.instantiate()
+	elif index  == 6:
+		instance = multiplier.instantiate()
 	else:
 		isPlacing = false
 		return

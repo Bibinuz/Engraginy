@@ -3,9 +3,7 @@
 [ext_resource type="Script" uid="uid://563d5nfb84m6" path="res://scripts/machineScripts/generator.gd" id="1_1ijy3"]
 [ext_resource type="ArrayMesh" uid="uid://5jtigcnxqhxl" path="res://assets/models3d/shaft.tres" id="2_g5cqk"]
 [ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/powerSystem/PowerNodePort.gd" id="3_g5cqk"]
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1ijy3"]
-data = PackedVector3Array(0, -0.5, -0.19999999, 0.1732, 0.5, -0.099999994, 0, 0.5, -0.19999999, 0, -0.5, -0.19999999, 0.1732, -0.5, -0.099999994, 0.1732, 0.5, -0.099999994, 0.1732, -0.5, -0.099999994, 0.1732, 0.5, 0.099999994, 0.1732, 0.5, -0.099999994, 0.1732, -0.5, -0.099999994, 0.1732, -0.5, 0.099999994, 0.1732, 0.5, 0.099999994, 0.1732, -0.5, 0.099999994, 0, 0.5, 0.19999999, 0.1732, 0.5, 0.099999994, 0.1732, -0.5, 0.099999994, 0, -0.5, 0.19999999, 0, 0.5, 0.19999999, 0, -0.5, 0.19999999, -0.1732, 0.5, 0.099999994, 0, 0.5, 0.19999999, 0, -0.5, 0.19999999, -0.1732, -0.5, 0.099999994, -0.1732, 0.5, 0.099999994, 0.1732, 0.5, 0.099999994, 0, 0.5, -0.19999999, 0.1732, 0.5, -0.099999994, 0, 0.5, -0.19999999, 0.1732, 0.5, 0.099999994, -0.1732, 0.5, 0.099999994, -0.1732, 0.5, 0.099999994, 0.1732, 0.5, 0.099999994, 0, 0.5, 0.19999999, 0, 0.5, -0.19999999, -0.1732, 0.5, 0.099999994, -0.1732, 0.5, -0.099999994, -0.1732, -0.5, 0.099999994, -0.1732, 0.5, -0.099999994, -0.1732, 0.5, 0.099999994, -0.1732, -0.5, 0.099999994, -0.1732, -0.5, -0.099999994, -0.1732, 0.5, -0.099999994, -0.1732, -0.5, -0.099999994, 0, 0.5, -0.19999999, -0.1732, 0.5, -0.099999994, -0.1732, -0.5, -0.099999994, 0, -0.5, -0.19999999, 0, 0.5, -0.19999999, -0.1732, -0.5, -0.099999994, 0.1732, -0.5, -0.099999994, 0, -0.5, -0.19999999, 0.1732, -0.5, -0.099999994, -0.1732, -0.5, -0.099999994, 0, -0.5, 0.19999999, 0, -0.5, 0.19999999, -0.1732, -0.5, -0.099999994, -0.1732, -0.5, 0.099999994, 0.1732, -0.5, -0.099999994, 0, -0.5, 0.19999999, 0.1732, -0.5, 0.099999994)
+[ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/interactionComponent/interactioncomponent.gd" id="3_qxltg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ijy3"]
 albedo_color = Color(0.7029767, 0.7029767, 0.70297664, 1)
@@ -15,14 +13,14 @@ material = SubResource("StandardMaterial3D_1ijy3")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fuv05"]
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1ijy3"]
+data = PackedVector3Array(0, -0.5, -0.19999999, 0.1732, 0.5, -0.099999994, 0, 0.5, -0.19999999, 0, -0.5, -0.19999999, 0.1732, -0.5, -0.099999994, 0.1732, 0.5, -0.099999994, 0.1732, -0.5, -0.099999994, 0.1732, 0.5, 0.099999994, 0.1732, 0.5, -0.099999994, 0.1732, -0.5, -0.099999994, 0.1732, -0.5, 0.099999994, 0.1732, 0.5, 0.099999994, 0.1732, -0.5, 0.099999994, 0, 0.5, 0.19999999, 0.1732, 0.5, 0.099999994, 0.1732, -0.5, 0.099999994, 0, -0.5, 0.19999999, 0, 0.5, 0.19999999, 0, -0.5, 0.19999999, -0.1732, 0.5, 0.099999994, 0, 0.5, 0.19999999, 0, -0.5, 0.19999999, -0.1732, -0.5, 0.099999994, -0.1732, 0.5, 0.099999994, 0.1732, 0.5, 0.099999994, 0, 0.5, -0.19999999, 0.1732, 0.5, -0.099999994, 0, 0.5, -0.19999999, 0.1732, 0.5, 0.099999994, -0.1732, 0.5, 0.099999994, -0.1732, 0.5, 0.099999994, 0.1732, 0.5, 0.099999994, 0, 0.5, 0.19999999, 0, 0.5, -0.19999999, -0.1732, 0.5, 0.099999994, -0.1732, 0.5, -0.099999994, -0.1732, -0.5, 0.099999994, -0.1732, 0.5, -0.099999994, -0.1732, 0.5, 0.099999994, -0.1732, -0.5, 0.099999994, -0.1732, -0.5, -0.099999994, -0.1732, 0.5, -0.099999994, -0.1732, -0.5, -0.099999994, 0, 0.5, -0.19999999, -0.1732, 0.5, -0.099999994, -0.1732, -0.5, -0.099999994, 0, -0.5, -0.19999999, 0, 0.5, -0.19999999, -0.1732, -0.5, -0.099999994, 0.1732, -0.5, -0.099999994, 0, -0.5, -0.19999999, 0.1732, -0.5, -0.099999994, -0.1732, -0.5, -0.099999994, 0, -0.5, 0.19999999, 0, -0.5, 0.19999999, -0.1732, -0.5, -0.099999994, -0.1732, -0.5, 0.099999994, 0.1732, -0.5, -0.099999994, 0, -0.5, 0.19999999, 0.1732, -0.5, 0.099999994)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_6vl1m"]
 size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxltg"]
 size = Vector3(0.9, 0.9, 1.9)
-
-[sub_resource type="BoxMesh" id="BoxMesh_1ijy3"]
-size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Generator" type="Node3D" node_paths=PackedStringArray("meshes", "areas", "collisions")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
@@ -30,29 +28,33 @@ script = ExtResource("1_1ijy3")
 generate_per_speed = 8
 meshes = [NodePath("Shaft"), NodePath("Body")]
 areas = [NodePath("PlacementArea")]
-collisions = [NodePath("MotorShaftStatic"), NodePath("BodyStatic")]
+collisions = [NodePath("MotorShaftStatic")]
 metadata/_custom_type_script = "uid://563d5nfb84m6"
 
 [node name="Shaft" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_g5cqk")
 skeleton = NodePath("")
 
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_g5cqk")
+
 [node name="MotorShaftStatic" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MotorShaftStatic"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -4.371139e-08, -1)
+shape = SubResource("BoxShape3D_fuv05")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MotorShaftStatic"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_1ijy3")
 
-[node name="Body" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("BoxMesh_g5cqk")
-
-[node name="BodyStatic" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyStatic"]
-shape = SubResource("BoxShape3D_fuv05")
+[node name="InteractionComponent" type="Node" parent="MotorShaftStatic" node_paths=PackedStringArray("meshes")]
+script = ExtResource("3_qxltg")
+meshes = [NodePath("../../Shaft"), NodePath("../../Body")]
+override_icon = true
+metadata/_custom_type_script = "uid://cw0kcf37813c4"
 
 [node name="ConnectionPorts" type="Node3D" parent="."]
 
@@ -72,7 +74,3 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlacementArea"]
 shape = SubResource("BoxShape3D_qxltg")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9931117, -0.6311452)
-mesh = SubResource("BoxMesh_1ijy3")

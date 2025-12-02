@@ -1,7 +1,11 @@
 extends Node
 
-var all_power_nodes: Dictionary[PowerNode, bool] = {}
+var all_power_nodes: Array[PowerNode] = []
 var last_built_node : PowerNode = null
+
+var last_power_calculation: float = 0.0
+
+
 func _ready() -> void:
 	pass
 
@@ -13,75 +17,64 @@ func _physics_process(_delta: float) -> void:
 
 func register_node(node: PowerNode) -> void:
 	if not all_power_nodes.has(node):
-		all_power_nodes[node] = false
+		all_power_nodes.append(node)
 		last_built_node = node
 		node.network_changed.connect(recalculate_all_grids)
 
 func unregister_node(node: PowerNode) -> void:
 	if all_power_nodes.has(node):
 		all_power_nodes.erase(node)
-		if node.is_connected("network_changed", recalculate_all_grids):
+		if node.is_connected("network_changed", recalculate_grid):
 			node.network_changed.disconnect(recalculate_all_grids)
+			recalculate_all_grids()
+
+func recalculate_grid(starting_node: PowerNode) -> Array[PowerNode]:
+	var grid : Array[PowerNode] =  find_whole_grid_bfs(starting_node)
+	var power: float = 0.0
+	for node : PowerNode in grid:
+		if node is Generator:
+			power += node.generate_per_speed*node.speed
+		else:
+			power -= node.cost_per_speed*node.speed
+	if power < 0.0:
+		for node : PowerNode in grid:
+			node.is_overstressed = true
+	if power >= 0.0:
+		for node: PowerNode in grid:
+			node.is_overstressed = false
+	last_power_calculation = power
+	return grid
 
 func recalculate_all_grids() -> void:
-	var generator_nodes : Array[Generator] = []
-	for node : PowerNode in all_power_nodes:
-		if node is Generator and node.is_running:
-			generator_nodes.append(node)
-	for generator : Generator in generator_nodes:
-		pass
-		#propagate_rotation(generator, generator.speed)
+	var visited: Array[PowerNode] = []
+	for node: PowerNode in  all_power_nodes:
+		if not visited.has(node):
+			visited.append(recalculate_grid(node))
+	visited.clear()
 
-	for node: PowerNode in all_power_nodes:
-		if all_power_nodes[node]:
-			all_power_nodes[node] = false
-		elif not all_power_nodes[node] and not node is Generator:
-			node.speed = 0.0
+func find_whole_grid_bfs(start_node: PowerNode) -> Array[PowerNode]:
+	var visited: Array[PowerNode] = []
+	var queue: Array[PowerNode] = [start_node]
+	visited.append(start_node)
+	while not queue.is_empty():
+		var current_node = queue.pop_front()
+		for connection in current_node.get_connections():
+					if connection not in visited:
+							visited.append(connection)
+							queue.append(connection)
+	return visited
 
-
-func propagate_rotation(start_node: PowerNode, input_speed: int) -> void:
-	var queue = []
-	queue.append([start_node, input_speed])
-	var visited : Dictionary[PowerNode, int] = {}
-
-	while queue.size() > 0:
-		var data = queue.pop_front()
-		var current : PowerNode= data[0]
-		var prop_rpm : int = data[1]
-
-		if current in visited:
-			continue
-		visited[current] = prop_rpm
-		all_power_nodes[current] = true
-
-		for local_port : PowerNodePort in current.connections:
-			if not current.connections.has(local_port):
-				continue
-			var connection_data : PortConnection = current.connections[local_port]
-			var connected_node : PowerNode = connection_data.get("node")
-			var connected_port : PowerNodePort = connection_data.get("port")
-			var  next_rpm : int = 0
-
-			if local_port.type == PowerNodePort.PortType.SHAFT_END and connected_port.type == PowerNodePort.PortType.SHAFT_END:
-				var alignment = current.get_rotation_axis().dot(connected_node.get_rotation_axis())
-				if abs(alignment) > 0.9:
-					next_rpm = prop_rpm * sign(alignment)
-				else:
-					break_priority(current, connected_node)
-					continue
-			elif local_port.type  == PowerNodePort.PortType.COG_SMALL and connected_port.type == PowerNodePort.PortType.COG_SMALL:
-				next_rpm = -prop_rpm
-			elif local_port.type  == PowerNodePort.PortType.COG_SMALL and connected_port.type == PowerNodePort.PortType.COG_BIG:
-				next_rpm  = int(-prop_rpm / 2.0)
-			elif local_port.type  == PowerNodePort.PortType.COG_BIG and connected_port.type == PowerNodePort.PortType.COG_SMALL:
-				next_rpm  = int(-prop_rpm * 2.0)
-			elif local_port.type  == PowerNodePort.PortType.COG_BIG and connected_port.type == PowerNodePort.PortType.COG_BIG:
-				next_rpm  = -prop_rpm
-			else:
-				continue
-
-			current.speed = next_rpm
-			queue.append([connected_node, next_rpm])
+			##func find_whole_grid_dfs(start_node: PowerNode) -> Array[PowerNode]:
+				##	var visited: Array[PowerNode] = []
+				##	var queue: Array[PowerNode] = [start_node]
+				##	visited.append(start_node)
+				##	while not queue.is_empty():
+					##		var current_node = queue.pop_back()
+					##		for connection in current_node.get_connections():
+						##			if connection not in visited:
+							##				visited.append(connection)
+							##				queue.append(connection)
+							##	return visited
 
 func break_priority(node1 : PowerNode, node2 : PowerNode) -> void:
 	# First case:
@@ -110,28 +103,3 @@ func break_priority(node1 : PowerNode, node2 : PowerNode) -> void:
 		else:
 			node1.break_part()
 	return
-
-
-##func find_whole_grid_bfs(start_node: PowerNode) -> Array[PowerNode]:
-##	var visited: Array[PowerNode] = []
-##	var queue: Array[PowerNode] = [start_node]
-##	visited.append(start_node)
-##	while not queue.is_empty():
-	##		var current_node = queue.pop_front()
-	##		for connection in current_node.get_connections():
-		##			if connection not in visited:
-			##				visited.append(connection)
-			##				queue.append(connection)
-			##	return visited
-			##
-			##func find_whole_grid_dfs(start_node: PowerNode) -> Array[PowerNode]:
-				##	var visited: Array[PowerNode] = []
-				##	var queue: Array[PowerNode] = [start_node]
-				##	visited.append(start_node)
-				##	while not queue.is_empty():
-					##		var current_node = queue.pop_back()
-					##		for connection in current_node.get_connections():
-						##			if connection not in visited:
-							##				visited.append(connection)
-							##				queue.append(connection)
-							##	return visited

@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://bto1023pw2jd3"]
+[gd_scene load_steps=12 format=4 uid="uid://bto1023pw2jd3"]
 
 [ext_resource type="Script" uid="uid://dbs3rlw2bpk23" path="res://scripts/powerSystem/cog.gd" id="2_i8oap"]
+[ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/interactionComponent/interactioncomponent.gd" id="2_xgo0e"]
 [ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/powerSystem/PowerNodePort.gd" id="3_xgo0e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5dld"]
@@ -84,9 +85,13 @@ size = Vector3(0.1, 0.1, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_hqeu3"]
 size = Vector3(0.9, 0.9, 0.9)
 
-[node name="cog_small" type="Node3D"]
+[node name="cog_small" type="Node3D" node_paths=PackedStringArray("meshes", "areas", "collisions")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 script = ExtResource("2_i8oap")
+cost_per_speed = 1
+meshes = [NodePath("Gear")]
+areas = [NodePath("Area3D")]
+collisions = [NodePath("StaticBody3D")]
 
 [node name="Gear" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_rlceh")
@@ -99,6 +104,12 @@ shape = SubResource("CylinderShape3D_i8oap")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("CylinderShape3D_xgo0e")
+
+[node name="InteractionComponent" type="Node" parent="StaticBody3D" node_paths=PackedStringArray("meshes")]
+script = ExtResource("2_xgo0e")
+meshes = [NodePath("../../Gear")]
+override_icon = true
+metadata/_custom_type_script = "uid://cw0kcf37813c4"
 
 [node name="ConnectionPorts" type="Node3D" parent="."]
 
@@ -142,7 +153,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_xgo0e")
-direction_fliper = -1
 type = 1
 allow_ports = Array[int]([1])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
@@ -168,7 +178,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_xgo0e")
-direction_fliper = -1
 type = 1
 allow_ports = Array[int]([1])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
@@ -176,7 +185,60 @@ metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port6"]
 shape = SubResource("BoxShape3D_i8oap")
 
+[node name="Port7" type="Area3D" parent="ConnectionPorts"]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.35355338, 0, -0.35355338)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_xgo0e")
+direction_fliper = -1
+type = 1
+allow_ports = Array[int]([2])
+metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port7"]
+shape = SubResource("BoxShape3D_i8oap")
+
+[node name="Port8" type="Area3D" parent="ConnectionPorts"]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.35355338, 0, 0.35355338)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_xgo0e")
+direction_fliper = -1
+type = 1
+allow_ports = Array[int]([2])
+metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port8"]
+shape = SubResource("BoxShape3D_i8oap")
+
+[node name="Port9" type="Area3D" parent="ConnectionPorts"]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.35355338, 0, 0.35355338)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_xgo0e")
+direction_fliper = -1
+type = 1
+allow_ports = Array[int]([2])
+metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port9"]
+shape = SubResource("BoxShape3D_i8oap")
+
+[node name="Port10" type="Area3D" parent="ConnectionPorts"]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.35355338, 0, -0.35355338)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_xgo0e")
+direction_fliper = -1
+type = 1
+allow_ports = Array[int]([2])
+metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port10"]
+shape = SubResource("BoxShape3D_i8oap")
+
 [node name="Area3D" type="Area3D" parent="."]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_hqeu3")

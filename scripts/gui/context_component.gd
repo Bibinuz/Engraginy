@@ -11,14 +11,14 @@ func _ready() -> void:
 	MessageBus.interaction_unfocused.connect(reset)
 	reset()
 
-	
+
 func reset() -> void:
 	icon.texture = null
 	context.text = ""
 
 func update(message: String, image: Texture2D = default_icon, override: bool = false) -> void:
 	context.text = message
-	if override:
+	if override and icon:
 		icon.texture = image
 	else:
 		icon.texture = default_icon
