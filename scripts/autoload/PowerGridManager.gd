@@ -29,60 +29,59 @@ func recalculate_all_grids() -> void:
 		if node is Generator and node.is_running:
 			generator_nodes.append(node)
 	for generator : Generator in generator_nodes:
-		propagate_rotation(generator, generator.speed)
+		pass
+		#propagate_rotation(generator, generator.speed)
 
 	for node: PowerNode in all_power_nodes:
 		if all_power_nodes[node]:
 			all_power_nodes[node] = false
 		elif not all_power_nodes[node] and not node is Generator:
-			node.speed = 0
+			node.speed = 0.0
 
 
 func propagate_rotation(start_node: PowerNode, input_speed: int) -> void:
 	var queue = []
 	queue.append([start_node, input_speed])
-	var visited_in_this_pass = []
+	var visited : Dictionary[PowerNode, int] = {}
 
 	while queue.size() > 0:
 		var data = queue.pop_front()
 		var current : PowerNode= data[0]
-		var prop_speed : int = data[1]
+		var prop_rpm : int = data[1]
 
-		if current in visited_in_this_pass:
+		if current in visited:
 			continue
-		visited_in_this_pass.append(current)
+		visited[current] = prop_rpm
 		all_power_nodes[current] = true
-		var connections : Dictionary[PowerNodePort, PowerNode] = current.get_connections()
-		for actual_port : PowerNodePort in connections:
-			if not connections[actual_port] is PowerNode:
+
+		for local_port : PowerNodePort in current.connections:
+			if not current.connections.has(local_port):
 				continue
+			var connection_data : PortConnection = current.connections[local_port]
+			var connected_node : PowerNode = connection_data.get("node")
+			var connected_port : PowerNodePort = connection_data.get("port")
+			var  next_rpm : int = 0
 
-			var connection:PowerNode = connections[actual_port]
-
-			var my_axis : Vector3 =  current.get_rotation_axis()
-			var connection_axis : Vector3 =  connections[actual_port].get_rotation_axis()
-			var alignment : float =  my_axis.dot(connection_axis)
-			var direction_flipper : int = int(signf(alignment))
-
-			var  next_speed : int
-			if  abs(alignment) > 0.9:
-				var direct_transmision : bool = true
-				if direct_transmision:
-					if connection.speed != 0 and connection.speed != prop_speed*direction_flipper:
-						break_priority(current, connection)
-						continue
-
-					next_speed = prop_speed*direction_flipper
-			elif abs(alignment) < 0.1:
-				#Todo
-				print("Cog connected")
-				next_speed = -prop_speed
+			if local_port.type == PowerNodePort.PortType.SHAFT_END and connected_port.type == PowerNodePort.PortType.SHAFT_END:
+				var alignment = current.get_rotation_axis().dot(connected_node.get_rotation_axis())
+				if abs(alignment) > 0.9:
+					next_rpm = prop_rpm * sign(alignment)
+				else:
+					break_priority(current, connected_node)
+					continue
+			elif local_port.type  == PowerNodePort.PortType.COG_SMALL and connected_port.type == PowerNodePort.PortType.COG_SMALL:
+				next_rpm = -prop_rpm
+			elif local_port.type  == PowerNodePort.PortType.COG_SMALL and connected_port.type == PowerNodePort.PortType.COG_BIG:
+				next_rpm  = int(-prop_rpm / 2.0)
+			elif local_port.type  == PowerNodePort.PortType.COG_BIG and connected_port.type == PowerNodePort.PortType.COG_SMALL:
+				next_rpm  = int(-prop_rpm * 2.0)
+			elif local_port.type  == PowerNodePort.PortType.COG_BIG and connected_port.type == PowerNodePort.PortType.COG_BIG:
+				next_rpm  = -prop_rpm
 			else:
-				connection.break_part()
 				continue
-			if not connection is Generator:
-				connection.speed = next_speed*actual_port.direction_fliper
-			queue.append([connection, next_speed])
+
+			current.speed = next_rpm
+			queue.append([connected_node, next_rpm])
 
 func break_priority(node1 : PowerNode, node2 : PowerNode) -> void:
 	# First case:

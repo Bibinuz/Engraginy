@@ -258,6 +258,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("2_sfie3")
+allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port1"]
@@ -269,6 +270,7 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("2_sfie3")
 direction_fliper = -1
+allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port2"]
@@ -279,7 +281,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("2_sfie3")
-direction_fliper = -1
+allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port3"]
@@ -290,6 +292,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("2_sfie3")
+direction_fliper = -1
+allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port4"]

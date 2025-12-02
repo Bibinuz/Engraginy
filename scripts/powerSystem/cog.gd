@@ -8,15 +8,8 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	if not valid_connections():
-		self._exit_tree()
-		remove_building()
-	if not is_overstressed:
-		cogMesh.rotate(Vector3(0, 1, 0), speed * delta)
-	pass
-
-func valid_connections() -> bool:
-	return true
+	super(delta)
+	cogMesh.rotate(Vector3(0, 1, 0), speed * delta)
 
 func placed() -> void:
 	super()

@@ -4,6 +4,7 @@ class_name BottomMenu extends Control
 @onready var testMotor = preload("res://scenes/test_motor.tscn")
 @onready var shaft = preload("res://scenes/shaft.tscn")
 @onready var cogSmall = preload("res://scenes/cog_small.tscn")
+@onready var cogBig = preload("res://scenes/cog_big.tscn")
 @onready var transmisionBox = preload("res://scenes/transmision_box.tscn")
 
 @onready var hotbar : ItemList = $PanelContainer/ItemList
@@ -52,7 +53,6 @@ func _process(_delta: float) -> void:
 		if collision:
 			#instance.transform.origin = Vector3(snappedf(collision.position.x, 1),collision.position.y,snappedf(collision.position.z, 1))
 			instance.transform.origin = ceil(collision.position)
-
 			canPlace = instance.check_placement()
 
 
@@ -127,6 +127,8 @@ func item_selected(index: int) -> void:
 	elif index ==  3:
 		instance = cogSmall.instantiate()
 	elif index == 4:
+		instance = cogBig.instantiate()
+	elif index == 5:
 		instance = transmisionBox.instantiate()
 	else:
 		isPlacing = false
