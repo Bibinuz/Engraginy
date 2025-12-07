@@ -71,36 +71,31 @@ func solve_speeds(generators: Array[Generator]) -> void:
 	var node_speeds: Dictionary = {}
 	var queue: Array[PowerNode] = []
 	var visited: Array[PowerNode] = []
-
 	for generator: Generator in generators:
 		node_speeds[generator] = generator.speed
 		queue.append(generator)
 
-
-
 	while not queue.is_empty():
 		var current_node : PowerNode= queue.pop_front()
-		if current_node in visited:
-			continue
+		if current_node in visited: continue
 		visited.append(current_node)
 		current_node.speed = node_speeds[current_node]
 		for local_port: PowerNodePort in current_node.connections:
-			var connection: PortConnection = current_node.connections[local_port]
-			if not connection or not connection.node or connection.node.is_broken: continue
 
-			var proposed_connection_speed = connection.node.calculate_speed(local_port, current_node, connection.port)
-			if node_speeds.has(connection.node) and not is_equal_approx(proposed_connection_speed, node_speeds[connection.node]):
-				if is_zero_approx(proposed_connection_speed):
-					proposed_connection_speed = node_speeds[connection.node]
-				elif is_zero_approx(node_speeds[connection.node]):
-					node_speeds[connection.node] = proposed_connection_speed
-				else:
-					print("Speed conflict, breaking part: ", connection.node)
-					print(connection.node.name, " " ,node_speeds[connection.node], ":", current_node.name, " ", proposed_connection_speed)
-					break_priority(connection.node, current_node)
-					return
-			node_speeds[connection.node] = proposed_connection_speed
-			queue.append(connection.node)
+			for connection : PortConnection in current_node.connections[local_port]:
+				if not connection or not connection.node or connection.node.is_broken: continue
+				var proposed_connection_speed: float = connection.node.calculate_speed(connection.port, current_node, local_port)
+				if node_speeds.has(connection.node) and not is_equal_approx(proposed_connection_speed, node_speeds[connection.node]):
+					if is_zero_approx(proposed_connection_speed):
+						proposed_connection_speed = node_speeds[connection.node]
+					elif is_zero_approx(node_speeds[connection.node]):
+						node_speeds[connection.node] = proposed_connection_speed
+					else:
+						all_power_nodes.pop_back().break_part()
+						#break_priority(connection.node, current_node)
+						return
+				node_speeds[connection.node] = proposed_connection_speed
+				queue.append(connection.node)
 
 
 

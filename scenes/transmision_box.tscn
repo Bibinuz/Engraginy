@@ -233,7 +233,7 @@ metadata/_custom_type_script = "uid://cw0kcf37813c4"
 
 [node name="ConnectionPorts" type="Node3D" parent="."]
 
-[node name="Port1" type="Area3D" parent="ConnectionPorts"]
+[node name="PortUn" type="Area3D" parent="ConnectionPorts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 2
 collision_mask = 2
@@ -241,10 +241,10 @@ script = ExtResource("2_sfie3")
 allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/PortUn"]
 shape = SubResource("BoxShape3D_k577w")
 
-[node name="Port2" type="Area3D" parent="ConnectionPorts"]
+[node name="PortDos" type="Area3D" parent="ConnectionPorts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 collision_layer = 2
 collision_mask = 2
@@ -253,10 +253,10 @@ direction_fliper = -1
 allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/PortDos"]
 shape = SubResource("BoxShape3D_k577w")
 
-[node name="Port3" type="Area3D" parent="ConnectionPorts"]
+[node name="PortTres" type="Area3D" parent="ConnectionPorts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 collision_layer = 2
 collision_mask = 2
@@ -264,10 +264,10 @@ script = ExtResource("2_sfie3")
 allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/PortTres"]
 shape = SubResource("BoxShape3D_k577w")
 
-[node name="Port4" type="Area3D" parent="ConnectionPorts"]
+[node name="PortQuatre" type="Area3D" parent="ConnectionPorts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 collision_layer = 2
 collision_mask = 2
@@ -276,7 +276,7 @@ direction_fliper = -1
 allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/PortQuatre"]
 shape = SubResource("BoxShape3D_k577w")
 
 [node name="PlacementArea" type="Area3D" parent="."]

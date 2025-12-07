@@ -1,6 +1,5 @@
 class_name InteractionComponent extends Node
 
-@export var meshes : Array[MeshInstance3D]
 @export var context : String
 @export var override_icon : bool
 @export var new_icon : Texture2D
@@ -33,14 +32,14 @@ func _input(event: InputEvent) -> void:
 
 func in_range() -> void:
 	focused = true
-	for mesh: MeshInstance3D in meshes:
+	for mesh: MeshInstance3D in main_object.meshes:
 		mesh.material_overlay = outline_material
 	MessageBus.interaction_focused.emit(context, new_icon, override_icon)
 	set_process_input(true)
 
 func not_in_range() -> void:
 	focused=false
-	for mesh: MeshInstance3D in meshes:
+	for mesh: MeshInstance3D in main_object.meshes:
 		mesh.material_overlay = null
 	MessageBus.interaction_unfocused.emit()
 	set_process_input(false)

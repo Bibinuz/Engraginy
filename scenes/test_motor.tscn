@@ -1,15 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b42n1nedoytet"]
+[gd_scene load_steps=10 format=3 uid="uid://b42n1nedoytet"]
 
 [ext_resource type="Script" uid="uid://563d5nfb84m6" path="res://scripts/machineScripts/generator.gd" id="1_1ijy3"]
 [ext_resource type="ArrayMesh" uid="uid://5jtigcnxqhxl" path="res://assets/models3d/shaft.tres" id="2_g5cqk"]
+[ext_resource type="ArrayMesh" uid="uid://b8xvoe0cg17tk" path="res://assets/models3d/test_motor.tres" id="2_qxltg"]
 [ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/powerSystem/PowerNodePort.gd" id="3_g5cqk"]
 [ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/interactionComponent/interactioncomponent.gd" id="3_qxltg"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ijy3"]
-albedo_color = Color(0.7029767, 0.7029767, 0.70297664, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_g5cqk"]
-material = SubResource("StandardMaterial3D_1ijy3")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fuv05"]
 
@@ -25,19 +20,18 @@ size = Vector3(0.9, 0.9, 1.9)
 [node name="Generator" type="Node3D" node_paths=PackedStringArray("meshes", "areas", "collisions")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_1ijy3")
-generate_per_speed = 8
-meshes = [NodePath("Shaft"), NodePath("Body")]
+generate_per_speed = 32
+meshes = [NodePath("MeshInstance3D"), NodePath("MeshInstance3D2")]
 areas = [NodePath("PlacementArea")]
 collisions = [NodePath("MotorShaftStatic")]
 metadata/_custom_type_script = "uid://563d5nfb84m6"
 
-[node name="Shaft" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_g5cqk")
-skeleton = NodePath("")
 
-[node name="Body" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("BoxMesh_g5cqk")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 0)
+mesh = ExtResource("2_qxltg")
 
 [node name="MotorShaftStatic" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
@@ -50,9 +44,8 @@ shape = SubResource("BoxShape3D_fuv05")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_1ijy3")
 
-[node name="InteractionComponent" type="Node" parent="MotorShaftStatic" node_paths=PackedStringArray("meshes")]
+[node name="InteractionComponent" type="Node" parent="MotorShaftStatic"]
 script = ExtResource("3_qxltg")
-meshes = [NodePath("../../Shaft"), NodePath("../../Body")]
 override_icon = true
 metadata/_custom_type_script = "uid://cw0kcf37813c4"
 

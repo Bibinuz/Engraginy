@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://5ayyguytjdbd"]
+[gd_scene load_steps=10 format=3 uid="uid://5ayyguytjdbd"]
 
 [ext_resource type="Script" uid="uid://cepmdudjnmhhe" path="res://scripts/gui/bottom_menu.gd" id="1_w1h8b"]
 [ext_resource type="Texture2D" uid="uid://updkqhgp7x4l" path="res://assets/img/items/stone_bricks.png" id="2_qm1lh"]
-[ext_resource type="Texture2D" uid="uid://rka5atfsl37a" path="res://assets/img/items/iron_ingot.png" id="3_jjvvo"]
-[ext_resource type="Texture2D" uid="uid://bjpsx3as0pw64" path="res://assets/img/items/stone.png" id="4_pg2oo"]
+[ext_resource type="Texture2D" uid="uid://1xwga4bumr46" path="res://assets/img/Icons/ShaftIcon.png" id="3_ln8my"]
+[ext_resource type="Texture2D" uid="uid://bsbcsa8rf25o3" path="res://assets/img/Icons/TestMotorIcon.png" id="4_4qmu4"]
 [ext_resource type="Texture2D" uid="uid://cq7gaaiespo03" path="res://icon.svg" id="5_ln8my"]
+[ext_resource type="Texture2D" uid="uid://ulfyvqslg1a6" path="res://assets/img/Icons/SmallCogIcon.png" id="5_plkt6"]
+[ext_resource type="Texture2D" uid="uid://bva067uswhr6r" path="res://assets/img/Icons/BigCogIcon.png" id="6_3yyub"]
+[ext_resource type="Texture2D" uid="uid://22y8ke1dej8n" path="res://assets/img/Icons/TransmisionBoxIcon.png" id="7_5hkse"]
+[ext_resource type="Texture2D" uid="uid://delj6uy0tgrlv" path="res://assets/img/Icons/MultiplierIcon.png" id="8_v4lh5"]
 
 [node name="BottomMenu" type="Control"]
 layout_mode = 3
@@ -36,12 +40,12 @@ fixed_column_width = 120
 icon_mode = 0
 fixed_icon_size = Vector2i(100, 100)
 item_0/icon = ExtResource("2_qm1lh")
-item_1/icon = ExtResource("3_jjvvo")
-item_2/icon = ExtResource("4_pg2oo")
-item_3/icon = ExtResource("5_ln8my")
-item_4/icon = ExtResource("5_ln8my")
-item_5/icon = ExtResource("5_ln8my")
-item_6/icon = ExtResource("5_ln8my")
+item_1/icon = ExtResource("3_ln8my")
+item_2/icon = ExtResource("4_4qmu4")
+item_3/icon = ExtResource("5_plkt6")
+item_4/icon = ExtResource("6_3yyub")
+item_5/icon = ExtResource("7_5hkse")
+item_6/icon = ExtResource("8_v4lh5")
 item_7/icon = ExtResource("5_ln8my")
 item_8/icon = ExtResource("5_ln8my")
 
