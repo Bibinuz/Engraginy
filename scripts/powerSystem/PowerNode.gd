@@ -6,6 +6,7 @@ enum PortType{
 	COG_BIG
 }
 
+
 signal network_changed
 
 @export var cost_per_speed : int = 0
@@ -78,7 +79,6 @@ func break_part() -> void:
 	if is_broken:
 		return
 	is_broken = true
-	print(name + " Has exploded due to direction conflicts")
 	PowerGridManager.unregister_node(self)
 	super()
 

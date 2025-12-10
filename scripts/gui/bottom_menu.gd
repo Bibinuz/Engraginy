@@ -1,23 +1,18 @@
 class_name BottomMenu extends Control
 
-@onready var furnace = preload("res://scenes/furnace.tscn")
-@onready var testMotor = preload("res://scenes/test_motor.tscn")
-@onready var shaft = preload("res://scenes/shaft.tscn")
-@onready var cogSmall = preload("res://scenes/cog_small.tscn")
-@onready var cogBig = preload("res://scenes/cog_big.tscn")
-@onready var transmisionBox = preload("res://scenes/transmision_box.tscn")
-@onready var multiplier = preload("res://scenes/multiplier.tscn")
+@export var hotbar : HBoxContainer
+@export var buildingMenu : Control
 
-@onready var hotbar : ItemList = $PanelContainer/ItemList
+
 
 var isSelected : bool = false
-var selected: int = 0
+var selected_index: int = 0
 var isPlacing : bool = false
 var camera : Camera3D
 var instance : Building
 var placingRange : int = 10
 var canPlace : bool = false
-var lastRotation: Vector3 = Vector3(PI/2, 0, 0)
+var last_rotation: Vector3 = Vector3(PI/2, 0, 0)
 
 func _ready() -> void:
 	camera = get_viewport().get_camera_3d()
@@ -46,87 +41,86 @@ func _process(_delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("select1"):
-		hotbar.select(0)
-		item_selected(0)
-	elif event.is_action_pressed("select2"):
-		hotbar.select(1)
-		item_selected(1)
-	elif event.is_action_pressed("select3"):
-		hotbar.select(2)
-		item_selected(2)
-	elif event.is_action_pressed("select4"):
-		hotbar.select(3)
-		item_selected(3)
-	elif event.is_action_pressed("select5"):
-		hotbar.select(4)
-		item_selected(4)
-	elif event.is_action_pressed("select6"):
-		hotbar.select(5)
-		item_selected(5)
-	elif event.is_action_pressed("select7"):
-		hotbar.select(6)
-		item_selected(6)
-	elif event.is_action_pressed("select8"):
-		hotbar.select(7)
-		item_selected(7)
-	elif event.is_action_pressed("select9"):
-		hotbar.select(8)
-		item_selected(8)
+
+	var pressed_index = -1
+	if not buildingMenu.is_visible_in_tree():
+		if   event.is_action_pressed("select1"): pressed_index = 0
+		elif event.is_action_pressed("select2"): pressed_index = 1
+		elif event.is_action_pressed("select3"): pressed_index = 2
+		elif event.is_action_pressed("select4"): pressed_index = 3
+		elif event.is_action_pressed("select5"): pressed_index = 4
+		elif event.is_action_pressed("select6"): pressed_index = 5
+		elif event.is_action_pressed("select7"): pressed_index = 6
+		elif event.is_action_pressed("select8"): pressed_index = 7
+		elif event.is_action_pressed("select9"): pressed_index = 8
+
+		if pressed_index != -1:
+			select_hotbar_slot(pressed_index)
+
+	if event.is_action_pressed("openBuildingMenu") or event.is_action_pressed("exit"):
+		if buildingMenu.is_visible_in_tree():
+			buildingMenu.hide()
+			buildingMenu.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		elif not event.is_action_pressed("exit"):
+			cancel_placement()
+			buildingMenu.show()
+			buildingMenu.mouse_filter = Control.MOUSE_FILTER_STOP
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		pass
+
 
 	if isPlacing:
 		if event.is_action_pressed("leftClick") and canPlace and instance:
 			instance.placed()
 			canPlace = false
-			isPlacing = false
+			var current_data: BuildingData = get_data_from_slot(selected_index)
 			instance = null
-			item_selected(selected)
-
-			instance.global_rotation = lastRotation
-		if event.is_action_pressed("rightClick")  and isPlacing and instance:
-			instance.queue_free()
-			canPlace = false
-			isPlacing = false
-			hotbar.deselect_all()
-			lastRotation = Vector3(PI/2,0,0)
+			if current_data:
+				instantiate_building(current_data)
+				instance.global_rotation = last_rotation
+			else:
+				isPlacing = false
+		if (event.is_action_pressed("rightClick") or event.is_action_pressed("exit")) and isPlacing and instance:
+			cancel_placement()
 		if event.is_action_pressed("rotateBuildingX"):
 			instance.global_rotation.x += PI/2
-			lastRotation = instance.global_rotation
+			last_rotation = instance.global_rotation
 		if event.is_action_pressed("rotateBuildingY"):
 			instance.global_rotation.y += PI/2
-			lastRotation = instance.global_rotation
+			last_rotation = instance.global_rotation
 		if event.is_action_pressed("rotateBuildingZ"):
 			instance.global_rotation.z += PI/2
-			lastRotation = instance.global_rotation
+			last_rotation = instance.global_rotation
 
 
-func item_selected(index: int) -> void:
+func select_hotbar_slot(index: int) -> void:
+	selected_index = index
 	if isPlacing and instance:
 		instance.queue_free()
-
-	if index == 0:
-		instance = furnace.instantiate()
-		selected = 0
-	elif index == 1:
-		instance = shaft.instantiate()
-		selected = 1
-	elif index == 2:
-		instance = testMotor.instantiate()
-		selected = 2
-	elif index ==  3:
-		instance = cogSmall.instantiate()
-		selected = 3
-	elif index == 4:
-		instance = cogBig.instantiate()
-		selected = 4
-	elif index == 5:
-		instance = transmisionBox.instantiate()
-		selected = 5
-	elif index  == 6:
-		instance = multiplier.instantiate()
-		selected = 6
+		instance = null
+	var data: BuildingData = get_data_from_slot(index)
+	if data:
+		instantiate_building(data)
 	else:
 		isPlacing = false
-		return
-	isPlacing = true
-	get_parent().add_child(instance)
+
+func get_data_from_slot(index: int) -> BuildingData:
+	if index < hotbar.get_child_count():
+		var slot: BuildingSlot = hotbar.get_child(index)
+		return slot.current_building
+	return null
+
+func instantiate_building(data: BuildingData) -> void:
+	if data.scene:
+		instance = data.scene.instantiate()
+		get_parent().add_child(instance)
+		isPlacing = true
+
+func cancel_placement():
+	if instance:
+		instance.queue_free()
+	canPlace = false
+	isPlacing = false
+	instance = null
+	last_rotation = Vector3(PI/2, 0, 0)

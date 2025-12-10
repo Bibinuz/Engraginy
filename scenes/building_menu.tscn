@@ -1,0 +1,136 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4n7s03bboonf"]
+
+[ext_resource type="Script" uid="uid://c6f4tp8vlu4yq" path="res://scripts/gui/menuManager.gd" id="1_updix"]
+[ext_resource type="PackedScene" uid="uid://jaafu5mkvo04" path="res://scenes/building_slot.tscn" id="2_6taao"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6taao"]
+bg_color = Color(1, 1, 1, 0)
+
+[node name="Building menu" type="Control" node_paths=PackedStringArray("productionGrid", "energyGrid", "fundationsGrid", "decorationGrid")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_updix")
+slot_scene = ExtResource("2_6taao")
+buildings_data_folder = "res://scenes/BuildingDataScenes"
+productionGrid = NodePath("TabContainer/Production/ProductionScroller/ProductionGrid")
+energyGrid = NodePath("TabContainer/Energy/EnergyScroller/EnergyGrid")
+fundationsGrid = NodePath("TabContainer/Fundations/FundationsScroller/FundationsGrid")
+decorationGrid = NodePath("TabContainer/Decorations/DecorationsScroller/DecorationsGrid")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6taao")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+current_tab = 0
+all_tabs_in_front = true
+
+[node name="Production" type="Control" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ProductionScroller" type="ScrollContainer" parent="TabContainer/Production"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProductionGrid" type="GridContainer" parent="TabContainer/Production/ProductionScroller"]
+layout_mode = 2
+columns = 8
+
+[node name="Building slot" parent="TabContainer/Production/ProductionScroller/ProductionGrid" instance=ExtResource("2_6taao")]
+layout_mode = 2
+
+[node name="Energy" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="EnergyScroller" type="ScrollContainer" parent="TabContainer/Energy"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EnergyGrid" type="GridContainer" parent="TabContainer/Energy/EnergyScroller"]
+layout_mode = 2
+columns = 8
+
+[node name="Building slot" parent="TabContainer/Energy/EnergyScroller/EnergyGrid" instance=ExtResource("2_6taao")]
+layout_mode = 2
+
+[node name="Fundations" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="FundationsScroller" type="ScrollContainer" parent="TabContainer/Fundations"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FundationsGrid" type="GridContainer" parent="TabContainer/Fundations/FundationsScroller"]
+layout_mode = 2
+columns = 8
+
+[node name="Building slot" parent="TabContainer/Fundations/FundationsScroller/FundationsGrid" instance=ExtResource("2_6taao")]
+layout_mode = 2
+
+[node name="Decorations" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="DecorationsScroller" type="ScrollContainer" parent="TabContainer/Decorations"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DecorationsGrid" type="GridContainer" parent="TabContainer/Decorations/DecorationsScroller"]
+layout_mode = 2
+columns = 8
+
+[node name="Building slot" parent="TabContainer/Decorations/DecorationsScroller/DecorationsGrid" instance=ExtResource("2_6taao")]
+layout_mode = 2
+
+[editable path="TabContainer/Production/ProductionScroller/ProductionGrid/Building slot"]
+[editable path="TabContainer/Energy/EnergyScroller/EnergyGrid/Building slot"]
+[editable path="TabContainer/Fundations/FundationsScroller/FundationsGrid/Building slot"]
+[editable path="TabContainer/Decorations/DecorationsScroller/DecorationsGrid/Building slot"]

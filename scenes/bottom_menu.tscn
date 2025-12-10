@@ -1,52 +1,62 @@
-[gd_scene load_steps=10 format=3 uid="uid://5ayyguytjdbd"]
+[gd_scene load_steps=4 format=3 uid="uid://5ayyguytjdbd"]
 
 [ext_resource type="Script" uid="uid://cepmdudjnmhhe" path="res://scripts/gui/bottom_menu.gd" id="1_w1h8b"]
-[ext_resource type="Texture2D" uid="uid://updkqhgp7x4l" path="res://assets/img/items/stone_bricks.png" id="2_qm1lh"]
-[ext_resource type="Texture2D" uid="uid://1xwga4bumr46" path="res://assets/img/Icons/ShaftIcon.png" id="3_ln8my"]
-[ext_resource type="Texture2D" uid="uid://bsbcsa8rf25o3" path="res://assets/img/Icons/TestMotorIcon.png" id="4_4qmu4"]
-[ext_resource type="Texture2D" uid="uid://cq7gaaiespo03" path="res://icon.svg" id="5_ln8my"]
-[ext_resource type="Texture2D" uid="uid://ulfyvqslg1a6" path="res://assets/img/Icons/SmallCogIcon.png" id="5_plkt6"]
-[ext_resource type="Texture2D" uid="uid://bva067uswhr6r" path="res://assets/img/Icons/BigCogIcon.png" id="6_3yyub"]
-[ext_resource type="Texture2D" uid="uid://22y8ke1dej8n" path="res://assets/img/Icons/TransmisionBoxIcon.png" id="7_5hkse"]
-[ext_resource type="Texture2D" uid="uid://delj6uy0tgrlv" path="res://assets/img/Icons/MultiplierIcon.png" id="8_v4lh5"]
+[ext_resource type="PackedScene" uid="uid://b4n7s03bboonf" path="res://scenes/building_menu.tscn" id="2_4qmu4"]
+[ext_resource type="PackedScene" uid="uid://jaafu5mkvo04" path="res://scenes/building_slot.tscn" id="2_bj6i8"]
 
-[node name="BottomMenu" type="Control"]
+[node name="BottomMenu" type="Control" node_paths=PackedStringArray("hotbar", "buildingMenu")]
 layout_mode = 3
-anchor_left = 0.2
-anchor_top = 0.9
-anchor_right = 0.8
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("1_w1h8b")
-
-[node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ItemList" type="ItemList" parent="PanelContainer"]
-layout_mode = 2
+grow_vertical = 0
+size_flags_horizontal = 4
 size_flags_vertical = 4
-auto_width = true
-auto_height = true
-item_count = 9
-max_columns = 9
-same_column_width = true
-fixed_column_width = 120
-icon_mode = 0
-fixed_icon_size = Vector2i(100, 100)
-item_0/icon = ExtResource("2_qm1lh")
-item_1/icon = ExtResource("3_ln8my")
-item_2/icon = ExtResource("4_4qmu4")
-item_3/icon = ExtResource("5_plkt6")
-item_4/icon = ExtResource("6_3yyub")
-item_5/icon = ExtResource("7_5hkse")
-item_6/icon = ExtResource("8_v4lh5")
-item_7/icon = ExtResource("5_ln8my")
-item_8/icon = ExtResource("5_ln8my")
+mouse_filter = 2
+script = ExtResource("1_w1h8b")
+hotbar = NodePath("HotBar")
+buildingMenu = NodePath("Building menu")
+metadata/_edit_use_anchors_ = true
 
-[connection signal="item_selected" from="PanelContainer/ItemList" to="." method="_on_item_list_item_selected"]
+[node name="Building menu" parent="." instance=ExtResource("2_4qmu4")]
+visible = false
+layout_mode = 1
+mouse_filter = 1
+
+[node name="HotBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.887
+anchor_right = 0.8
+anchor_bottom = 1.0
+mouse_filter = 0
+
+[node name="Building slot1" parent="HotBar" instance=ExtResource("2_bj6i8")]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Building slot2" parent="HotBar" instance=ExtResource("2_bj6i8")]
+layout_mode = 2
+
+[node name="Building slot3" parent="HotBar" instance=ExtResource("2_bj6i8")]
+layout_mode = 2
+
+[node name="Building slot4" parent="HotBar" instance=ExtResource("2_bj6i8")]
+layout_mode = 2
+
+[node name="Building slot5" parent="HotBar" instance=ExtResource("2_bj6i8")]
+layout_mode = 2
+
+[node name="Building slot6" parent="HotBar" instance=ExtResource("2_bj6i8")]
+layout_mode = 2
+
+[node name="Building slot7" parent="HotBar" instance=ExtResource("2_bj6i8")]
+layout_mode = 2
+
+[node name="Building slot8" parent="HotBar" instance=ExtResource("2_bj6i8")]
+layout_mode = 2
+
+[node name="Building slot9" parent="HotBar" instance=ExtResource("2_bj6i8")]
+layout_mode = 2

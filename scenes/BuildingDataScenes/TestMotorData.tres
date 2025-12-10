@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=4 format=3 uid="uid://c0rqwh7drkbrn"]
+
+[ext_resource type="Texture2D" uid="uid://bsbcsa8rf25o3" path="res://assets/img/Icons/TestMotorIcon.png" id="1_57o64"]
+[ext_resource type="Script" uid="uid://c4xyga3k1meut" path="res://scripts/buildings/building_data.gd" id="1_c2wwj"]
+[ext_resource type="PackedScene" uid="uid://b42n1nedoytet" path="res://scenes/test_motor.tscn" id="2_tn2hx"]
+
+[resource]
+script = ExtResource("1_c2wwj")
+display_name = "Test motor"
+category = 1
+icon = ExtResource("1_57o64")
+scene = ExtResource("2_tn2hx")
+metadata/_custom_type_script = "uid://c4xyga3k1meut"

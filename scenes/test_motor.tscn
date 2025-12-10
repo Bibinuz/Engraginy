@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b42n1nedoytet"]
 
-[ext_resource type="Script" uid="uid://563d5nfb84m6" path="res://scripts/machineScripts/generator.gd" id="1_1ijy3"]
+[ext_resource type="Script" uid="uid://563d5nfb84m6" path="res://scripts/powerSystem/generator.gd" id="1_1ijy3"]
 [ext_resource type="ArrayMesh" uid="uid://5jtigcnxqhxl" path="res://assets/models3d/shaft.tres" id="2_g5cqk"]
 [ext_resource type="ArrayMesh" uid="uid://b8xvoe0cg17tk" path="res://assets/models3d/test_motor.tres" id="2_qxltg"]
 [ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/powerSystem/PowerNodePort.gd" id="3_g5cqk"]

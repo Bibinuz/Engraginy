@@ -18,7 +18,7 @@ sky = SubResource("Sky_43bpn")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="TemplateMap" type="Node3D"]
+[node name="World" type="Node3D"]
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -29,16 +29,13 @@ environment = SubResource("Environment_pyxgo")
 transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, -22, 101, 4)
 shadow_enabled = true
 
-[node name="PlayerCharacter" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.7646, 1.50542, -19.959)
-
-[node name="PlayerCharacter" parent="PlayerCharacter" instance=ExtResource("1_oh4cu")]
-transform = Transform3D(-0.048326552, 0, -0.9988307, 0, 1, 0, 0.9988316, 0, -0.048326492, -6.282295, 0.38339424, 24.447714)
+[node name="PlayerCharacter2" parent="." instance=ExtResource("1_oh4cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999905, 0, 2, 0)
 
 [node name="Map" type="Node3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map"]
-transform = Transform3D(0.9981068, 0, 0, 0, 0.9981068, 0, 0, 0, 0.9981068, 21.354, 0, -8.53)
+transform = Transform3D(0.9981068, 0, 0, 0, 0.9981068, 0, 0, 0, 0.9981068, 0, 0, 0)
 use_collision = true
 collision_mask = 2
 size = Vector3(90, 1, 86)
@@ -47,3 +44,5 @@ material = ExtResource("2_etmyc")
 [node name="GUI" parent="." instance=ExtResource("4_w47yd")]
 
 [node name="BottomMenu" parent="." instance=ExtResource("7_vqfbn")]
+
+[node name="Buildings" type="Node" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://lpqhjxv7crjj"]
 
-[ext_resource type="Script" uid="uid://cltn3kr5xe2u0" path="res://scripts/machineScripts/eix.gd" id="1_hk0ro"]
+[ext_resource type="Script" uid="uid://cltn3kr5xe2u0" path="res://scripts/powerSystem/eix.gd" id="1_hk0ro"]
 [ext_resource type="ArrayMesh" uid="uid://5jtigcnxqhxl" path="res://assets/models3d/shaft.tres" id="2_k577w"]
 [ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/powerSystem/PowerNodePort.gd" id="3_17mqp"]
 [ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/interactionComponent/interactioncomponent.gd" id="3_luyks"]

@@ -43,45 +43,28 @@ text = "Lorem ipsum"
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 0.089
 anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
+offset_right = 169.12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "2-7 to select buiilding"
+text = "- TAB to open menu
+- TAB/ESC to close menu
+- Drag to hotbar to bind
+- 1-9 to select builiding
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Left click to place"
+- Left click to place
+- Right click/ESC to remove selection
 
-[node name="Label7" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Right click while placing
-to remove selection"
+- Y to rotate on Y axis
+- X to rotate on X axis
+- Z to rotate on Z axis
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Y to rotate on Y axis"
+- R to remove
 
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Z to rotate on Z axis"
-
-[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "X to rotate on X axis"
-
-[node name="Label6" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "R to remove"
-
-[node name="Label8" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "SHIFT ESC to close"
+- SHIFT ESC to close"

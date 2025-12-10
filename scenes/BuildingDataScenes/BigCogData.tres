@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=4 format=3 uid="uid://c1h0tkwtmpdik"]
+
+[ext_resource type="Texture2D" uid="uid://bva067uswhr6r" path="res://assets/img/Icons/BigCogIcon.png" id="1_obcgh"]
+[ext_resource type="PackedScene" uid="uid://7rlaqoenwbax" path="res://scenes/cog_big.tscn" id="2_a6eoh"]
+[ext_resource type="Script" uid="uid://c4xyga3k1meut" path="res://scripts/buildings/building_data.gd" id="3_65ile"]
+
+[resource]
+script = ExtResource("3_65ile")
+display_name = "Big Cog"
+category = 2
+icon = ExtResource("1_obcgh")
+scene = ExtResource("2_a6eoh")
+metadata/_custom_type_script = "uid://c4xyga3k1meut"

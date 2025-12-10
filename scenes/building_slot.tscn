@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://jaafu5mkvo04"]
+
+[ext_resource type="Script" uid="uid://csg0ferrc6nov" path="res://scripts/buildings/building_slot.gd" id="1_bq2in"]
+
+[node name="Building slot" type="PanelContainer" node_paths=PackedStringArray("icon_rect")]
+anchors_preset = -1
+anchor_right = 0.1
+anchor_bottom = 0.16
+offset_top = 0.39996338
+offset_bottom = -0.4000244
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+script = ExtResource("1_bq2in")
+icon_rect = NodePath("Icon")
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="KeybindLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
