@@ -50,5 +50,6 @@ func not_in_range() -> void:
 	set_process_input(false)
 
 func on_interact() -> void:
+	print(parent.name)
 	if main_object.has_method("interacted"):
 		main_object.interacted()

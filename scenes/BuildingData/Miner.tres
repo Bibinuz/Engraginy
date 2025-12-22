@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=4 format=3 uid="uid://cq5osckix207e"]
+
+[ext_resource type="Texture2D" uid="uid://bbijotqdskudn" path="res://assets/input_prompts/keyboard/keyboard_e.png" id="1_sbpk0"]
+[ext_resource type="PackedScene" uid="uid://bam6m2rgjsofa" path="res://scenes/miner.tscn" id="2_sbpk0"]
+[ext_resource type="Script" uid="uid://c4xyga3k1meut" path="res://scripts/buildings/building_data.gd" id="3_pst2n"]
+
+[resource]
+script = ExtResource("3_pst2n")
+display_name = "Miner"
+icon = ExtResource("1_sbpk0")
+scene = ExtResource("2_sbpk0")
+metadata/_custom_type_script = "uid://c4xyga3k1meut"

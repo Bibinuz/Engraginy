@@ -146,6 +146,10 @@ metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port3"]
 shape = SubResource("BoxShape3D_i8oap")
 
+[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/Port3"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, 0, 1, 0, 0, 0)
+size = Vector3(0.1, 0.1, 0.1)
+
 [node name="Port4" type="Area3D" parent="ConnectionPorts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 collision_layer = 2
@@ -157,6 +161,10 @@ metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port4"]
 shape = SubResource("BoxShape3D_i8oap")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/Port4"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, 0, 1, 0, 0, 0)
+size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Port5" type="Area3D" parent="ConnectionPorts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
@@ -170,6 +178,10 @@ metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port5"]
 shape = SubResource("BoxShape3D_i8oap")
 
+[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/Port5"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, 0, 1, 0, 0, 0)
+size = Vector3(0.1, 0.1, 0.1)
+
 [node name="Port6" type="Area3D" parent="ConnectionPorts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 collision_layer = 2
@@ -181,6 +193,10 @@ metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port6"]
 shape = SubResource("BoxShape3D_i8oap")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/Port6"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, 0, 1, 0, 0, 0)
+size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Port7" type="Area3D" parent="ConnectionPorts"]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.35355338, 0, -0.35355338)
@@ -194,6 +210,10 @@ metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port7"]
 shape = SubResource("BoxShape3D_i8oap")
 
+[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/Port7"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, 0, 1, 0, 0, 0)
+size = Vector3(0.1, 0.1, 0.1)
+
 [node name="Port8" type="Area3D" parent="ConnectionPorts"]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.35355338, 0, 0.35355338)
 collision_layer = 2
@@ -205,6 +225,10 @@ metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port8"]
 shape = SubResource("BoxShape3D_i8oap")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/Port8"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, 0, 1, 0, 0, 0)
+size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Port9" type="Area3D" parent="ConnectionPorts"]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.35355338, 0, 0.35355338)
@@ -218,6 +242,10 @@ metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port9"]
 shape = SubResource("BoxShape3D_i8oap")
 
+[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/Port9"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, 0, 1, 0, 0, 0)
+size = Vector3(0.1, 0.1, 0.1)
+
 [node name="Port10" type="Area3D" parent="ConnectionPorts"]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.35355338, 0, -0.35355338)
 collision_layer = 2
@@ -229,6 +257,10 @@ metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port10"]
 shape = SubResource("BoxShape3D_i8oap")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/Port10"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, 0, 1, 0, 0, 0)
+size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)

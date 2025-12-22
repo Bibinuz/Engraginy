@@ -6,6 +6,8 @@ signal network_changed
 @export var cost_per_speed : int = 0
 @export var is_passive:bool=true
 
+@export var center: Vector3 = Vector3.ZERO
+
 # Connections[local_port] = [other_node, other_port]
 # Dictionary[PowerNodePort, Array[PortConnection]]
 var connections : Dictionary[PowerNodePort, Array]= {}
@@ -79,15 +81,20 @@ func break_part() -> void:
 func calculate_speed(local_port: PowerNodePort, connected_node: PowerNode, connected_port: PowerNodePort) -> float:
 	var my_axis: Vector3 = get_port_rotation_axis(local_port)
 	var connection_axis: Vector3 = connected_node.get_port_rotation_axis(connected_port)
+	print("My axis: ", self.name, ":", my_axis)
+	print("Cn axis: ", connected_node.name, ":", connection_axis)
 	var input_speed : float= connected_node.speed* connected_port.ratio_multiplier * connected_port.direction_flipper
 	var dot: float = my_axis.dot(connection_axis)
 	if abs(dot) > 0.9:
 		if local_port.type == PowerNodePort.PortType.COG_BIG or local_port.type == PowerNodePort.PortType.COG_SMALL:
 			input_speed *= -signf(dot)
+			print(self.name,": Cog connection")
 		else:
 			input_speed *= signf(dot)
+			print(self.name,": Shaft connection")
 	else:
-		var vector_to_connected: Vector3 = (connected_node.global_position - self.global_position)
+		# Explicar això a l'informe: Desplaçament del centre
+		var vector_to_connected: Vector3 = ((connected_node.global_position+connected_node.center) - (self.global_position+self.center))
 		if vector_to_connected.length_squared() > 0.001:
 			vector_to_connected = vector_to_connected.normalized()
 		else:
@@ -97,11 +104,14 @@ func calculate_speed(local_port: PowerNodePort, connected_node: PowerNode, conne
 		var other_tangent: Vector3 = vector_to_connected.cross(connection_axis)
 		var alignment: float = my_tangent.dot(other_tangent)
 		input_speed *= signf(alignment)
+		print(self.name,": Perpendicular connection")
 	var resulting_speed = (input_speed * local_port.direction_flipper) / local_port.ratio_multiplier
 	return resulting_speed
 
 func interacted() -> void:
+	pass
 	print(self.name, ": ", self.connections)
 	for port in connections:
 		for connection in connections[port]:
-			calculate_speed(port, connection.node, connection.port)
+			if port and connection and connection.node and connection.port:
+				calculate_speed(port, connection.node, connection.port)

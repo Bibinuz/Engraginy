@@ -2,6 +2,7 @@ shader_type spatial;
 
 uniform sampler2D belt_texture : source_color, filter_linear_mipmap_anisotropic;
 uniform float tiling_factor = 1.0;
+instance uniform float speed = 0;
 
 void vertex() {
     // 1. Get the global scale on the X axis
@@ -18,6 +19,7 @@ void vertex() {
     float final_scale = mix(scale_x, 1.0, is_end_cap);
     
     UV.x *= final_scale * tiling_factor;
+	UV.x += -speed * TIME;
 }
 
 void fragment() {

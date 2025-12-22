@@ -11,7 +11,7 @@ class_name Building extends Node3D
 @export var collisions : Array[StaticBody3D]
 
 
-var is_placed : bool = false
+@export var is_placed : bool = false
 
 
 func _ready() -> void:

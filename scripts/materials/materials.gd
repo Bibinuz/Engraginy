@@ -1,4 +1,4 @@
-class_name Materials
+class_name Materials extends Resource
 
 
 @export var name : String

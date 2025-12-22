@@ -1,8 +1,9 @@
 class_name Belt extends Building
 
 
-var connected_shafts: Array[Shaft] = []
-
+@export var connected_shafts: Array[PowerNode] = []
+@export var shaderMaterial: ShaderMaterial
+var speed: float = 0
 
 
 func _ready() -> void:
@@ -10,6 +11,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	super(_delta)
+	if len(connected_shafts) > 1:
+		meshes[0].set_instance_shader_parameter("speed", connected_shafts[0].speed)
 
 func _input(event: InputEvent) -> void:
 	if is_placed: return
@@ -27,12 +30,15 @@ func _input(event: InputEvent) -> void:
 						position = connected_shafts[0].position - center_position
 						rotation = Vector3(0,PI/2,0)
 						scale.x = place_position.length() + 0.75
-
 					elif place_position.x != 0 and place_position.y == 0 and place_position.z == 0:
 						GlobalScript.bottom_menu.place()
 						position = connected_shafts[0].position - center_position
 						rotation = Vector3(0,0,0)
 						scale.x = place_position.length() + 0.75
+					else:
+						self.break_part()
+						return
+					meshes[0].material_override = shaderMaterial
 
 
 
