@@ -3,7 +3,8 @@ class_name PowerNodePort extends Area3D
 enum PortType{
 	SHAFT_END,
 	COG_SMALL,
-	COG_BIG
+	COG_BIG,
+	BELT
 }
 
 @export var ratio_multiplier : float = 1.0
@@ -24,6 +25,11 @@ func  can_connect_to(other_port: PowerNodePort) -> bool:
 		var interaction_plane : Vector3 = my_axis.cross(connection_axis)
 		var planar_check: float = interaction_plane.dot(vector_to_connected)
 		if not is_zero_approx(planar_check):
+			if type == PortType.SHAFT_END and other_port.type == PortType.BELT:
+				return true
+			elif other_port.type == PortType.SHAFT_END and type == PortType.BELT:
+				return true
+			print("Cant connect")
 			return false
 		return true
 	return false

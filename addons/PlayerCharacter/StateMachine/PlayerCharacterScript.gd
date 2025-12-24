@@ -1,22 +1,22 @@
 extends CharacterBody3D
 
-class_name PlayerCharacter 
+class_name PlayerCharacter
 
 @export_group("Movement variables")
 var moveSpeed : float
 var moveAccel : float
 var moveDeccel : float
-var desiredMoveSpeed : float 
+var desiredMoveSpeed : float
 @export var desiredMoveSpeedCurve : Curve
 @export var maxSpeed : float
 @export var inAirMoveSpeedCurve : Curve
-var inputDirection : Vector2 
-var moveDirection : Vector3 
+var inputDirection : Vector2
+var moveDirection : Vector3
 @export var hitGroundCooldown : float #amount of time the character keep his accumulated speed before losing it (while being on ground)
-var hitGroundCooldownRef : float 
+var hitGroundCooldownRef : float
 @export var bunnyHopDmsIncre : float #bunny hopping desired move speed incrementer
 @export var autoBunnyHop : bool = false
-var lastFramePosition : Vector3 
+var lastFramePosition : Vector3
 var lastFrameVelocity : Vector3
 var wasOnFloor : bool
 var walkOrRun : String = "WalkState" #keep in memory if play char was walking or running before being in the air
@@ -40,8 +40,8 @@ var walkOrRun : String = "WalkState" #keep in memory if play char was walking or
 
 @export_group("Run variables")
 @export var runSpeed : float
-@export var runAccel : float 
-@export var runDeccel : float 
+@export var runAccel : float
+@export var runDeccel : float
 @export var continiousRun : bool = false #if true, doesn't need to keep run button on to run
 
 @export_group("Jump variables")
@@ -50,9 +50,9 @@ var walkOrRun : String = "WalkState" #keep in memory if play char was walking or
 @export var jumpTimeToFall : float
 @onready var jumpVelocity : float = (2.0 * jumpHeight) / jumpTimeToPeak
 @export var jumpCooldown : float
-var jumpCooldownRef : float 
-@export var nbJumpsInAirAllowed : int 
-var nbJumpsInAirAllowedRef : int 
+var jumpCooldownRef : float
+@export var nbJumpsInAirAllowed : int
+var nbJumpsInAirAllowedRef : int
 var jumpBuffOn : bool = false
 var bufferedJump : bool = false
 @export var coyoteJumpCooldown : float
@@ -91,25 +91,25 @@ func _ready():
 	moveSpeed = walkSpeed
 	moveAccel = walkAccel
 	moveDeccel = walkDeccel
-	
+
 	hitGroundCooldownRef = hitGroundCooldown
 	jumpCooldownRef = jumpCooldown
 	nbJumpsInAirAllowedRef = nbJumpsInAirAllowed
 	coyoteJumpCooldownRef = coyoteJumpCooldown
-	
+
 func _process(_delta: float):
 	displayProperties()
-	
+
 func _physics_process(_delta : float):
 	modifyPhysicsProperties()
-	
+
 	move_and_slide()
 	interact_cast()
-	
+
 func _input(event):
 	if event.is_action_pressed("interact"):
 		interact()
-	
+
 func displayProperties():
 	#display properties on the hud
 	if hud != null:
@@ -117,33 +117,33 @@ func displayProperties():
 		hud.displayDesiredMoveSpeed(desiredMoveSpeed)
 		hud.displayVelocity(velocity.length())
 		hud.displayNbJumpsInAirAllowed(nbJumpsInAirAllowed)
-		
+
 func modifyPhysicsProperties():
 	lastFramePosition = position #get play char position every frame
 	lastFrameVelocity = velocity #get play char velocity every frame
 	wasOnFloor = !is_on_floor() #check if play char was on floor every frame
-	
+
 func gravityApply(delta : float):
 	#if play char goes up, apply jump gravity
 	#otherwise, apply fall gravity
 	if velocity.y >= 0.0: velocity.y += jumpGravity * delta
 	elif velocity.y < 0.0: velocity.y += fallGravity * delta
 
-func make_cast_query() -> StaticBody3D:
+func make_cast_query() -> CollisionObject3D:
 	var space_state : PhysicsDirectSpaceState3D = camera.get_world_3d().direct_space_state
 	var screen_center : Vector2 = get_viewport().size / 2
-	var origin : Vector3 = camera.project_ray_origin(screen_center) 
+	var origin : Vector3 = camera.project_ray_origin(screen_center)
 	var end : Vector3 = origin+camera.project_ray_normal(screen_center)*interact_distance
 	var query : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(origin,end)
 	query.collide_with_bodies = true
-	var result : Dictionary = space_state.intersect_ray(query) 
-	if result.get("collider") is StaticBody3D:
+	var result : Dictionary = space_state.intersect_ray(query)
+	if result.get("collider") is CollisionObject3D:
 		return result.get("collider")
 	return null
 
 
 func interact_cast() -> void:
-	var current_cast_result : StaticBody3D = make_cast_query()
+	var current_cast_result : CollisionObject3D = make_cast_query()
 	if current_cast_result != interact_cast_result:
 		if interact_cast_result and interact_cast_result.has_user_signal("unfocused"):
 			interact_cast_result.emit_signal("unfocused")
@@ -151,9 +151,9 @@ func interact_cast() -> void:
 		if interact_cast_result and interact_cast_result.has_user_signal("focused"):
 			interact_cast_result.emit_signal("focused")
 	pass
-	
+
 func interact() -> void:
 	if interact_cast_result and interact_cast_result.has_user_signal("interacted"):
 		interact_cast_result.emit_signal("interacted")
-	
+
 	pass

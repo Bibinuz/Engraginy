@@ -1,8 +1,10 @@
-[gd_scene load_steps=25 format=4 uid="uid://bam6m2rgjsofa"]
+[gd_scene load_steps=27 format=4 uid="uid://bam6m2rgjsofa"]
 
 [ext_resource type="Script" uid="uid://dkp11tw81unke" path="res://scripts/machineScripts/miner.gd" id="1_qcpy4"]
 [ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/interactionComponent/interactioncomponent.gd" id="2_8so5f"]
 [ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/powerSystem/PowerNodePort.gd" id="3_8so5f"]
+[ext_resource type="Script" uid="uid://btu2kunjdvxg7" path="res://scripts/machineScripts/machinePort.gd" id="4_hrgr1"]
+[ext_resource type="Script" uid="uid://ct1vnop5y3256" path="res://scripts/interactionComponent/machinePortInteraction.gd" id="5_4ve7c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_607wt"]
 resource_name = "stone"
@@ -294,7 +296,7 @@ points = PackedVector3Array(0.55707645, 0.13049263, 0.9510621, -0.24551255, -0.0
 points = PackedVector3Array(0.60467416, -0.44463658, 0.060321495, -0.6252469, -0.8551562, -0.23104908, -0.52669746, -1.2491417, -0.08322489, -0.25357613, -0.4559351, 0.55286384, 0.064223155, -2.6283324, 0.064223155, 0.19663236, -0.44331482, -0.5750942, 0.3599969, -0.8551562, 0.5569704, -0.19218235, -0.099999994, -0.14030397, -0.23104908, -0.8551562, -0.6252469, 0.40914625, -0.8551562, -0.52669746, -0.37887326, -0.8551562, 0.5569704, -0.08322489, -2.6283324, -0.08322489, 0.65564525, -0.8551562, 0.064223155, 0.2224487, -0.099999994, 0.11869194, -0.6252469, -0.8551562, 0.21204734, -0.57052535, -0.45069405, -0.21000892, 0.11349788, -2.1354887, -0.2803238, 0.064223155, -0.8551562, 0.65564525, 0.24183299, -0.44422033, 0.55955905, -0.08322489, -2.4310985, 0.16277261, 0.60637057, -0.8551562, -0.2803238, -0.30126527, -0.44731236, -0.5273935, -0.5746263, -0.44407046, 0.19648856, 0.5569704, -0.8551562, 0.3599969, -0.19218235, -0.099999994, 0.17057033, -0.4774227, -0.8551562, -0.4774227, -0.2803238, -2.1354887, 0.11349788, 0.5056892, -0.46022278, -0.34157243, 0.16277261, -2.4310985, -0.08322489, 0.17057033, -0.099999994, -0.19218235, 0.26132208, -2.1354887, 0.16277261, 0.21204734, -0.8551562, -0.6252469)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxqb1"]
-size = Vector3(1.1256409, 2.8291893, 1.5927429)
+size = Vector3(1.17659, 2.8291893, 1.8029709)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hrgr1"]
 radius = 0.30078125
@@ -352,7 +354,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5009196, 0)
 shape = SubResource("ConvexPolygonShape3D_syxsf")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Collisions"]
-transform = Transform3D(1, 0, 0, 0, 0.99997026, -0.007714279, 0, 0.007714279, 0.99997026, 1.6666608, 1.4512153, 0.014562019)
+transform = Transform3D(1, 0, 0, 0, 0.99997026, -0.007714279, 0, 0.007714279, 0.99997026, 1.6411862, 1.45138, -0.006803466)
 shape = SubResource("BoxShape3D_qxqb1")
 
 [node name="PlacementArea" type="Area3D" parent="."]
@@ -512,13 +514,16 @@ shape = SubResource("BoxShape3D_8so5f")
 transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, 0, 1, 0, 0, 0)
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="OutputPort" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.322691, 0.49321216, -0.038465917)
+[node name="ItemPorts" type="Node3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="OutputPort"]
+[node name="Out1" type="StaticBody3D" parent="ItemPorts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3257394, 0.49321216, -0.038465917)
+script = ExtResource("4_hrgr1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemPorts/Out1"]
 shape = SubResource("BoxShape3D_hrgr1")
 
-[node name="InteractionComponent" type="Node" parent="OutputPort"]
-script = ExtResource("2_8so5f")
-context = "Open miner menu"
-metadata/_custom_type_script = "uid://cw0kcf37813c4"
+[node name="MachinePortInteraction" type="Node" parent="ItemPorts/Out1"]
+script = ExtResource("5_4ve7c")
+override_icon = true
+metadata/_custom_type_script = "uid://ct1vnop5y3256"

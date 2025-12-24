@@ -35,8 +35,9 @@ func _on_area_entered(other_port: Area3D, local_port: PowerNodePort) -> void:
 		return
 	var other_node = other_port.get_power_node()
 	if local_port.can_connect_to(other_port):
+
 		connections[local_port].append(PortConnection.new(other_node, other_port))
-		other_node.connections[other_port].append(PortConnection.new(self,  local_port))
+		#other_node.connections[other_port].append(PortConnection.new(self,  local_port))
 		call_deferred("emit_signal", "network_changed", self)
 
 func _on_area_exited(area: Area3D, local_port: PowerNodePort) -> void:
@@ -81,8 +82,8 @@ func break_part() -> void:
 func calculate_speed(local_port: PowerNodePort, connected_node: PowerNode, connected_port: PowerNodePort) -> float:
 	var my_axis: Vector3 = get_port_rotation_axis(local_port)
 	var connection_axis: Vector3 = connected_node.get_port_rotation_axis(connected_port)
-	print("My axis: ", self.name, ":", my_axis)
-	print("Cn axis: ", connected_node.name, ":", connection_axis)
+	#print("My axis: ", self.name, ":", my_axis)
+	#print("Cn axis: ", connected_node.name, ":", connection_axis)
 	var input_speed : float= connected_node.speed* connected_port.ratio_multiplier * connected_port.direction_flipper
 	var dot: float = my_axis.dot(connection_axis)
 	if abs(dot) > 0.9:
@@ -93,6 +94,9 @@ func calculate_speed(local_port: PowerNodePort, connected_node: PowerNode, conne
 			input_speed *= signf(dot)
 			print(self.name,": Shaft connection")
 	else:
+		#Incloure el cas de les cintes mecàniques.
+
+
 		# Explicar això a l'informe: Desplaçament del centre
 		var vector_to_connected: Vector3 = ((connected_node.global_position+connected_node.center) - (self.global_position+self.center))
 		if vector_to_connected.length_squared() > 0.001:
@@ -109,9 +113,14 @@ func calculate_speed(local_port: PowerNodePort, connected_node: PowerNode, conne
 	return resulting_speed
 
 func interacted() -> void:
-	pass
-	print(self.name, ": ", self.connections)
 	for port in connections:
-		for connection in connections[port]:
-			if port and connection and connection.node and connection.port:
-				calculate_speed(port, connection.node, connection.port)
+		print(port.name)
+		for connection:PortConnection in connections[port]:
+			print("    ", connection.node, ":", connection.port.name)
+	return
+
+	##print(self.name, ": ", self.connections)
+	##for port in connections:
+		##for connection in connections[port]:
+			##if port and connection and connection.node and connection.port:
+				##calculate_speed(port, connection.node, connection.port)

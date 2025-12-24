@@ -123,6 +123,7 @@ func find_whole_grid_bfs(start_node: PowerNode) -> Array[PowerNode]:
 							queue.append(connection)
 	return visited
 
+#Actualment no estic utilitzant aquesta funció, si hi ha temps ja ho revisare
 func break_priority(node1 : PowerNode, node2 : PowerNode) -> void:
 	# First case:
 		# The two nodes are generators: break the last built one, or the node1 by default

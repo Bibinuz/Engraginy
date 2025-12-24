@@ -4,8 +4,7 @@ class_name InteractionComponent extends Node
 @export var override_icon : bool
 @export var new_icon : Texture2D
 
-@onready var meshes: Array[MeshInstance3D] = get_parent().get_parent().meshes
-
+var meshes: Array[MeshInstance3D]
 var focused: bool = false
 
 
@@ -16,6 +15,7 @@ var outline_material : ShaderMaterial = preload("res://assets/materials/outline_
 func _ready() -> void:
 	parent = get_parent()
 	main_object = parent.get_parent()
+	meshes = main_object.meshes
 	connect_parent()
 
 func connect_parent() -> void:
@@ -50,6 +50,6 @@ func not_in_range() -> void:
 	set_process_input(false)
 
 func on_interact() -> void:
-	print(parent.name)
+	#print(parent.name)
 	if main_object.has_method("interacted"):
 		main_object.interacted()

@@ -1,10 +1,10 @@
-class_name Belt extends Building
+class_name Belt extends PowerNode
 
 
 @export var connected_shafts: Array[PowerNode] = []
 @export var shaderMaterial: ShaderMaterial
-var speed: float = 0
 
+var allowed_connections: Array = [Shaft, MachinePort]
 
 func _ready() -> void:
 	super()
@@ -12,13 +12,13 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	super(_delta)
 	if len(connected_shafts) > 1:
-		meshes[0].set_instance_shader_parameter("speed", connected_shafts[0].speed)
+		meshes[0].set_instance_shader_parameter("speed", speed)
 
 func _input(event: InputEvent) -> void:
 	if is_placed: return
 	else:
 		if event.is_action_pressed("leftClick"):
-			if GlobalScript.focused_element is Shaft:
+			if GlobalScript.focused_element is Shaft or GlobalScript.focused_element is MachinePort:
 				if len(connected_shafts) == 0:
 					connected_shafts.append(GlobalScript.focused_element)
 				elif len(connected_shafts) == 1 and not connected_shafts.has(GlobalScript.focused_element):

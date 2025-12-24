@@ -111,6 +111,7 @@ override_icon = true
 metadata/_custom_type_script = "uid://cw0kcf37813c4"
 
 [node name="ConnectionPorts" type="Node3D" parent="."]
+visible = false
 
 [node name="Port1" type="Area3D" parent="ConnectionPorts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
