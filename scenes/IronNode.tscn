@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://7vx5es6b8vjj" path="res://scripts/materials/resourceNode.gd" id="1_wvwbs"]
 [ext_resource type="Script" uid="uid://b6y2gvj6617fd" path="res://scripts/materials/iron_ore.gd" id="2_265sf"]
 
-[sub_resource type="Resource" id="Resource_t62uo"]
+[sub_resource type="Resource" id="Resource_265sf"]
 script = ExtResource("2_265sf")
 name = "Iron Ore"
 max_stack = 64
@@ -1671,7 +1671,8 @@ shadow_mesh = SubResource("ArrayMesh_e8jym")
 
 [node name="IronNode" type="Node3D"]
 script = ExtResource("1_wvwbs")
-resource_type = SubResource("Resource_t62uo")
+resource_type = SubResource("Resource_265sf")
+purity = 1
 metadata/_custom_type_script = "uid://7vx5es6b8vjj"
 
 [node name="Generation point" type="Area3D" parent="."]

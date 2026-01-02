@@ -21,5 +21,6 @@ func not_in_range() -> void:
 		set_process_input(false)
 
 func on_interact() -> void:
-	pass
+	if parent.has_method("interacted"):
+		parent.interacted()
 	#print(parent.name)

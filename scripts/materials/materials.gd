@@ -7,10 +7,12 @@ class_name Materials extends Resource
 @export var energy : float
 
 var icon : TextureRect = TextureRect.new()
+var amount: int = 0
 
-func _init(n : String, s : int, f : bool = false, e : float = 0.0) -> void:
-	name = n
-	max_stack = s
-	is_flamable = f
-	energy = e
-	pass
+func add(n: int, is_node: bool = false, purity: ResourceNode.Purity = ResourceNode.Purity.IMPURE) -> int:
+	amount += n *(1+(int(is_node)*purity))
+	if amount > max_stack:
+		var left_amount: int = amount-max_stack
+		amount = max_stack
+		return left_amount
+	return 0

@@ -89,10 +89,10 @@ func calculate_speed(local_port: PowerNodePort, connected_node: PowerNode, conne
 	if abs(dot) > 0.9:
 		if local_port.type == PowerNodePort.PortType.COG_BIG or local_port.type == PowerNodePort.PortType.COG_SMALL:
 			input_speed *= -signf(dot)
-			print(self.name,": Cog connection")
+			#print(self.name,": Cog connection")
 		else:
 			input_speed *= signf(dot)
-			print(self.name,": Shaft connection")
+			#print(self.name,": Shaft connection")
 	else:
 		# Explicar això a l'informe: Desplaçament del centre
 		var vector_to_connected: Vector3 = ((connected_node.global_position+connected_node.center) - (self.global_position+self.center))
@@ -115,17 +115,12 @@ func calculate_speed(local_port: PowerNodePort, connected_node: PowerNode, conne
 			var other_tangent: Vector3 = vector_to_connected.cross(connection_axis)
 			var alignment: float = my_tangent.dot(other_tangent)
 			input_speed *= signf(alignment)
-			print(self.name,": Perpendicular connection")
+			#print(self.name,": Perpendicular connection")
 	var resulting_speed = (input_speed * local_port.direction_flipper) / local_port.ratio_multiplier
 	return resulting_speed
 
 func interacted() -> void:
 	print(name, ": ", get_rotation_axis())
-	return
-	for port in connections:
-		print(port.name)
-		for connection:PortConnection in connections[port]:
-			print("    ", connection.node, ":", connection.port.name)
 	return
 
 	##print(self.name, ": ", self.connections)

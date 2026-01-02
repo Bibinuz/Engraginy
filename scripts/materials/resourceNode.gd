@@ -3,6 +3,7 @@ class_name ResourceNode extends Node3D
 enum Purity{
 	IMPURE,
 	NORMAL,
+	RICH,
 	PURE
 }
 

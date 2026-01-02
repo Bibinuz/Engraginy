@@ -52,8 +52,9 @@ func break_part() -> void:
 
 func spawn_debris():
 	var debris: GPUParticles3D = debris_scene.instantiate()
-	get_tree().current_scene.add_child(debris)
-	debris.global_position = global_position
+	if not get_tree().current_scene.get_children().has(debris):
+		get_tree().current_scene.add_child.call_deferred(debris)
+		debris.global_position = global_position
 
 func toggle_collisions(enabled: bool) -> void:
 	for body:StaticBody3D in collisions:

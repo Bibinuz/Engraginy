@@ -1,12 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://dh3x05jge21qi"]
 
 [ext_resource type="Script" uid="uid://cfdannkv1b6f6" path="res://scripts/powerSystem/belt.gd" id="1_80u0l"]
-[ext_resource type="Script" uid="uid://cvrfu60s8it81" path="res://scripts/powerSystem/beltTool.gd" id="2_ggcs6"]
 [ext_resource type="Material" uid="uid://cylmvdwlflngl" path="res://assets/materials/belt.tres" id="3_2xc0s"]
 [ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/interactionComponent/interactioncomponent.gd" id="4_km0u5"]
 [ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/powerSystem/PowerNodePort.gd" id="5_km0u5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ggcs6"]
+lightmap_size_hint = Vector2i(11, 20)
+add_uv2 = true
 size = Vector3(1, 0.9, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ggcs6"]
@@ -14,6 +15,13 @@ size = Vector3(1, 0.5, 0.9)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhsjt"]
 size = Vector3(0.97814333, 0.44080812, 0.8321289)
+
+[sub_resource type="Curve3D" id="Curve3D_2xc0s"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="Belt" type="Node3D" node_paths=PackedStringArray("meshes", "areas", "collisions")]
 script = ExtResource("1_80u0l")
@@ -23,7 +31,6 @@ areas = [NodePath("Area3D")]
 collisions = [NodePath("StaticBody3D")]
 
 [node name="BeltTool" type="Node" parent="."]
-script = ExtResource("2_ggcs6")
 metadata/_custom_type_script = "uid://cvrfu60s8it81"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -56,3 +63,7 @@ shape = SubResource("BoxShape3D_qhsjt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_ggcs6")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4417035, 0)
+curve = SubResource("Curve3D_2xc0s")

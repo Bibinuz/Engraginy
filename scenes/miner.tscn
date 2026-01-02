@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://bam6m2rgjsofa"]
+[gd_scene load_steps=28 format=4 uid="uid://bam6m2rgjsofa"]
 
 [ext_resource type="Script" uid="uid://dkp11tw81unke" path="res://scripts/machineScripts/miner.gd" id="1_qcpy4"]
 [ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/interactionComponent/interactioncomponent.gd" id="2_8so5f"]
@@ -306,12 +306,18 @@ height = 2.9421768
 size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hrgr1"]
-size = Vector3(0.17034912, 0.88671875, 0.91796875)
+size = Vector3(0.1, 0.9, 0.9)
 
-[node name="Miner" type="Node3D" node_paths=PackedStringArray("drill_collision", "meshes", "areas", "collisions")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_hrgr1"]
+radius = 0.25
+
+[node name="Miner" type="Node3D" node_paths=PackedStringArray("output_ports", "meshes", "areas", "collisions")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_qcpy4")
-drill_collision = NodePath("PlacementArea/CollisionShape3D2")
+extraction_time = 15.0
+output_ports = [NodePath("ItemPorts/Out1")]
+strategy = 1
+cost_per_speed = 8
 center = Vector3(0, 2, 0)
 meshes = [NodePath("Support"), NodePath("Drill"), NodePath("OutPort")]
 areas = [NodePath("PlacementArea")]
@@ -329,12 +335,13 @@ mesh = SubResource("ArrayMesh_gr71f")
 skeleton = NodePath("")
 
 [node name="OutPort" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5013291, 0.5851042, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5013291, 0.3671471, 0)
 mesh = SubResource("ArrayMesh_c7evy")
 skeleton = NodePath("")
 
 [node name="Collisions" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
 
 [node name="InteractionComponent" type="Node" parent="Collisions"]
 script = ExtResource("2_8so5f")
@@ -359,6 +366,7 @@ shape = SubResource("BoxShape3D_qxqb1")
 
 [node name="PlacementArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlacementArea"]
 transform = Transform3D(1, 0, 0, 0, 0.99997026, -0.007714279, 0, 0.007714279, 0.99997026, 1.6285596, 1.4512153, 0.014562019)
@@ -370,6 +378,7 @@ shape = SubResource("CapsuleShape3D_hrgr1")
 
 [node name="ConnectionPorts" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+visible = false
 
 [node name="Shaft1" type="Area3D" parent="ConnectionPorts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -515,15 +524,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, 0, 1, 0, 0, 0)
 size = Vector3(0.1, 0.1, 0.1)
 
 [node name="ItemPorts" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Out1" type="StaticBody3D" parent="ItemPorts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3257394, 0.49321216, -0.038465917)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, 0)
 script = ExtResource("4_hrgr1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemPorts/Out1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32299995, 0.24665177, -7.1054274e-15)
 shape = SubResource("BoxShape3D_hrgr1")
 
 [node name="MachinePortInteraction" type="Node" parent="ItemPorts/Out1"]
 script = ExtResource("5_4ve7c")
 override_icon = true
 metadata/_custom_type_script = "uid://ct1vnop5y3256"
+
+[node name="MiningPoint" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.500888, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MiningPoint"]
+shape = SubResource("SphereShape3D_hrgr1")
+debug_color = Color(0.9857089, 0, 0.33571884, 0.41960785)
+
+[connection signal="area_entered" from="MiningPoint" to="." method="_on_mining_point_area_entered"]
