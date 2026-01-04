@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Materials" load_steps=2 format=3 uid="uid://dmuorwgkindl4"]
+[gd_resource type="Resource" script_class="Materials" load_steps=3 format=3 uid="uid://dmuorwgkindl4"]
 
 [ext_resource type="Script" uid="uid://berfinvgyspa2" path="res://scripts/materials/materials.gd" id="1_au8ox"]
+[ext_resource type="Image" uid="uid://0fihyp8ir55b" path="res://assets/material_icons/iron_ore.png" id="1_iyvbi"]
 
 [resource]
 script = ExtResource("1_au8ox")
 name = "Iron Ore"
 max_stack = 64
+icon = ExtResource("1_iyvbi")
 metadata/_custom_type_script = "uid://berfinvgyspa2"
