@@ -6,7 +6,8 @@ class_name Materials extends Resource
 @export var is_flamable : bool
 @export var energy : float
 
-var icon : TextureRect = TextureRect.new()
+@export var icon : Image
+
 var amount: int = 0
 
 func add(n: int, is_node: bool = false, purity: ResourceNode.Purity = ResourceNode.Purity.IMPURE) -> int:

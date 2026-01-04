@@ -64,6 +64,6 @@ shape = SubResource("BoxShape3D_qhsjt")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_ggcs6")
 
-[node name="Path3D" type="Path3D" parent="."]
+[node name="BeltPath" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4417035, 0)
 curve = SubResource("Curve3D_2xc0s")

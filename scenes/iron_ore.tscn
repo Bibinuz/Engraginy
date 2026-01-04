@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=4 uid="uid://bokm35rrtq46y"]
+[gd_scene load_steps=13 format=4 uid="uid://bokm35rrtq46y"]
 
-[ext_resource type="Script" uid="uid://b6y2gvj6617fd" path="res://scripts/materials/iron_ore.gd" id="1_gpy2u"]
+[ext_resource type="Script" uid="uid://biabriu637tk7" path="res://scripts/materials/visualMaterial.gd" id="1_gpy2u"]
+[ext_resource type="Resource" uid="uid://dmuorwgkindl4" path="res://Resources/MaterialData/ironOre.tres" id="2_26d1w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rka4s"]
 resource_name = "ore"
@@ -206,27 +207,30 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_01vjo")
 
-[node name="ironOre" type="Node3D"]
+[node name="IronOre" type="PathFollow3D" node_paths=PackedStringArray("meshes")]
 script = ExtResource("1_gpy2u")
-name = "Iron Ore"
-max_stack = 64
+material = ExtResource("2_26d1w")
+meshes = NodePath("Meshes")
+metadata/_custom_type_script = "uid://biabriu637tk7"
 
-[node name="rock_smallD" type="MeshInstance3D" parent="."]
+[node name="Meshes" type="Node3D" parent="."]
+
+[node name="rock_smallD" type="MeshInstance3D" parent="Meshes"]
 transform = Transform3D(0.8454657, 0, 0, 0, 0.30627123, 0, 0, 0, 0.8454657, 0.13342525, -0.012571562, 0.112415)
 mesh = SubResource("ArrayMesh_81y6y")
 skeleton = NodePath("")
 
-[node name="rock_smallH" type="MeshInstance3D" parent="."]
+[node name="rock_smallH" type="MeshInstance3D" parent="Meshes"]
 transform = Transform3D(0.8454657, 0, 0, 0, 0.30627123, 0, 0, 0, 0.8454657, -0.02419759, -0.038919725, -0.08551374)
 mesh = SubResource("ArrayMesh_punfd")
 skeleton = NodePath("")
 
-[node name="rock_tallG" type="MeshInstance3D" parent="."]
+[node name="rock_tallG" type="MeshInstance3D" parent="Meshes"]
 transform = Transform3D(0.8454657, 0, 0, 0, 0.30627123, 0, 0, 0, 0.8454657, 0.22268143, 0.00021613979, -0.13880956)
 mesh = SubResource("ArrayMesh_paysh")
 skeleton = NodePath("")
 
-[node name="rock_smallTopB_001" type="MeshInstance3D" parent="."]
+[node name="rock_smallTopB_001" type="MeshInstance3D" parent="Meshes"]
 transform = Transform3D(-1.00787396e-07, 0, 0.84546584, 0, 0.30627123, 0, -0.84546584, 0, -1.00787396e-07, 0.10269864, 0.00026371336, 0.022142615)
 mesh = SubResource("ArrayMesh_prfos")
 skeleton = NodePath("")

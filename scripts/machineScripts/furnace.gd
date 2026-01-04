@@ -9,9 +9,9 @@ func _ready() -> void:
 	super()
 	gui.hide()
 	cost_per_speed = -4
-	var formula1 : Formula = Formula.new({IronOre.new(): 2}, {IronIngot.new(): 1}, 2)
-	var formula2 : Formula = Formula.new({IronOre.new(): 2, Stone.new(): 2}, {IronIngot.new(): 2}, 2)
-	aviable_formulas = [formula1, formula2]
+	#var formula1 : Formula = Formula.new({IronOre.new(): 2}, {IronIngot.new(): 1}, 2)
+	#var formula2 : Formula = Formula.new({IronOre.new(): 2, Stone.new(): 2}, {IronIngot.new(): 2}, 2)
+	#aviable_formulas = [formula1, formula2]
 	pass
 
 

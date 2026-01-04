@@ -1,13 +1,7 @@
-[gd_scene load_steps=118 format=4 uid="uid://d3vun6oeko313"]
+[gd_scene load_steps=117 format=4 uid="uid://d3vun6oeko313"]
 
 [ext_resource type="Script" uid="uid://7vx5es6b8vjj" path="res://scripts/materials/resourceNode.gd" id="1_wvwbs"]
-[ext_resource type="Script" uid="uid://b6y2gvj6617fd" path="res://scripts/materials/iron_ore.gd" id="2_265sf"]
-
-[sub_resource type="Resource" id="Resource_265sf"]
-script = ExtResource("2_265sf")
-name = "Iron Ore"
-max_stack = 64
-metadata/_custom_type_script = "uid://b6y2gvj6617fd"
+[ext_resource type="Resource" uid="uid://dmuorwgkindl4" path="res://Resources/MaterialData/ironOre.tres" id="2_265sf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_265sf"]
 size = Vector3(1, 0.5, 1)
@@ -1671,7 +1665,7 @@ shadow_mesh = SubResource("ArrayMesh_e8jym")
 
 [node name="IronNode" type="Node3D"]
 script = ExtResource("1_wvwbs")
-resource_type = SubResource("Resource_265sf")
+resource_type = ExtResource("2_265sf")
 purity = 1
 metadata/_custom_type_script = "uid://7vx5es6b8vjj"
 
