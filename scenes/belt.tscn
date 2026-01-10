@@ -40,7 +40,6 @@ areas = [NodePath("Area3D")]
 collisions = [NodePath("StaticBody3D")]
 
 [node name="BeltTool" type="Node" parent="."]
-metadata/_custom_type_script = "uid://cvrfu60s8it81"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
@@ -77,24 +76,25 @@ shape = SubResource("BoxShape3D_ggcs6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2637322, 0)
 curve = SubResource("Curve3D_2xc0s")
 
-[node name="BeltConnections" type="Area3D" parent="."]
+[node name="BackPort" type="Area3D" parent="."]
 collision_layer = 2
 
-[node name="BeltPort1" type="CollisionShape3D" parent="BeltConnections"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+[node name="Port" type="CollisionShape3D" parent="BackPort"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 shape = SubResource("BoxShape3D_2xc0s")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="BeltConnections/BeltPort1"]
-size = Vector3(0, 0.6, 0.6)
-material = ExtResource("5_qhsjt")
-
-[node name="BeltPort2" type="CollisionShape3D" parent="BeltConnections"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
-shape = SubResource("BoxShape3D_2xc0s")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="BeltConnections/BeltPort2"]
+[node name="CSGBox3D" type="CSGBox3D" parent="BackPort/Port"]
 size = Vector3(0, 0.6, 0.6)
 material = ExtResource("5_3rkua")
 
-[connection signal="area_entered" from="BeltConnections" to="." method="_on_belt_connections_area_entered"]
-[connection signal="area_exited" from="BeltConnections" to="." method="_on_belt_connections_area_exited"]
+[node name="FrontPort" type="Area3D" parent="."]
+
+[node name="Port" type="CollisionShape3D" parent="FrontPort"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+shape = SubResource("BoxShape3D_2xc0s")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="FrontPort/Port"]
+size = Vector3(0, 0.6, 0.6)
+material = ExtResource("5_qhsjt")
+
+[connection signal="area_exited" from="BackPort" to="." method="_on_belt_connections_area_exited"]

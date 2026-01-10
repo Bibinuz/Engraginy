@@ -1,23 +1,34 @@
 class_name Belt extends PowerNode
 
+
+class BeltConnection:
+	var belt: Belt
+	var pos: float
+	func _init(m_belt: Belt, m_pos: float) -> void:
+		belt = m_belt
+		pos = m_pos
+
+
+
 @export var shaderMaterial: ShaderMaterial
 var nodes_connected: Array[Node3D] = []
 var allowed_connections: Array = [Shaft, MachinePort]
-var belt_lenght: float = 0.0
+var belt_length: float = 0.0
 var inventory: Array[VisualMaterial] = []
 var belt_vector: Vector3 = Vector3.ZERO
 
-
-# Dictionary with connected belt and position of the other belt where this belt want to input items
-var belts_connected: Dictionary[Belt, float] = {}
-
-
 @onready var path: Path3D = $BeltPath
-@onready var belt_connection_area: Area3D = $BeltConnections
+@onready var front_port: Area3D = $FrontPort
+@onready var back_port: Area3D = $BackPort
+
+var ft_conn: BeltConnection = null
+var bk_conn: BeltConnection = null
 
 func _ready() -> void:
 	super()
+	bind_ports()
 	path.curve = path.curve.duplicate()
+
 
 func _process(delta: float) -> void:
 	super(delta)
@@ -31,6 +42,12 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("leftClick"):
 			place_belt()
 
+func bind_ports() -> void:
+	front_port.area_entered.connect(_on_port_area_entered.bind("front"))
+	front_port.area_exited.connect(_on_port_area_exited.bind("front"))
+	back_port.area_entered.connect(_on_port_area_entered.bind("back"))
+	back_port.area_exited.connect(_on_port_area_exited.bind("back"))
+
 func place_belt() -> void:
 	if GlobalScript.focused_element is Shaft or GlobalScript.focused_element is MachinePort:
 		if len(nodes_connected) == 0:
@@ -41,8 +58,8 @@ func place_belt() -> void:
 			var center_position = place_position/2
 			position = nodes_connected[0].position - center_position
 			GlobalScript.bottom_menu.place()
-			belt_lenght = place_position.length() + 0.75
-			scale.x = belt_lenght
+			belt_length = place_position.length() + 0.75
+			scale.x = belt_length
 			scale_path()
 			scale_connection_points()
 			if is_zero_approx(place_position.x) and is_zero_approx(place_position.y) and not is_zero_approx(place_position.z):
@@ -59,15 +76,15 @@ func place_belt() -> void:
 			meshes[0].material_override = shaderMaterial
 
 func scale_path() -> void:
-	path.scale.x = 1/belt_lenght
-
-	path.curve.set_point_position(0, Vector3(belt_lenght/2,0,0))
-	path.curve.set_point_position(1, Vector3(-belt_lenght/2,0,0))
+	path.scale.x = 1/belt_length
+	path.curve.set_point_position(0, Vector3(belt_length/2,0,0))
+	path.curve.set_point_position(1, Vector3(-belt_length/2,0,0))
 
 func scale_connection_points() -> void:
-	belt_connection_area.scale.x = 1/belt_lenght
-	belt_connection_area.get_child(0).position.x = belt_lenght/2 + 0.5
-	belt_connection_area.get_child(1).position.x = -belt_lenght/2 - 0.5
+	front_port.scale.x = 1/belt_length
+	back_port.scale.x = 1/belt_length
+	front_port.get_child(0).position.x = belt_length/2 + 0.5
+	back_port.get_child(0).position.x = -belt_length/2 - 0.5
 
 func check_placement() -> bool:
 	if GlobalScript.focused_element and (GlobalScript.focused_element is Belt or GlobalScript.focused_element is MachinePort):
@@ -83,7 +100,7 @@ func get_port_rotation_axis(_port: PowerNodePort) -> Vector3:
 	return global_transform.basis.x.normalized()
 
 func interacted() -> void:
-	print(self, ": ", global_position, ": ", belt_lenght)
+	print(self, ": ", global_position, ": ", belt_length)
 	var visual_mat: VisualMaterial = load("res://scenes/iron_ore.tscn").instantiate()
 	try_add_item(visual_mat, 0)
 	see_inventory_state()
@@ -116,17 +133,17 @@ func manage_belt_items(delta: float) -> void:
 						elif speed < 0 and other_item.progress < item.progress:
 							is_blocked=true
 							break
-			if speed > 0 and is_equal_approx(item.progress, belt_lenght):
+			if speed > 0 and is_equal_approx(item.progress, belt_length):
 				to_next_point = item
 			elif speed < 0 and is_equal_approx(item.progress, 0):
 				to_next_point = item
 
 			if not is_blocked:
 				var movement: float = item.progress+speed*delta/2
-				if movement < belt_lenght and abs(movement) >= 0:
+				if movement < belt_length and abs(movement) >= 0:
 					item.progress = movement
-				elif movement > belt_lenght:
-					item.progress = belt_lenght
+				elif movement > belt_length:
+					item.progress = belt_length
 				elif movement < 0:
 					item.progress = 0
 
@@ -160,35 +177,58 @@ func try_add_item(visual_mat: VisualMaterial, position_in_belt: float) -> bool:
 	return false
 
 func try_pass_item(item:VisualMaterial) -> bool:
-	var pass_to_position: float = 0.0
-	if is_equal_approx(item.progress_ratio, 1):
-		pass_to_position = 0.0
-	elif is_equal_approx(item.progress_ratio, 0):
-		pass_to_position = 1.0
-
-	for connection: Belt in belts_connected:
-		if connection.try_add_item(item.duplicate(), pass_to_position*connection.belt_lenght):
+	if is_equal_approx(item.progress_ratio, 1) and bk_conn:
+		if bk_conn.belt.try_add_item(item.duplicate(), bk_conn.pos):
 			return true
+	elif is_zero_approx(item.progress_ratio) and ft_conn:
+		if ft_conn.belt.try_add_item(item.duplicate(), ft_conn.pos):
+			return true
+
 	return false
 
-func _on_belt_connections_area_entered(area: Area3D) -> void:
+
+func _on_port_area_entered(area: Area3D, port_id: String) -> void:
 	if area.get_parent() and area.get_parent() is Belt and area.get_parent().is_placed and self.is_placed:
 		var other: Belt = area.get_parent()
-		var vector_to_other: Vector3 = self.global_position-other.global_position
+		var vector_to_other: Vector3 = self.global_position - other.global_position
+		var other_dir_z = other.global_transform.basis.z
+		var distance_along_belt = vector_to_other.dot(other_dir_z)
+		var connection_point = (other.belt_length / 2.0) + distance_along_belt
+		connection_point = clamp(connection_point, 0.0, other.belt_length)
+		if port_id == "front":
+			ft_conn = BeltConnection.new(other, connection_point)
+		elif port_id == "back":
+			bk_conn = BeltConnection.new(other, connection_point)
+		return
+		#AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHH
+		#AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHH
+		#AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHH
+		#AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHH
+		#AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHH
+		#AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHH
+		#var vector_to_other: Vector3 = self.global_position-other.global_position
 		var parallel: bool = self.global_rotation == other.global_rotation
-
+		#var connection_point: float = 0.0
 		if parallel:
 			if vector_to_other.x < 0 or vector_to_other.z < 0:
-				self.belts_connected[other] = other.belt_lenght
+				connection_point = other.belt_length
 			else:
-				self.belts_connected[other] = 0.0
+				connection_point = 0.0
 		else:
 			if is_zero_approx(self.global_rotation.y):
-				self.belts_connected[other] = (other.belt_lenght)/2 - vector_to_other.z
+				connection_point = (other.belt_length)/2 - vector_to_other.z
 			else:
-				self.belts_connected[other] = (other.belt_lenght)/2 - vector_to_other.x
+				connection_point = (other.belt_length)/2 - vector_to_other.x
+		if port_id == "front":
+			ft_conn = BeltConnection.new(other, connection_point)
+		elif port_id == "back":
+			bk_conn = BeltConnection.new(other, connection_point)
 
-func _on_belt_connections_area_exited(area: Area3D) -> void:
-	if area and area.get_parent() and area.get_parent() is Belt and area.get_parent().is_placed and self.is_placed:
-		if belts_connected.has(area.get_parent()):
-			belts_connected.erase(area.get_parent())
+
+
+func _on_port_area_exited(area: Area3D, port_id: String) -> void:
+	if area and area.get_path() and area.get_parent() is Belt:
+		if port_id == "front" and ft_conn and ft_conn.belt == area.get_parent():
+			ft_conn = null
+		elif port_id == "back" and bk_conn and bk_conn.belt == area.get_parent():
+			bk_conn = null
