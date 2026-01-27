@@ -16,7 +16,10 @@ func _process(delta: float) -> void:
 		try_output()
 
 func check_placement() -> bool:
+	return super()
 	placement_green()
+	for area in areas:
+		print(area.get_overlapping_areas())
 	return true
 
 func interacted() -> void:

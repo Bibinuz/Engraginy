@@ -1670,6 +1670,8 @@ purity = 1
 metadata/_custom_type_script = "uid://7vx5es6b8vjj"
 
 [node name="Generation point" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Generation point"]
 shape = SubResource("BoxShape3D_265sf")

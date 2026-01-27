@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper,twocolumn,twoside]{article}
+\documentclass[11pt,a4paper,twocolumn,twoside]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[provide=*]{babel}
 \usepackage{graphicx}
@@ -308,6 +308,16 @@ El sistema distingeix entre tres tipus principals d'interfície:
 \item \textbf{Interfícies Contextuals:} Menús específics que depenen de l'objecte amb el qual s'interactua, com ara l'inventari d'un forn o la configuració d'una màquina.
 \end{itemize}
 
+\begin{figure}[!ht]
+\centering
+    \includegraphics[width=0.45\textwidth]{img/GameMenus.png}
+    \caption{Mostra dels menus del joc}
+    \label{fig:game-menus}
+\end{figure}
+
+En la Fig. \ref{fig:game-menus}, es mostra el menú de construcció, amb les seves quatre pestanyes diferents per organitzar els objectes, i la barra d'accés ràpid, omplerta amb una sèrie d'objectes. Per conf iguraraquesta barra es poden arrossegar les imatges del menú de construcció fins a la posició de la barra on ho volem vincular, aquesta barra conté nou caselles, cada una vinculada a les tecles 1-9 del teclat.
+
+
 \subsubsection{Components Contextuals}
 Per vincular la lògica dels objectes 3D amb la interfície 2D sense crear dependències rígides, s'ha implementat el node \texttt{ContextComponent}. Aquest component s'afegeix com a node fill a qualsevol entitat del món (màquines, cofres, etc.) que requereixi una interfície pròpia.
 
@@ -332,6 +342,15 @@ El sistema de construcció funciona mitjançant una màquina d'estats implícita
 \textbf{2. Validació de la posició:} Abans de confirmar la construcció, l'objecte executa una funció de validació (visible en scripts com \texttt{belt.gd}). Aquesta funció comprova: \begin{itemize} \item Que no hi hagi col·lisions amb altres objectes existents. \item Que l'objecte estigui recolzat sobre una superfície vàlida (el terra o una altra màquina). \item En el cas d'elements direccionals com les cintes, es calcula la longitud i la rotació necessària entre el punt d'inici i el punt final. \end{itemize} Visualment, aquesta validació es comunica al jugador mitjançant \textit{shaders} que tenyeixen l'objecte de verd (posició vàlida) o vermell (posició invàlida).
 
 \textbf{3. Col·locació i Actualització:} En confirmar l'acció (clic esquerre), l'objecte passa a ser part permanent de l'escena. En aquest moment: \begin{enumerate} \item S'activen les seves col·lisions (\texttt{CollisionShape3D}). \item Es registra l'objecte al node pare \texttt{Buildings} per garantir-ne la persistència en el guardat. \item En el cas de nodes de potència (\texttt{PowerNode}), es detecten els veïns i es dispara el recàlcul de la xarxa de transmissió mecànica per integrar la nova peça al sistema de grafs. \end{enumerate}
+
+\begin{figure*}[!ht]
+\centering
+    \includegraphics[width=0.9\textwidth]{img/PlacementProcess.png}
+    \caption{Exemple del tres estats en el moment de construir un objecte}
+    \label{fig:placement_proces}
+\end{figure*}
+
+En la Fig. \ref{fig:placement_proces} s'observa aquest estat fantasma de l'edifici en els seus dos colors: verd, quan l'objecte pot ser col·locat; i vermell, quan col·lideix amb un altre objecte que n'impedeix la construcció. Finalment, es mostra el resultat un cop ubicat l'edifici.
 
 \subsubsection{Construcció Dinàmica: El cas de les Cintes}
 Un cas especial d'interès és la construcció de cintes transportadores (\texttt{Belt}). A diferència dels edificis estàtics, les cintes es construeixen definint dos punts. El script \texttt{belt.gd} gestiona aquest comportament calculant dinàmicament la distància entre els nodes connectats i ajustant l'escala del model 3D i la corba del \texttt{Path3D} per adaptar-se a l'espai disponible. Això permet una construcció fluida i flexible, adaptant-se automàticament a la distància entre màquines sense necessitat de col·locar trams individuals peça a peça.
@@ -359,15 +378,10 @@ Explicat el procés de guardat i carrega faré menció a totes aquelles parts qu
 El primer és marcar amb la propietat "@export"/"@export\_storage" totes les variables que es volen guardar, tota variable que no tingui aquesta propietat serà ignorada per la funció de guardat.
 
 \begin{figure}[!ht]
-
 \centering
-
     \includegraphics[width=0.45\textwidth]{img/SaveNodePath.png}
-
     \caption{Codi actual per guardar les referències a nodes}
-
     \label{fig:save_node_path}
-
 \end{figure}
 
 A continuació s'han de modificar totes les variables que guardaven referències directes a nodes, i en el seu lloc guardar un "NodePath" en l'exemple de la Fig. \ref{fig:save_node_path} podem veure com mantenim els "@exports" per a modificar aquestes variables des de l'editor i que aquests "paths" es guardin, però en el moment de carregar l'escena hem de convertir aquests "paths" en les referències directes que guardaran les variables "meshes", "areas" i "collisions".
@@ -391,6 +405,5 @@ Durant el procés de càrrega cal considerar que la detecció de col·lisions de
 \appendix
 
 \section*{Apèndix}
-
 
 \end{document}

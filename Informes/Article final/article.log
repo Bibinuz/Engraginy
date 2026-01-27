@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2026.1.15)  27 JAN 2026 19:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2026.1.15)  27 JAN 2026 20:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -8,8 +8,8 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2024/06/29 v1.4n Standard LaTeX document class
-(/usr/share/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
+(/usr/share/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count196
 \c@section=\count197
@@ -391,12 +391,12 @@ File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 * \topmargin=-52.36449pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=10.0pt
+* \topskip=11.0pt
 * \footskip=30.0pt
 * \marginparwidth=48.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -428,9 +428,9 @@ LaTeX Font Info:    Trying to load font information for U+pzd on input line 82.
 (/usr/share/texmf-dist/tex/latex/psnfss/upzd.fd
 File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
-Package lettrine.sty Info: Targeted height = 29.3449pt
+Package lettrine.sty Info: Targeted height = 33.05267pt
 (lettrine.sty)             (for loversize=0, accent excluded),
-(lettrine.sty)             Lettrine height = 29.34491pt (E);
+(lettrine.sty)             Lettrine height = 33.05269pt (E);
 (lettrine.sty)             reported on input line 91.
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 9
 4.
@@ -446,9 +446,10 @@ ts/enc/dvips/base/8r.enc}
 
 
 ]
+
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
 15.
- (/usr/share/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+(/usr/share/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 Package microtype Info: Loading generic protrusion settings for font family
@@ -463,8 +464,14 @@ Package pdftex.def Info: img/DiagramaModuls.png  used on input line 119.
 
 
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [2]
+
 <img/PlayerScene.png, id=19, 493.845pt x 664.4825pt>
 File: img/PlayerScene.png Graphic file (type png)
 <use img/PlayerScene.png>
@@ -472,21 +479,26 @@ Package pdftex.def Info: img/PlayerScene.png  used on input line 162.
 (pdftex.def)             Requested size: 217.66211pt x 292.87001pt.
 
 
-<img/InteractCastCode.png, id=20, 958.58125pt x 442.65375pt>
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[3 <./img/DiagramaModuls.png> <./img/PlayerScene.png (PNG copy)>]
+<img/InteractCastCode.png, id=24, 958.58125pt x 442.65375pt>
 File: img/InteractCastCode.png Graphic file (type png)
 <use img/InteractCastCode.png>
 Package pdftex.def Info: img/InteractCastCode.png  used on input line 176.
 (pdftex.def)             Requested size: 435.32422pt x 201.02277pt.
 
 
-[3 <./img/DiagramaModuls.png> <./img/PlayerScene.png (PNG copy)>]
 <img/PowerNodePort.png, id=25, 538.01pt x 300.12125pt>
 File: img/PowerNodePort.png Graphic file (type png)
 <use img/PowerNodePort.png>
 Package pdftex.def Info: img/PowerNodePort.png  used on input line 208.
 (pdftex.def)             Requested size: 217.66211pt x 121.42021pt.
-
-
 <img/ShaftScene.png, id=26, 632.3625pt x 414.54875pt>
 File: img/ShaftScene.png Graphic file (type png)
 <use img/ShaftScene.png>
@@ -494,13 +506,28 @@ Package pdftex.def Info: img/ShaftScene.png  used on input line 217.
 (pdftex.def)             Requested size: 217.66211pt x 142.68422pt.
 
 
-[4 <./img/InteractCastCode.png (PNG copy)> <./img/PowerNodePort.png (PNG copy)>
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[4]
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[5 <./img/InteractCastCode.png (PNG copy)> <./img/PowerNodePort.png (PNG copy)>
  <./img/ShaftScene.png (PNG copy)>]
 
-
-
-[5]
-<img/CintaTransportadoraCrop.png, id=40, 1029.8475pt x 372.39125pt>
+<img/CintaTransportadoraCrop.png, id=34, 1029.8475pt x 372.39125pt>
 File: img/CintaTransportadoraCrop.png Graphic file (type png)
 <use img/CintaTransportadoraCrop.png>
 Package pdftex.def Info: img/CintaTransportadoraCrop.png  used on input line 26
@@ -508,7 +535,15 @@ Package pdftex.def Info: img/CintaTransportadoraCrop.png  used on input line 26
 (pdftex.def)             Requested size: 217.66211pt x 78.7045pt.
 
 
-<img/ConnexioCintesMaquines.png, id=41, 1029.8475pt x 662.475pt>
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[6]
+<img/ConnexioCintesMaquines.png, id=44, 1029.8475pt x 662.475pt>
 File: img/ConnexioCintesMaquines.png Graphic file (type png)
 <use img/ConnexioCintesMaquines.png>
 Package pdftex.def Info: img/ConnexioCintesMaquines.png  used on input line 290
@@ -516,22 +551,68 @@ Package pdftex.def Info: img/ConnexioCintesMaquines.png  used on input line 290
 (pdftex.def)             Requested size: 217.66211pt x 140.0134pt.
 
 
-[6 <./img/CintaTransportadoraCrop.png> <./img/ConnexioCintesMaquines.png (PNG c
+<img/GameMenus.png, id=45, 1187.43625pt x 882.29625pt>
+File: img/GameMenus.png Graphic file (type png)
+<use img/GameMenus.png>
+Package pdftex.def Info: img/GameMenus.png  used on input line 313.
+(pdftex.def)             Requested size: 217.66211pt x 161.72787pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[7 <./img/CintaTransportadoraCrop.png> <./img/ConnexioCintesMaquines.png (PNG c
 opy)>]
 
+<img/PlacementProcess.png, id=51, 244.9953pt x 88.4103pt>
+File: img/PlacementProcess.png Graphic file (type png)
+<use img/PlacementProcess.png>
+Package pdftex.def Info: img/PlacementProcess.png  used on input line 348.
+(pdftex.def)             Requested size: 435.32422pt x 157.10944pt.
 
 
-[7]
-<img/SaveNodePath.png, id=50, 682.55pt x 239.89626pt>
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[8 <./img/GameMenus.png (PNG copy)>]
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[9 <./img/PlacementProcess.png>]
+<img/SaveNodePath.png, id=59, 682.55pt x 239.89626pt>
 File: img/SaveNodePath.png Graphic file (type png)
 <use img/SaveNodePath.png>
-Package pdftex.def Info: img/SaveNodePath.png  used on input line 365.
+Package pdftex.def Info: img/SaveNodePath.png  used on input line 382.
 (pdftex.def)             Requested size: 217.66211pt x 76.50114pt.
 
 
 
 
-[8 <./img/SaveNodePath.png (PNG copy)>] (./article.aux)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[10
+
+ <./img/SaveNodePath.png (PNG copy)>] (./article.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -539,28 +620,28 @@ L3 programming layer <2025-01-18>
  ) 
 Here is how much of TeX's memory you used:
  9111 strings out of 475171
- 150993 string characters out of 5767095
- 606895 words of memory out of 5000000
- 31663 multiletter control sequences out of 15000+600000
- 604020 words of font info for 299 fonts, out of 8000000 for 9000
+ 151368 string characters out of 5767095
+ 604082 words of memory out of 5000000
+ 31684 multiletter control sequences out of 15000+600000
+ 605612 words of font info for 289 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 79i,13n,93p,1710b,384s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,12n,93p,1710b,384s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
-hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist
+y10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/s
+hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-dist
 /fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/cour
 ier/ucrr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr
 /share/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-dist/fo
 nts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utm
 r8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></usr/share/te
 xmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on article.pdf (8 pages, 791606 bytes).
+Output written on article.pdf (10 pages, 1070718 bytes).
 PDF statistics:
- 118 PDF objects out of 1000 (max. 8388607)
- 67 compressed objects within 1 object stream
+ 127 PDF objects out of 1000 (max. 8388607)
+ 71 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 79913 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 79923 words of extra memory for PDF output out of 89155 (max. 10000000)
 
