@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 func accept_input() -> void:
 	if input_ports[0].port_belt:
 		var temp: Belt = input_ports[0].port_belt
-		if temp.speed > 0 and temp.trying_to_pass and is_equal_approx(temp.trying_to_pass.progress_ratio, 1):
+		if temp.trying_to_pass:
 			if temp.try_remove_item(temp.trying_to_pass):
 				print("Erased")
 				temp.trying_to_pass.queue_free()

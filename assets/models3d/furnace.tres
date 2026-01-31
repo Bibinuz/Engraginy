@@ -1,4 +1,4 @@
-[gd_resource type="ArrayMesh" load_steps=5 format=4 uid="uid://dc8nhlaxfceca"]
+[gd_resource type="ArrayMesh" format=4 uid="uid://dc8nhlaxfceca"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xd5b3"]
 resource_name = "Wooden Pole"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bokm35rrtq46y"]
+[gd_scene format=4 uid="uid://bokm35rrtq46y"]
 
 [ext_resource type="Script" uid="uid://biabriu637tk7" path="res://scripts/materials/visualMaterial.gd" id="1_gpy2u"]
 [ext_resource type="Resource" uid="uid://dmuorwgkindl4" path="res://Resources/MaterialData/ironOre.tres" id="2_26d1w"]
@@ -210,7 +210,7 @@ shadow_mesh = SubResource("ArrayMesh_01vjo")
 [sub_resource type="BoxShape3D" id="BoxShape3D_26d1w"]
 size = Vector3(0.695, 0.2849414, 0.5596094)
 
-[node name="IronOre" type="PathFollow3D" node_paths=PackedStringArray("area", "meshes")]
+[node name="IronOre" type="PathFollow3D" unique_id=151671386 node_paths=PackedStringArray("area", "meshes")]
 loop = false
 script = ExtResource("1_gpy2u")
 material = ExtResource("2_26d1w")
@@ -218,33 +218,33 @@ area = NodePath("Area3D")
 meshes = NodePath("Meshes")
 metadata/_custom_type_script = "uid://biabriu637tk7"
 
-[node name="Meshes" type="Node3D" parent="."]
+[node name="Meshes" type="Node3D" parent="." unique_id=73865961]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07790904, 0, 0)
 
-[node name="rock_smallD" type="MeshInstance3D" parent="Meshes"]
+[node name="rock_smallD" type="MeshInstance3D" parent="Meshes" unique_id=1971396236]
 transform = Transform3D(0.8454657, 0, 0, 0, 0.30627123, 0, 0, 0, 0.8454657, 0.13342525, -0.012571562, 0.112415)
 mesh = SubResource("ArrayMesh_81y6y")
 skeleton = NodePath("")
 
-[node name="rock_smallH" type="MeshInstance3D" parent="Meshes"]
+[node name="rock_smallH" type="MeshInstance3D" parent="Meshes" unique_id=913252874]
 transform = Transform3D(0.8454657, 0, 0, 0, 0.30627123, 0, 0, 0, 0.8454657, -0.02419759, -0.038919725, -0.08551374)
 mesh = SubResource("ArrayMesh_punfd")
 skeleton = NodePath("")
 
-[node name="rock_tallG" type="MeshInstance3D" parent="Meshes"]
+[node name="rock_tallG" type="MeshInstance3D" parent="Meshes" unique_id=375665125]
 transform = Transform3D(0.8454657, 0, 0, 0, 0.30627123, 0, 0, 0, 0.8454657, 0.22268143, 0.00021613979, -0.13880956)
 mesh = SubResource("ArrayMesh_paysh")
 skeleton = NodePath("")
 
-[node name="rock_smallTopB_001" type="MeshInstance3D" parent="Meshes"]
+[node name="rock_smallTopB_001" type="MeshInstance3D" parent="Meshes" unique_id=2029265044]
 transform = Transform3D(-1.00787396e-07, 0, 0.84546584, 0, 0.30627123, 0, -0.84546584, 0, -1.00787396e-07, 0.10269864, 0.00026371336, 0.022142615)
 mesh = SubResource("ArrayMesh_prfos")
 skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1749517167]
 collision_layer = 128
 collision_mask = 128
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1334695439]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0024566203, 0.11019642, -0.0012367964)
 shape = SubResource("BoxShape3D_26d1w")

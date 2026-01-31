@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://bam6m2rgjsofa"]
+[gd_scene format=4 uid="uid://bam6m2rgjsofa"]
 
 [ext_resource type="Script" uid="uid://dkp11tw81unke" path="res://scripts/machineScripts/miner.gd" id="1_qcpy4"]
 [ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/interactionComponent/interactioncomponent.gd" id="2_8so5f"]
@@ -311,12 +311,11 @@ size = Vector3(0.1, 0.9, 0.9)
 [sub_resource type="SphereShape3D" id="SphereShape3D_hrgr1"]
 radius = 0.25
 
-[node name="Miner" type="Node3D" node_paths=PackedStringArray("output_ports")]
+[node name="Miner" type="Node3D" unique_id=1250174362]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_qcpy4")
 extraction_time = 15.0
-output_ports = [NodePath("ItemPorts/Out1")]
-strategy = 1
+output_ports_path = Array[NodePath]([NodePath("ItemPorts/Out1")])
 cost_per_speed = 8
 center = Vector3(0, 2, 0)
 meshes_path = Array[NodePath]([NodePath("Support"), NodePath("Drill"), NodePath("OutPort")])
@@ -324,63 +323,63 @@ areas_path = Array[NodePath]([NodePath("PlacementArea")])
 collisions_path = Array[NodePath]([NodePath("Collisions")])
 metadata/_custom_type_script = "uid://dkp11tw81unke"
 
-[node name="Support" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.66028917, -0.49285603, 0)
+[node name="Support" type="MeshInstance3D" parent="." unique_id=1567190746]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.66, -0.5, 0)
 mesh = SubResource("ArrayMesh_lttma")
 skeleton = NodePath("")
 
-[node name="Drill" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0080636, 0)
+[node name="Drill" type="MeshInstance3D" parent="." unique_id=291347830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = SubResource("ArrayMesh_gr71f")
 skeleton = NodePath("")
 
-[node name="OutPort" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5013291, 0.3671471, 0)
+[node name="OutPort" type="MeshInstance3D" parent="." unique_id=1499530892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.367, 0)
 mesh = SubResource("ArrayMesh_c7evy")
 skeleton = NodePath("")
 
-[node name="Collisions" type="StaticBody3D" parent="."]
+[node name="Collisions" type="StaticBody3D" parent="." unique_id=587021678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 visible = false
 
-[node name="InteractionComponent" type="Node" parent="Collisions"]
+[node name="InteractionComponent" type="Node" parent="Collisions" unique_id=631967789]
 script = ExtResource("2_8so5f")
 context = "Open miner menu"
 metadata/_custom_type_script = "uid://cw0kcf37813c4"
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Collisions"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Collisions" unique_id=723171094]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5009196, 0)
 shape = SubResource("ConvexPolygonShape3D_tg8xb")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collisions"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collisions" unique_id=2007899093]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5009196, 0)
 shape = SubResource("ConvexPolygonShape3D_3fs0y")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Collisions"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collisions" unique_id=607543828]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5009196, 0)
 shape = SubResource("ConvexPolygonShape3D_syxsf")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Collisions"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Collisions" unique_id=906710725]
 transform = Transform3D(1, 0, 0, 0, 0.99997026, -0.007714279, 0, 0.007714279, 0.99997026, 1.6411862, 1.45138, -0.006803466)
 shape = SubResource("BoxShape3D_qxqb1")
 
-[node name="PlacementArea" type="Area3D" parent="."]
+[node name="PlacementArea" type="Area3D" parent="." unique_id=1544283154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlacementArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlacementArea" unique_id=1097707146]
 transform = Transform3D(1, 0, 0, 0, 0.99997026, -0.007714279, 0, 0.007714279, 0.99997026, 1.6285596, 1.4512153, 0.014562019)
 shape = SubResource("BoxShape3D_qxqb1")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="PlacementArea"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="PlacementArea" unique_id=478482154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3794949, 0)
 shape = SubResource("CapsuleShape3D_hrgr1")
 
-[node name="ConnectionPorts" type="Node3D" parent="."]
+[node name="ConnectionPorts" type="Node3D" parent="." unique_id=393163920]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 visible = false
 
-[node name="Shaft1" type="Area3D" parent="ConnectionPorts"]
+[node name="Shaft1" type="Area3D" parent="ConnectionPorts" unique_id=1532799476]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 2
 collision_mask = 2
@@ -388,10 +387,10 @@ script = ExtResource("3_8so5f")
 allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Shaft1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Shaft1" unique_id=156113687]
 shape = SubResource("BoxShape3D_8so5f")
 
-[node name="Nord" type="Area3D" parent="ConnectionPorts"]
+[node name="Nord" type="Area3D" parent="ConnectionPorts" unique_id=1227673099]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 collision_layer = 2
 collision_mask = 2
@@ -400,14 +399,14 @@ type = 2
 allow_ports = Array[int]([2])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Nord"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Nord" unique_id=2026548951]
 shape = SubResource("BoxShape3D_8so5f")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/Nord"]
+[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/Nord" unique_id=1567751747]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="South" type="Area3D" parent="ConnectionPorts"]
+[node name="South" type="Area3D" parent="ConnectionPorts" unique_id=489843564]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 collision_layer = 2
 collision_mask = 2
@@ -416,14 +415,14 @@ type = 2
 allow_ports = Array[int]([2])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/South"]
+[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/South" unique_id=747653968]
 transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, 0, 1, 0, 0, 0)
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/South"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/South" unique_id=1965506990]
 shape = SubResource("BoxShape3D_8so5f")
 
-[node name="East" type="Area3D" parent="ConnectionPorts"]
+[node name="East" type="Area3D" parent="ConnectionPorts" unique_id=317444309]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 collision_layer = 2
 collision_mask = 2
@@ -432,14 +431,14 @@ type = 2
 allow_ports = Array[int]([2])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/East"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/East" unique_id=664370686]
 shape = SubResource("BoxShape3D_8so5f")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/East"]
+[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/East" unique_id=1009276001]
 transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, 0, 1, 0, 0, 0)
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="West" type="Area3D" parent="ConnectionPorts"]
+[node name="West" type="Area3D" parent="ConnectionPorts" unique_id=664726808]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 collision_layer = 2
 collision_mask = 2
@@ -448,14 +447,14 @@ type = 2
 allow_ports = Array[int]([2])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/West"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/West" unique_id=670092794]
 shape = SubResource("BoxShape3D_8so5f")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/West"]
+[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/West" unique_id=860841018]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="NWest" type="Area3D" parent="ConnectionPorts"]
+[node name="NWest" type="Area3D" parent="ConnectionPorts" unique_id=200714697]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.70710677, 0, -0.70710677)
 collision_layer = 2
 collision_mask = 2
@@ -465,14 +464,14 @@ type = 2
 allow_ports = Array[int]([1])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/NWest"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/NWest" unique_id=2031194636]
 shape = SubResource("BoxShape3D_8so5f")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/NWest"]
+[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/NWest" unique_id=968539498]
 transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, 0, 1, 0, 0, 0)
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="SEast" type="Area3D" parent="ConnectionPorts"]
+[node name="SEast" type="Area3D" parent="ConnectionPorts" unique_id=1690448237]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.70710677, 0, 0.70710677)
 collision_layer = 2
 collision_mask = 2
@@ -482,14 +481,14 @@ type = 2
 allow_ports = Array[int]([1])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/SEast"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/SEast" unique_id=1930157919]
 shape = SubResource("BoxShape3D_8so5f")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/SEast"]
+[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/SEast" unique_id=1049601621]
 transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, 0, 1, 0, 0, 0)
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="SWest" type="Area3D" parent="ConnectionPorts"]
+[node name="SWest" type="Area3D" parent="ConnectionPorts" unique_id=1388559297]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.70710677, 8.742278e-08, -0.70710677)
 collision_layer = 2
 collision_mask = 2
@@ -499,14 +498,14 @@ type = 2
 allow_ports = Array[int]([1])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/SWest"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/SWest" unique_id=527358431]
 shape = SubResource("BoxShape3D_8so5f")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/SWest"]
+[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/SWest" unique_id=2022906632]
 transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, 0, 1, 0, 0, 0)
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="NEast" type="Area3D" parent="ConnectionPorts"]
+[node name="NEast" type="Area3D" parent="ConnectionPorts" unique_id=354857998]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.70710677, -8.742278e-08, 0.70710677)
 collision_layer = 2
 collision_mask = 2
@@ -516,35 +515,35 @@ type = 2
 allow_ports = Array[int]([1])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/NEast"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/NEast" unique_id=1569405575]
 shape = SubResource("BoxShape3D_8so5f")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/NEast"]
+[node name="CSGBox3D" type="CSGBox3D" parent="ConnectionPorts/NEast" unique_id=987307435]
 transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, 0, 1, 0, 0, 0)
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="ItemPorts" type="Node3D" parent="."]
+[node name="ItemPorts" type="Node3D" parent="." unique_id=983410999]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Out1" type="StaticBody3D" parent="ItemPorts"]
+[node name="Out1" type="StaticBody3D" parent="ItemPorts" unique_id=360345295]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, 0)
 script = ExtResource("4_hrgr1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemPorts/Out1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemPorts/Out1" unique_id=1168446679]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32299995, 0.24665177, -7.1054274e-15)
 shape = SubResource("BoxShape3D_hrgr1")
 
-[node name="MachinePortInteraction" type="Node" parent="ItemPorts/Out1"]
+[node name="MachinePortInteraction" type="Node" parent="ItemPorts/Out1" unique_id=690741193]
 script = ExtResource("5_4ve7c")
 override_icon = true
 metadata/_custom_type_script = "uid://ct1vnop5y3256"
 
-[node name="MiningPoint" type="Area3D" parent="."]
+[node name="MiningPoint" type="Area3D" parent="." unique_id=1567377200]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.500888, 0)
 collision_layer = 8
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MiningPoint"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MiningPoint" unique_id=250631702]
 shape = SubResource("SphereShape3D_hrgr1")
 debug_color = Color(0.9857089, 0, 0.33571884, 0.41960785)
 

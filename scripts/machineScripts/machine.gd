@@ -7,14 +7,17 @@ enum Strategy {
 }
 
 @export_group("Machine data")
-@export var input_ports : Array[MachinePort]
-@export var output_ports : Array[MachinePort]
-@export var aviable_formulas : Array[Formula]
+@export var input_ports_path : Array[NodePath]
+@export var output_ports_path : Array[NodePath]
+#@export var aviable_formulas : Array[Formula]
 
-var selected_formula : int
+var input_ports: Array[MachinePort] = []
+var output_ports: Array[MachinePort] = []
+
+#var selected_formula : int
 
 @export_group("Machine characteristics")
-@export var strategy : Strategy
+#@export var strategy : Strategy
 @export var production_speed : float = 1.0
 
 func _ready() -> void:
@@ -22,8 +25,15 @@ func _ready() -> void:
 	cost_per_speed = -1
 
 func _process(_delta: float) -> void:
-
 	pass
+
+func _enter_tree() -> void:
+	super()
+
+func load_node_exports() -> void:
+	super()
+	load_singular_node_path(input_ports_path, input_ports, MachinePort)
+	load_singular_node_path(output_ports_path, output_ports, MachinePort)
 
 func set_power_state() -> void:
 	if is_overstressed:

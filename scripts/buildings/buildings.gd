@@ -16,9 +16,11 @@ var collisions: Array [StaticBody3D]
 
 
 
-@export var is_placed : bool = false
+@export_storage var is_placed : bool = false
 
 func _ready() -> void:
+	load_node_exports()
+	#await get_tree().physics_frame
 	if not is_placed:
 		toggle_collisions(false)
 
@@ -26,24 +28,23 @@ func _process(_delta: float) -> void:
 	pass
 
 func _enter_tree() -> void:
-	load_node_exports()
+	return
+	#await get_tree().physics_frame
 
 func load_node_exports() -> void:
-	for path: NodePath in meshes_path:
+	load_singular_node_path(meshes_path, meshes, MeshInstance3D)
+	load_singular_node_path(areas_path, areas, Area3D)
+	load_singular_node_path(collisions_path, collisions, StaticBody3D)
+
+func load_singular_node_path(paths: Array[NodePath], nodes: Array, type) -> void:
+	for path in paths:
 		if not path.is_empty() and has_node(path):
 			var node = get_node(path)
-			if not node is MeshInstance3D: continue
-			meshes.append(node)
-	for path: NodePath in areas_path:
-		if not path.is_empty() and has_node(path):
-			var node = get_node(path)
-			if not node is Area3D: continue
-			areas.append(node)
-	for path: NodePath in collisions_path:
-		if not path.is_empty() and has_node(path):
-			var node = get_node(path)
-			if not node is StaticBody3D: continue
-			collisions.append(node)
+			if not is_instance_of(node, type) or nodes.has(node): continue
+			nodes.append(node)
+
+
+
 
 func check_placement() -> bool:
 	for area in areas:
@@ -67,7 +68,7 @@ func placed() -> void:
 	is_placed = true
 	for mesh in meshes:
 		mesh.material_override = null
-		toggle_collisions(true)
+	toggle_collisions(true)
 
 func break_part() -> void:
 	if debris_scene:

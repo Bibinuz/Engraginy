@@ -10,17 +10,18 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
-	meshes[1].rotate(Vector3(0,1,0), delta*speed)
-	extract_resource(delta)
+	if not is_overstressed:
+		meshes[1].rotate(Vector3(0,1,0), delta*speed)
+		extract_resource(delta)
 	if extracting:
 		try_output()
 
 func check_placement() -> bool:
 	return super()
-	placement_green()
-	for area in areas:
-		print(area.get_overlapping_areas())
-	return true
+	#placement_green()
+	#for area in areas:
+		#print(area.get_overlapping_areas())
+	#return true
 
 func interacted() -> void:
 	if extracting_from:

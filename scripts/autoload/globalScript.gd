@@ -95,4 +95,7 @@ func give_visual_material(mat: Materials) -> VisualMaterial:
 	var vis_mat: VisualMaterial = null
 	if mat.name == "Iron ore":
 		vis_mat = load("res://scenes/iron_ore.tscn").instantiate()
+	elif mat.name == "Coal ore":
+		vis_mat = load("res://scenes/coal_ore.tscn").instantiate()
+
 	return vis_mat

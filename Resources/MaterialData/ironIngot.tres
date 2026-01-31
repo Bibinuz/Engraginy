@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Materials" format=3 uid="uid://3k7ongnr3bn1"]
+
+[ext_resource type="Image" uid="uid://db836vkbup0e5" path="res://assets/material_icons/iron_ingot.png" id="1_cy33w"]
+[ext_resource type="Script" uid="uid://berfinvgyspa2" path="res://scripts/materials/materials.gd" id="2_q103d"]
+
+[resource]
+script = ExtResource("2_q103d")
+name = "Iron ingot"
+max_stack = 32
+icon = ExtResource("1_cy33w")
+metadata/_custom_type_script = "uid://berfinvgyspa2"

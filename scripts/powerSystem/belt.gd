@@ -33,12 +33,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
-	if is_overstressed:
-		meshes[0].set_instance_shader_parameter("speed", 0)
-	else:
-		meshes[0].set_instance_shader_parameter("speed", speed/2)
 	if is_placed:
 		manage_belt_items(delta)
+		if is_overstressed:
+			meshes[0].set_instance_shader_parameter("speed", 0)
+		else:
+			meshes[0].set_instance_shader_parameter("speed", speed/2)
 
 func _input(event: InputEvent) -> void:
 	if is_placed: return
@@ -54,6 +54,7 @@ func bind_ports() -> void:
 
 func place_belt() -> void:
 	if GlobalScript.focused_element is Shaft or GlobalScript.focused_element is MachinePort:
+		placement_green()
 		if len(nodes_connected) == 0:
 			nodes_connected.append(GlobalScript.focused_element)
 		elif len(nodes_connected) == 1 and not nodes_connected.has(GlobalScript.focused_element):
@@ -73,11 +74,12 @@ func place_belt() -> void:
 			else:
 				self.break_part()
 				return
-
 			for connection in nodes_connected:
 				if connection is MachinePort:
 					connection.port_belt = self
 			meshes[0].material_override = shaderMaterial
+	else:
+		placement_red()
 
 func scale_path() -> void:
 	path.scale.x = 1/belt_length
@@ -105,8 +107,6 @@ func get_port_rotation_axis(_port: PowerNodePort) -> Vector3:
 
 func interacted() -> void:
 	print(self, ": ", global_position, ": ", belt_length)
-	var visual_mat: VisualMaterial = load("res://scenes/iron_ore.tscn").instantiate()
-	try_add_item(visual_mat, 0)
 	see_inventory_state()
 
 func break_part() -> void:
@@ -121,7 +121,6 @@ func is_shaft_in_ends(shaft: Shaft) -> void:
 
 func manage_belt_items(delta: float) -> void:
 	for item: VisualMaterial in inventory:
-
 		if item:
 			var overlapping_areas: Array[Area3D] = item.area.get_overlapping_areas()
 			var overlap_count: int = len(overlapping_areas)
@@ -140,25 +139,13 @@ func manage_belt_items(delta: float) -> void:
 				trying_to_pass = item
 			elif speed < 0 and is_equal_approx(item.progress, 0):
 				trying_to_pass = item
-
-			if not is_blocked:
-				var movement: float = item.progress+speed*delta/2
-				if movement < belt_length and abs(movement) >= 0:
-					item.progress = movement
-				elif movement > belt_length:
-					item.progress = belt_length
-				elif movement < 0:
-					item.progress = 0
-
-				#item.visual_material.progress = item.progress
+			if not is_blocked and not is_overstressed:
+				item.progress = item.progress+speed*delta/2
 	if trying_to_pass:
 		if try_pass_item(trying_to_pass):
 			inventory.erase(trying_to_pass)
 			path.remove_child(trying_to_pass)
 			trying_to_pass.queue_free()
-		#inventory.erase(to_erase)
-		#to_erase.visual_material.queue_free()
-		#to_erase.queue_free()
 
 func see_inventory_state() -> void:
 	print("Inventory state")
@@ -186,7 +173,6 @@ func try_pass_item(item:VisualMaterial) -> bool:
 	elif is_zero_approx(item.progress_ratio) and ft_conn:
 		if ft_conn.belt.try_add_item(item.duplicate(), ft_conn.pos):
 			return true
-
 	return false
 
 func try_remove_item(item:VisualMaterial)-> bool:
@@ -216,8 +202,6 @@ func _on_port_area_entered(area: Area3D, port_id: String) -> void:
 			ft_conn = BeltConnection.new(other, connection_point)
 		elif port_id == "back":
 			bk_conn = BeltConnection.new(other, connection_point)
-
-
 
 func _on_port_area_exited(area: Area3D, port_id: String) -> void:
 	if area and area.get_path() and area.get_parent() is Belt:

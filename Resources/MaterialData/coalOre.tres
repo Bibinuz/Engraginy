@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Materials" format=3 uid="uid://boyvyuvpw1q16"]
+
+[ext_resource type="Image" uid="uid://bb0tf6565army" path="res://assets/material_icons/coal_ore.png" id="1_1rf0k"]
+[ext_resource type="Script" uid="uid://berfinvgyspa2" path="res://scripts/materials/materials.gd" id="2_73hhc"]
+
+[resource]
+script = ExtResource("2_73hhc")
+name = "Coal ore"
+max_stack = 64
+is_flamable = true
+energy = 100.0
+icon = ExtResource("1_1rf0k")
+metadata/_custom_type_script = "uid://berfinvgyspa2"

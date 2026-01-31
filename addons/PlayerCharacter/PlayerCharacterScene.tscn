@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bwggrf7sbmkcv"]
+[gd_scene format=3 uid="uid://bwggrf7sbmkcv"]
 
 [ext_resource type="Script" uid="uid://d3s8yxuvpmekm" path="res://addons/PlayerCharacter/StateMachine/PlayerCharacterScript.gd" id="1_h128t"]
 [ext_resource type="Script" uid="uid://b0fbr48rbvn27" path="res://addons/PlayerCharacter/Camera/CameraScript.gd" id="2_x12n0"]
@@ -23,9 +23,10 @@ _data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(1, 30), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5yjma"]
+radius = 0.102
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bkys"]
-albedo_color = Color(0.196078, 0.223529, 1, 1)
+albedo_color = Color(0.19607843, 0.22352941, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_p2iaj"]
 
@@ -45,7 +46,7 @@ font_size = 30
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
-[node name="PlayerCharacter" type="CharacterBody3D" groups=["PlayerCharacter"]]
+[node name="PlayerCharacter" type="CharacterBody3D" unique_id=1609059147 groups=["PlayerCharacter"]]
 collision_layer = 2
 collision_mask = 97
 floor_block_on_wall = false
@@ -80,7 +81,7 @@ nbJumpsInAirAllowed = 1
 coyoteJumpCooldown = 0.3
 interact_distance = 10.0
 
-[node name="CameraHolder" type="Node3D" parent="."]
+[node name="CameraHolder" type="Node3D" parent="." unique_id=1863956662]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.55, 0)
 script = ExtResource("2_x12n0")
 XAxisSensibility = 0.05
@@ -91,74 +92,76 @@ startFOV = 90.0
 baseCameraLerpSpeed = 8.0
 crouchCameraLerpSpeed = 8.0
 crouchCameraDepth = -0.6
-bobFrequency = 1.1
-bobAmplitude = 0.15
+bobFrequency = 0.1
+bobAmplitude = 0.3
 camTiltRotationValue = 0.05
 camTiltRotationSpeed = 2.2
 onFloorTiltValDivider = 1.6
 mouseModeAction = "mouseMode"
 
-[node name="Camera" type="Camera3D" parent="CameraHolder"]
+[node name="Camera" type="Camera3D" parent="CameraHolder" unique_id=966015762]
 cull_mask = 3
 current = true
 fov = 90.0
 near = 0.01
 far = 1000.0
 
-[node name="Hitbox" type="CollisionShape3D" parent="."]
+[node name="Hitbox" type="CollisionShape3D" parent="." unique_id=1762298318]
 shape = SubResource("CapsuleShape3D_5yjma")
 
-[node name="Raycasts" type="Node3D" parent="."]
+[node name="Raycasts" type="Node3D" parent="." unique_id=1682628320]
 
-[node name="CeilingCheck" type="RayCast3D" parent="Raycasts"]
+[node name="CeilingCheck" type="RayCast3D" parent="Raycasts" unique_id=1219711424]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.758088, 0)
 exclude_parent = false
 target_position = Vector3(0, 3, 0)
 debug_shape_custom_color = Color(1, 0, 0, 1)
 
-[node name="FloorCheck" type="RayCast3D" parent="Raycasts"]
+[node name="FloorCheck" type="RayCast3D" parent="Raycasts" unique_id=275995520]
 exclude_parent = false
 target_position = Vector3(0, -3, 0)
 debug_shape_custom_color = Color(0, 0, 0.956863, 1)
 
-[node name="Model" type="MeshInstance3D" parent="."]
+[node name="Model" type="MeshInstance3D" parent="." unique_id=1540351995]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+visible = false
 layers = 2
 material_override = SubResource("StandardMaterial3D_6bkys")
 mesh = SubResource("CapsuleMesh_p2iaj")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
+[node name="StateMachine" type="Node" parent="." unique_id=304699881 node_paths=PackedStringArray("initialState")]
 script = ExtResource("54_e0r17")
 initialState = NodePath("IdleState")
 
-[node name="IdleState" type="Node" parent="StateMachine"]
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=1811493305]
 script = ExtResource("55_dayh2")
 metadata/_custom_type_script = "uid://stil4xkf3tk0"
 
-[node name="WalkState" type="Node" parent="StateMachine"]
+[node name="WalkState" type="Node" parent="StateMachine" unique_id=399132439]
 script = ExtResource("56_w3td4")
 metadata/_custom_type_script = "uid://blt7dest23fk0"
 
-[node name="RunState" type="Node" parent="StateMachine"]
+[node name="RunState" type="Node" parent="StateMachine" unique_id=917174724]
 script = ExtResource("57_gwv0a")
 metadata/_custom_type_script = "uid://5gk47o641xgt"
 
-[node name="JumpState" type="Node" parent="StateMachine"]
+[node name="JumpState" type="Node" parent="StateMachine" unique_id=1888533421]
 script = ExtResource("58_gwv0a")
 metadata/_custom_type_script = "uid://dvu58wf01wils"
 
-[node name="InairState" type="Node" parent="StateMachine"]
+[node name="InairState" type="Node" parent="StateMachine" unique_id=945846598]
 script = ExtResource("59_bqtt6")
 metadata/_custom_type_script = "uid://bh3rdvokmrar1"
 
-[node name="CrouchState" type="Node" parent="StateMachine"]
+[node name="CrouchState" type="Node" parent="StateMachine" unique_id=1088676620]
 script = ExtResource("60_tu3bf")
 metadata/_custom_type_script = "uid://bhoqhv7escpyx"
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1026091880]
 script = ExtResource("16_5jm78")
 metadata/_edit_use_anchors_ = true
 
-[node name="Crosshair" type="CenterContainer" parent="HUD"]
+[node name="Crosshair" type="CenterContainer" parent="HUD" unique_id=474747570]
 visible = false
 material = SubResource("CanvasItemMaterial_fu2j1")
 anchors_preset = 8
@@ -169,7 +172,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayCharInfos" type="HBoxContainer" parent="HUD"]
+[node name="PlayCharInfos" type="HBoxContainer" parent="HUD" unique_id=1375063238]
 visible = false
 z_index = -1
 y_sort_enabled = true
@@ -179,10 +182,10 @@ offset_bottom = 357.0
 scale = Vector2(0.7, 0.7)
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/PlayCharInfos"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/PlayCharInfos" unique_id=971808021]
 layout_mode = 2
 
-[node name="CurrentStateLabel" type="Label" parent="HUD/PlayCharInfos/VBoxContainer"]
+[node name="CurrentStateLabel" type="Label" parent="HUD/PlayCharInfos/VBoxContainer" unique_id=1719098924]
 texture_filter = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -190,7 +193,7 @@ text = "Current state : "
 label_settings = SubResource("LabelSettings_4e1aq")
 vertical_alignment = 1
 
-[node name="DesiredMoveSpeedLabel" type="Label" parent="HUD/PlayCharInfos/VBoxContainer"]
+[node name="DesiredMoveSpeedLabel" type="Label" parent="HUD/PlayCharInfos/VBoxContainer" unique_id=524142833]
 texture_filter = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -198,7 +201,7 @@ text = "Desired move speed : "
 label_settings = SubResource("LabelSettings_4e1aq")
 vertical_alignment = 1
 
-[node name="VelocityLabel" type="Label" parent="HUD/PlayCharInfos/VBoxContainer"]
+[node name="VelocityLabel" type="Label" parent="HUD/PlayCharInfos/VBoxContainer" unique_id=727047819]
 texture_filter = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -206,7 +209,7 @@ text = "Velocity : "
 label_settings = SubResource("LabelSettings_4e1aq")
 vertical_alignment = 1
 
-[node name="NbJumpsInAirAllowedLabel" type="Label" parent="HUD/PlayCharInfos/VBoxContainer"]
+[node name="NbJumpsInAirAllowedLabel" type="Label" parent="HUD/PlayCharInfos/VBoxContainer" unique_id=678004125]
 texture_filter = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -214,10 +217,10 @@ text = "Nb jumps in air allowed :"
 label_settings = SubResource("LabelSettings_4e1aq")
 vertical_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HUD/PlayCharInfos"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HUD/PlayCharInfos" unique_id=1257927710]
 layout_mode = 2
 
-[node name="CurrentStateLabelText" type="Label" parent="HUD/PlayCharInfos/VBoxContainer2"]
+[node name="CurrentStateLabelText" type="Label" parent="HUD/PlayCharInfos/VBoxContainer2" unique_id=1688708008]
 texture_filter = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -225,7 +228,7 @@ text = "..................."
 label_settings = SubResource("LabelSettings_3aho1")
 vertical_alignment = 1
 
-[node name="DesiredMoveSpeedLabelText" type="Label" parent="HUD/PlayCharInfos/VBoxContainer2"]
+[node name="DesiredMoveSpeedLabelText" type="Label" parent="HUD/PlayCharInfos/VBoxContainer2" unique_id=463312150]
 texture_filter = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -233,7 +236,7 @@ text = "..................."
 label_settings = SubResource("LabelSettings_3aho1")
 vertical_alignment = 1
 
-[node name="VelocityLabelText" type="Label" parent="HUD/PlayCharInfos/VBoxContainer2"]
+[node name="VelocityLabelText" type="Label" parent="HUD/PlayCharInfos/VBoxContainer2" unique_id=1647193976]
 texture_filter = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -241,7 +244,7 @@ text = "..................."
 label_settings = SubResource("LabelSettings_3aho1")
 vertical_alignment = 1
 
-[node name="NbJumpsInAirAllowedLabelText" type="Label" parent="HUD/PlayCharInfos/VBoxContainer2"]
+[node name="NbJumpsInAirAllowedLabelText" type="Label" parent="HUD/PlayCharInfos/VBoxContainer2" unique_id=443644941]
 texture_filter = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -249,7 +252,7 @@ text = "..................."
 label_settings = SubResource("LabelSettings_3aho1")
 vertical_alignment = 1
 
-[node name="PlayCharInfos2" type="HBoxContainer" parent="HUD"]
+[node name="PlayCharInfos2" type="HBoxContainer" parent="HUD" unique_id=1822760113]
 visible = false
 z_index = -1
 y_sort_enabled = true
@@ -264,10 +267,10 @@ grow_horizontal = 0
 scale = Vector2(0.7, 0.7)
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/PlayCharInfos2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/PlayCharInfos2" unique_id=435709158]
 layout_mode = 2
 
-[node name="FramesPerSecondLabel" type="Label" parent="HUD/PlayCharInfos2/VBoxContainer"]
+[node name="FramesPerSecondLabel" type="Label" parent="HUD/PlayCharInfos2/VBoxContainer" unique_id=907574238]
 texture_filter = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -275,10 +278,10 @@ text = "Frames per seconds : "
 label_settings = SubResource("LabelSettings_4e1aq")
 vertical_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HUD/PlayCharInfos2"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HUD/PlayCharInfos2" unique_id=2130350876]
 layout_mode = 2
 
-[node name="FramesPerSecondLabelText" type="Label" parent="HUD/PlayCharInfos2/VBoxContainer2"]
+[node name="FramesPerSecondLabelText" type="Label" parent="HUD/PlayCharInfos2/VBoxContainer2" unique_id=255201733]
 texture_filter = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -286,7 +289,7 @@ text = "....."
 label_settings = SubResource("LabelSettings_3aho1")
 vertical_alignment = 1
 
-[node name="Center" type="Label" parent="HUD"]
+[node name="Center" type="Label" parent="HUD" unique_id=1302966997]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

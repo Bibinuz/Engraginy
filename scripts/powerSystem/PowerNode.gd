@@ -17,6 +17,7 @@ var connections : Dictionary[PowerNodePort, Array]= {}
 @export_storage var is_broken : bool = false
 
 func _ready() -> void:
+	super()
 	for port in $ConnectionPorts.get_children():
 		if port is PowerNodePort:
 			connections.set(port, [])
@@ -27,20 +28,9 @@ func _ready() -> void:
 				continue
 			port.monitorable = false
 			port.monitoring = false
-	super()
 
 func _process(delta: float) -> void:
 	super(delta)
-
-func _enter_tree() -> void:
-	#connect_signals()
-	super()
-
-func connect_signals() -> void:
-	for port in $ConnectionPorts.get_children():
-		if port is PowerNodePort:
-			pass
-
 
 func _on_area_entered(other_port: Area3D, local_port: PowerNodePort) -> void:
 	if not other_port is PowerNodePort:
@@ -72,6 +62,7 @@ func get_rotation_axis() -> Vector3:
 		return global_transform.basis.y.normalized()
 
 func get_port_rotation_axis(_port: PowerNodePort) -> Vector3:
+		print(self.name, " : ", get_rotation_axis())
 		return get_rotation_axis()
 
 func placed() -> void:
