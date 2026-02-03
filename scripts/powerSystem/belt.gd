@@ -12,11 +12,11 @@ class BeltConnection:
 
 @export var shaderMaterial: ShaderMaterial
 var nodes_connected: Array[Node3D] = []
-var allowed_connections: Array = [Shaft, MachinePort]
-var belt_length: float = 0.0
+@export_storage var allowed_connections: Array = [Shaft, MachinePort]
+@export_storage var belt_length: float = 0.0
 var inventory: Array[VisualMaterial] = []
 var trying_to_pass: VisualMaterial = null
-var belt_vector: Vector3 = Vector3.ZERO
+@export_storage var belt_vector: Vector3 = Vector3.ZERO
 var ft_conn: BeltConnection = null
 var bk_conn: BeltConnection = null
 
@@ -106,7 +106,7 @@ func get_port_rotation_axis(_port: PowerNodePort) -> Vector3:
 	return global_transform.basis.x.normalized()
 
 func interacted() -> void:
-	print(self, ": ", global_position, ": ", belt_length)
+	print(self, ": ", global_position, ": ", belt_length, ": ", global_rotation)
 	see_inventory_state()
 
 func break_part() -> void:
@@ -167,6 +167,7 @@ func try_add_item(visual_mat: VisualMaterial, position_in_belt: float) -> bool:
 	return false
 
 func try_pass_item(item:VisualMaterial) -> bool:
+	if not item: return false
 	if is_equal_approx(item.progress_ratio, 1) and bk_conn:
 		if bk_conn.belt.try_add_item(item.duplicate(), bk_conn.pos):
 			return true

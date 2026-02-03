@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1769900478.10751 "/home/bibinuz/Godot/tfg-godot/Informes/Article final/article.tex" "article.pdf" "article" 1769900478.84046 0
-  "/home/bibinuz/Godot/tfg-godot/Informes/Article final/article.tex" 1769900478.03959 55462 5626214f8dc99f7a4c39b7fe8477d697 ""
+["pdflatex"] 1770145948.0029 "/home/bibinuz/Godot/tfg-godot/Informes/Article final/article.tex" "article.pdf" "article" 1770145948.75243 0
+  "/home/bibinuz/Godot/tfg-godot/Informes/Article final/article.tex" 1770145947.20004 58216 d39946e7f80ab040d1e1e577c0c68a78 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1767555874 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1767555874 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/courier/pcrb7t.tfm" 1767555874 960 4ab65358b8406f30ef5496c8c096d22b ""
@@ -134,9 +134,9 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1767555874 42087 b0f9697c952c8f5a8eede4134282cb0d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1768496342 5311557 9da84c45f5b388655502706482323571 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1768496319 2008249 3362a03b4048fc8b94c07e7e5fbab65b ""
-  "article.aux" 1769900478.7876 8570 3e418ee7ffa436c4997e1d294fdb9bf4 "pdflatex"
-  "article.out" 1769900478.7886 5367 d291f6e8cc5b4364b672c769a2f10e22 "pdflatex"
-  "article.tex" 1769900478.03959 55462 5626214f8dc99f7a4c39b7fe8477d697 ""
+  "article.aux" 1770145948.70605 9225 20ebef3f130f285a1248e36a77279a71 "pdflatex"
+  "article.out" 1770145948.70605 5038 9ce65bdc27089d11af3a2e057d44fcb5 "pdflatex"
+  "article.tex" 1770145947.20004 58216 d39946e7f80ab040d1e1e577c0c68a78 ""
   "img/CintaTransportadoraCrop.png" 1769533374.40502 89903 022bb98c81ded198064075f314879293 ""
   "img/ConnexioCintesMaquines.png" 1769535874.84108 214975 baa5f2d629c3c82ba33ad92a0c25fab9 ""
   "img/DSP.png" 1769879703.16035 2201116 183698e6b63d563cf324dba7cc957d75 ""
@@ -150,6 +150,8 @@
   "img/SaveNodePath.png" 1769446980.05209 46870 3a821c9a28c924f3f12588846fede5d8 ""
   "img/ShaftScene.png" 1768766149.41911 71005 ac1ac3791667c75b04692e18669674d0 ""
   "img/beltpath.png" 1769883178.09762 143692 0add10bb573e8240b668792f4c41757f ""
+  "img/resultats1.png" 1770143139.86508 373022 6a6c162d051d269ffa538054d4ee1f15 ""
+  "img/resultats2.png" 1770143296.62737 244339 e8d3a9ab2733f27952375c8dede3e3ea ""
   "img/satisfactory.png" 1769880405.11779 4540940 ac372e290213638b46c89362d54a6dac ""
   (generated)
   "article.aux"

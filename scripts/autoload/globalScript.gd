@@ -91,11 +91,13 @@ func load_game(container: BuildList, save_path: String) -> Node:
 		new_container.owner = parent
 	return new_container
 
-func give_visual_material(mat: Materials) -> VisualMaterial:
+func give_visual_material(mat: String) -> VisualMaterial:
 	var vis_mat: VisualMaterial = null
-	if mat.name == "Iron ore":
-		vis_mat = load("res://scenes/iron_ore.tscn").instantiate()
-	elif mat.name == "Coal ore":
-		vis_mat = load("res://scenes/coal_ore.tscn").instantiate()
+	if mat == "Iron ore":
+		vis_mat = load("res://scenes/iron_ore.tscn").instantiate() as VisualMaterial
+	elif mat == "Coal ore":
+		vis_mat = load("res://scenes/coal_ore.tscn").instantiate() as VisualMaterial
+	elif mat == "Iron ingot":
+		vis_mat = load("res://scenes/iron_ingot.tscn").instantiate() as VisualMaterial
 
 	return vis_mat

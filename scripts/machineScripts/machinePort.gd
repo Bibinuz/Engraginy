@@ -13,13 +13,13 @@ func interacted()-> void:
 
 func try_pass_material(mat: Materials) -> bool:
 	if port_belt:
-		var vis_mat: VisualMaterial = GlobalScript.give_visual_material(mat)
+		var vis_mat: VisualMaterial = GlobalScript.give_visual_material(mat.name)
 		if vis_mat:
 			var pos_in_belt: float = 0.0
 			if is_zero_approx(port_belt.global_rotation.y) and (port_belt.global_position - global_position).x < 0:
-				pos_in_belt = port_belt.belt_length
-			elif port_belt.global_rotation.y > 1.5 and (port_belt.global_position - global_position).z < 0:
 				pos_in_belt = 0
+			elif port_belt.global_rotation.y > 1.5 and (port_belt.global_position - global_position).z < 0:
+				pos_in_belt = port_belt.belt_length
 
 			if port_belt.try_add_item(vis_mat, pos_in_belt):
 				return true

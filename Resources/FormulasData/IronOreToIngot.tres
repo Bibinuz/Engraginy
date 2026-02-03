@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Formula" format=3 uid="uid://3ksxufykvevn"]
+
+[ext_resource type="Script" uid="uid://cbvq6n1ov4h40" path="res://scripts/machineScripts/formula.gd" id="1_4e5ld"]
+
+[resource]
+script = ExtResource("1_4e5ld")
+time = 16.0
+metadata/_custom_type_script = "uid://cbvq6n1ov4h40"

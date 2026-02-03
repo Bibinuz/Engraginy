@@ -62,7 +62,7 @@ func get_rotation_axis() -> Vector3:
 		return global_transform.basis.y.normalized()
 
 func get_port_rotation_axis(_port: PowerNodePort) -> Vector3:
-		print(self.name, " : ", get_rotation_axis())
+		#print(self.name, " : ", get_rotation_axis())
 		return get_rotation_axis()
 
 func placed() -> void:

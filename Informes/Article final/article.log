@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2026.1.15)  1 FEB 2026 00:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2026.1.15)  3 FEB 2026 20:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -564,7 +564,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 Package newfloat Info: Trying Plan B...
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 8
-4.
+5.
 (/usr/share/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
@@ -577,7 +577,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+pzd on input line 84.
+LaTeX Font Info:    Trying to load font information for U+pzd on input line 85.
 
 
 (/usr/share/texmf-dist/tex/latex/psnfss/upzd.fd
@@ -586,9 +586,9 @@ File: upzd.fd 2001/06/04 font definitions for U/pzd.
 Package lettrine.sty Info: Targeted height = 29.3449pt
 (lettrine.sty)             (for loversize=0, accent excluded),
 (lettrine.sty)             Lettrine height = 29.34491pt (E);
-(lettrine.sty)             reported on input line 93.
+(lettrine.sty)             reported on input line 94.
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 9
-6.
+8.
 
 (/usr/share/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
@@ -597,10 +597,10 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 <img/dsp.png, id=120, 1677.26625pt x 928.46875pt>
 File: img/dsp.png Graphic file (type png)
 <use img/dsp.png>
-Package pdftex.def Info: img/dsp.png  used on input line 112.
+Package pdftex.def Info: img/dsp.png  used on input line 114.
 (pdftex.def)             Requested size: 241.84843pt x 133.86656pt.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 112--113
+Overfull \hbox (5.0pt too wide) in paragraph at lines 114--115
  [][] 
  []
 
@@ -614,17 +614,17 @@ ts/enc/dvips/base/8r.enc}
 <img/satisfactory.png, id=145, 2569.6pt x 1445.4pt>
 File: img/satisfactory.png Graphic file (type png)
 <use img/satisfactory.png>
-Package pdftex.def Info: img/satisfactory.png  used on input line 121.
+Package pdftex.def Info: img/satisfactory.png  used on input line 123.
 (pdftex.def)             Requested size: 241.84843pt x 136.03523pt.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 121--122
+Overfull \hbox (5.0pt too wide) in paragraph at lines 123--124
  [][] 
  []
 
 
 
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-48.
+50.
 (/usr/share/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -638,10 +638,10 @@ Package microtype Info: Loading generic protrusion settings for font family
 <img/PlayerScene.png, id=153, 493.845pt x 664.4825pt>
 File: img/PlayerScene.png Graphic file (type png)
 <use img/PlayerScene.png>
-Package pdftex.def Info: img/PlayerScene.png  used on input line 167.
+Package pdftex.def Info: img/PlayerScene.png  used on input line 169.
 (pdftex.def)             Requested size: 241.84843pt x 325.40662pt.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 167--168
+Overfull \hbox (5.0pt too wide) in paragraph at lines 169--170
  [][] 
  []
 
@@ -650,59 +650,66 @@ Overfull \hbox (5.0pt too wide) in paragraph at lines 167--168
 <img/InteractCastCode.png, id=155, 958.58125pt x 442.65375pt>
 File: img/InteractCastCode.png Graphic file (type png)
 <use img/InteractCastCode.png>
-Package pdftex.def Info: img/InteractCastCode.png  used on input line 180.
+Package pdftex.def Info: img/InteractCastCode.png  used on input line 182.
 (pdftex.def)             Requested size: 435.32422pt x 201.02277pt.
-
-
-[3 <./img/PlayerScene.png (PNG copy)>]
-<img/DiagramaModuls.png, id=163, 792.9625pt x 201.75375pt>
+<img/DiagramaModuls.png, id=157, 792.9625pt x 201.75375pt>
 File: img/DiagramaModuls.png Graphic file (type png)
 <use img/DiagramaModuls.png>
 Package pdftex.def Info: img/DiagramaModuls.png  used on input line 201.
 (pdftex.def)             Requested size: 435.32422pt x 110.76172pt.
 
 
+[3 <./img/PlayerScene.png (PNG copy)>]
+Underfull \vbox (badness 5893) has occurred while \output is active []
 
 
-[4 <./img/InteractCastCode.png (PNG copy)>]
-<img/PowerNodePort.png, id=171, 538.01pt x 300.12125pt>
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[4 <./img/InteractCastCode.png (PNG copy)> <./img/DiagramaModuls.png>]
+<img/PowerNodePort.png, id=172, 538.01pt x 300.12125pt>
 File: img/PowerNodePort.png Graphic file (type png)
 <use img/PowerNodePort.png>
-Package pdftex.def Info: img/PowerNodePort.png  used on input line 237.
+Package pdftex.def Info: img/PowerNodePort.png  used on input line 255.
 (pdftex.def)             Requested size: 241.84843pt x 134.91135pt.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 237--238
+Overfull \hbox (5.0pt too wide) in paragraph at lines 255--256
  [][] 
  []
 
-<img/ShaftScene.png, id=174, 632.3625pt x 414.54875pt>
+
+
+<img/ShaftScene.png, id=175, 632.3625pt x 414.54875pt>
 File: img/ShaftScene.png Graphic file (type png)
 <use img/ShaftScene.png>
-Package pdftex.def Info: img/ShaftScene.png  used on input line 246.
+Package pdftex.def Info: img/ShaftScene.png  used on input line 264.
 (pdftex.def)             Requested size: 241.84843pt x 158.54224pt.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 246--247
+Overfull \hbox (5.0pt too wide) in paragraph at lines 264--265
  [][] 
  []
 
 
 
-
-
-[5 <./img/DiagramaModuls.png> <./img/PowerNodePort.png (PNG copy)> <./img/Shaft
-Scene.png (PNG copy)>]
+[5 <./img/PowerNodePort.png (PNG copy)> <./img/ShaftScene.png (PNG copy)>]
 <img/FlowDiagramSpeedCalcs.png, id=190, 603.25375pt x 894.34125pt>
 File: img/FlowDiagramSpeedCalcs.png Graphic file (type png)
 <use img/FlowDiagramSpeedCalcs.png>
-Package pdftex.def Info: img/FlowDiagramSpeedCalcs.png  used on input line 266.
+Package pdftex.def Info: img/FlowDiagramSpeedCalcs.png  used on input line 284.
 
 (pdftex.def)             Requested size: 241.84843pt x 358.53531pt.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 266--267
+Overfull \hbox (5.0pt too wide) in paragraph at lines 284--285
  [][] 
  []
 
 
+
+
+Underfull \vbox (badness 1043) has occurred while \output is active []
 
 
 
@@ -710,21 +717,21 @@ Overfull \hbox (5.0pt too wide) in paragraph at lines 266--267
 <img/beltpath.png, id=208, 1286.8075pt x 819.06pt>
 File: img/beltpath.png Graphic file (type png)
 <use img/beltpath.png>
-Package pdftex.def Info: img/beltpath.png  used on input line 302.
+Package pdftex.def Info: img/beltpath.png  used on input line 320.
 (pdftex.def)             Requested size: 241.84843pt x 153.9358pt.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 302--303
+Overfull \hbox (5.0pt too wide) in paragraph at lines 320--321
  [][] 
  []
 
 <img/CintaTransportadoraCrop.png, id=209, 1029.8475pt x 372.39125pt>
 File: img/CintaTransportadoraCrop.png Graphic file (type png)
 <use img/CintaTransportadoraCrop.png>
-Package pdftex.def Info: img/CintaTransportadoraCrop.png  used on input line 31
-1.
+Package pdftex.def Info: img/CintaTransportadoraCrop.png  used on input line 32
+9.
 (pdftex.def)             Requested size: 241.84843pt x 87.44945pt.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 311--312
+Overfull \hbox (5.0pt too wide) in paragraph at lines 329--330
  [][] 
  []
 
@@ -733,25 +740,24 @@ Overfull \hbox (5.0pt too wide) in paragraph at lines 311--312
 <img/ConnexioCintesMaquines.png, id=211, 1029.8475pt x 662.475pt>
 File: img/ConnexioCintesMaquines.png Graphic file (type png)
 <use img/ConnexioCintesMaquines.png>
-Package pdftex.def Info: img/ConnexioCintesMaquines.png  used on input line 335
+Package pdftex.def Info: img/ConnexioCintesMaquines.png  used on input line 353
 .
 (pdftex.def)             Requested size: 241.84843pt x 155.57045pt.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 335--336
+Overfull \hbox (5.0pt too wide) in paragraph at lines 353--354
  [][] 
  []
 
 
 
-[7 <./img/beltpath.png (PNG copy)> <./img/CintaTransportadoraCrop.png> <./img/C
-onnexioCintesMaquines.png (PNG copy)>]
-<img/GameMenus.png, id=226, 1187.43625pt x 882.29625pt>
+[7 <./img/beltpath.png (PNG copy)> <./img/CintaTransportadoraCrop.png>]
+<img/GameMenus.png, id=225, 1187.43625pt x 882.29625pt>
 File: img/GameMenus.png Graphic file (type png)
 <use img/GameMenus.png>
-Package pdftex.def Info: img/GameMenus.png  used on input line 358.
+Package pdftex.def Info: img/GameMenus.png  used on input line 382.
 (pdftex.def)             Requested size: 241.84843pt x 179.70064pt.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 358--359
+Overfull \hbox (5.0pt too wide) in paragraph at lines 382--383
  [][] 
  []
 
@@ -759,50 +765,83 @@ Overfull \hbox (5.0pt too wide) in paragraph at lines 358--359
 
 
 
-[8 <./img/GameMenus.png (PNG copy)>]
-<img/PlacementProcess.png, id=237, 244.9953pt x 88.4103pt>
+[8 <./img/ConnexioCintesMaquines.png (PNG copy)> <./img/GameMenus.png (PNG copy
+)>]
+<img/PlacementProcess.png, id=235, 244.9953pt x 88.4103pt>
 File: img/PlacementProcess.png Graphic file (type png)
 <use img/PlacementProcess.png>
-Package pdftex.def Info: img/PlacementProcess.png  used on input line 393.
+Package pdftex.def Info: img/PlacementProcess.png  used on input line 426.
 (pdftex.def)             Requested size: 435.32422pt x 157.10944pt.
 
 
-<img/SaveNodePath.png, id=239, 682.55pt x 239.89626pt>
-File: img/SaveNodePath.png Graphic file (type png)
-<use img/SaveNodePath.png>
-Package pdftex.def Info: img/SaveNodePath.png  used on input line 428.
-(pdftex.def)             Requested size: 241.84843pt x 85.00087pt.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 428--429
- [][] 
- []
+
 
 
 
 [9]
+<img/SaveNodePath.png, id=245, 682.55pt x 239.89626pt>
+File: img/SaveNodePath.png Graphic file (type png)
+<use img/SaveNodePath.png>
+Package pdftex.def Info: img/SaveNodePath.png  used on input line 466.
+(pdftex.def)             Requested size: 241.84843pt x 85.00087pt.
+
+Overfull \hbox (5.0pt too wide) in paragraph at lines 466--467
+ [][] 
+ []
 
 
 
-[10 <./img/PlacementProcess.png> <./img/SaveNodePath.png (PNG copy)>]
+<img/resultats1.png, id=247, 1595.9625pt x 929.4725pt>
+File: img/resultats1.png Graphic file (type png)
+<use img/resultats1.png>
+Package pdftex.def Info: img/resultats1.png  used on input line 486.
+(pdftex.def)             Requested size: 241.84843pt x 140.8473pt.
+
+Overfull \hbox (5.0pt too wide) in paragraph at lines 486--487
+ [][] 
+ []
+
+<img/resultats2.png, id=249, 1023.825pt x 838.13126pt>
+File: img/resultats2.png Graphic file (type png)
+<use img/resultats2.png>
+Package pdftex.def Info: img/resultats2.png  used on input line 499.
+(pdftex.def)             Requested size: 241.84843pt x 197.98398pt.
+
+Overfull \hbox (5.0pt too wide) in paragraph at lines 499--500
+ [][] 
+ []
 
 
 
-[11] (./article.aux)
+[10 <./img/PlacementProcess.png> <./img/SaveNodePath.png (PNG copy)> <./img/res
+ultats1.png (PNG copy)>]
+
+
+
+[11 <./img/resultats2.png (PNG copy)>]
+
+
+
+[12
+
+] (./article.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `article.out' has not changed.
-(rerunfilecheck)             Checksum: D291F6E8CC5B4364B672C769A2F10E22;5367.
+(rerunfilecheck)             Checksum: 9CE65BDC27089D11AF3A2E057D44FCB5;5038.
  ) 
 Here is how much of TeX's memory you used:
- 15908 strings out of 475171
- 256902 string characters out of 5767095
- 718815 words of memory out of 5000000
- 38272 multiletter control sequences out of 15000+600000
- 605184 words of font info for 310 fonts, out of 8000000 for 9000
+ 15940 strings out of 475171
+ 257489 string characters out of 5767095
+ 719081 words of memory out of 5000000
+ 38293 multiletter control sequences out of 15000+600000
+ 606941 words of font info for 315 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 79i,12n,93p,1754b,564s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,12n,93p,1722b,551s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/font
 s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/
@@ -813,10 +852,10 @@ exmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-dist/fonts/type1
 .pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-
 dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/ti
 mes/utmri8a.pfb></usr/share/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on article.pdf (11 pages, 9586801 bytes).
+Output written on article.pdf (12 pages, 10205633 bytes).
 PDF statistics:
- 351 PDF objects out of 1000 (max. 8388607)
- 291 compressed objects within 3 object streams
- 80 named destinations out of 1000 (max. 500000)
- 80151 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 361 PDF objects out of 1000 (max. 8388607)
+ 298 compressed objects within 3 object streams
+ 83 named destinations out of 1000 (max. 500000)
+ 84257 words of extra memory for PDF output out of 89155 (max. 10000000)
 
