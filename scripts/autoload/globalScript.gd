@@ -7,8 +7,20 @@ var ui_context: ContextComponent
 var bottom_menu: BottomMenu
 var focused_element: Node3D
 
+var pending_load_action = false
+
 var folder_save_path: String = "user://saves/"
 var file_save_path: String = "slot1.scn"
+
+func _process(_delta: float) -> void:
+	if pending_load_action:
+		if get_tree() and get_tree().current_scene and get_tree().current_scene is Level:
+			pending_load_action = false
+			print(build_list, " ",folder_save_path+file_save_path)
+			build_list = load_game(build_list, folder_save_path+file_save_path)
+			PowerGridManager.recalculate_all_grids()
+			print("Load")
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("closeProject"):
@@ -16,9 +28,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Save"):
 		save_game()
 	if event.is_action_pressed("Load"):
-		#print("Hello")
-		build_list = load_game(build_list, folder_save_path+file_save_path)
-		PowerGridManager.recalculate_all_grids()
+		pending_load_action = true
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed() and event.keycode == KEY_0 and focused_element and focused_element is Belt:
@@ -81,6 +91,7 @@ func load_game(container: BuildList, save_path: String) -> Node:
 		return container
 
 	var new_container: BuildList = packed_scene.instantiate()
+	print(container)
 	var parent = container.owner
 	var old_name = container.name
 	container.name = old_name+"_trash"

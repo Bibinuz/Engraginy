@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://qhgitbm4jhw6"]
 
+[ext_resource type="Script" uid="uid://cje2rwfrv4rws" path="res://scripts/gui/main_menu.gd" id="1_l6cm7"]
+
 [sub_resource type="FontFile" id="FontFile_vue75"]
 cache/0/variation_coordinates = {}
 cache/0/face_index = 0
@@ -308,8 +310,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_l6cm7")
 
-[node name="Backgroung" type="TextureRect" parent="." unique_id=1948833305]
+[node name="MainScreen" type="TextureRect" parent="." unique_id=1948833305]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -317,41 +321,90 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1192654687]
+[node name="MarginContainer" type="MarginContainer" parent="MainScreen" unique_id=1192654687]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.3
 anchor_top = 0.25
 anchor_right = 0.7
-anchor_bottom = 0.7
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1703370272]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainScreen/MarginContainer" unique_id=1703370272]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=540338455]
+[node name="Label" type="Label" parent="MainScreen/MarginContainer/VBoxContainer" unique_id=540338455]
 layout_mode = 2
 text = "Engraginy"
 label_settings = SubResource("LabelSettings_l6cm7")
 horizontal_alignment = 1
 
-[node name="NewGame" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1850630219]
+[node name="NewGame" type="Button" parent="MainScreen/MarginContainer/VBoxContainer" unique_id=1850630219]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "New game"
 
-[node name="LoadGame" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1583251982]
+[node name="LoadGame" type="Button" parent="MainScreen/MarginContainer/VBoxContainer" unique_id=1583251982]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Load game"
 
-[node name="Tutorials" type="Button" parent="MarginContainer/VBoxContainer" unique_id=376703085]
+[node name="Tutorials" type="Button" parent="MainScreen/MarginContainer/VBoxContainer" unique_id=376703085]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Tutorials"
 
-[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=131384531]
+[node name="Exit" type="Button" parent="MainScreen/MarginContainer/VBoxContainer" unique_id=131384531]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Exit"
+
+[node name="TutorialMenu" type="Panel" parent="." unique_id=10874299]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialMenu" unique_id=2062792650]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TutorialMenu/VBoxContainer" unique_id=174071214]
+layout_mode = 2
+text = "Tutorials"
+label_settings = SubResource("LabelSettings_l6cm7")
+horizontal_alignment = 1
+
+[node name="Iniciate" type="Button" parent="TutorialMenu/VBoxContainer" unique_id=4799612]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Iniciate"
+
+[node name="Intermediary" type="Button" parent="TutorialMenu/VBoxContainer" unique_id=1975127370]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Intermediary"
+
+[node name="Advanced" type="Button" parent="TutorialMenu/VBoxContainer" unique_id=1436797068]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Advanced"
+
+[node name="Back" type="Button" parent="TutorialMenu/VBoxContainer" unique_id=243947279]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[connection signal="pressed" from="MainScreen/MarginContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MainScreen/MarginContainer/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="MainScreen/MarginContainer/VBoxContainer/Tutorials" to="." method="_on_tutorials_pressed"]
+[connection signal="pressed" from="MainScreen/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

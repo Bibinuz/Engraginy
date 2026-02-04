@@ -28,6 +28,13 @@ func _ready() -> void:
 	super()
 	bind_ports()
 	path.curve = path.curve.duplicate()
+	if is_placed:
+		scale_path()
+		scale_connection_points()
+		for connection in nodes_connected:
+			if connection is MachinePort:
+				connection.port_belt = self
+		meshes[0].material_override = shaderMaterial
 
 
 func _process(delta: float) -> void:
