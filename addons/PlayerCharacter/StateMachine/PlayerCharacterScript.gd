@@ -77,7 +77,7 @@ var coyoteJumpOn : bool = false
 var interact_cast_result : Node3D
 
 #references variables
-@onready var camHolder : Node3D = $CameraHolder
+@onready var camHolder : CameraObject = $CameraHolder
 @onready var model : MeshInstance3D = $Model
 @onready var hitbox : CollisionShape3D = $Hitbox
 @onready var stateMachine : Node = $StateMachine
@@ -96,6 +96,8 @@ func _ready():
 	jumpCooldownRef = jumpCooldown
 	nbJumpsInAirAllowedRef = nbJumpsInAirAllowed
 	coyoteJumpCooldownRef = coyoteJumpCooldown
+	print("Player ready")
+
 
 func _process(_delta: float):
 	displayProperties()

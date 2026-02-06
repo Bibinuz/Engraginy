@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://bam6m2rgjsofa"]
 
-[ext_resource type="Script" uid="uid://dkp11tw81unke" path="res://scripts/machineScripts/miner.gd" id="1_qcpy4"]
-[ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/interactionComponent/interactioncomponent.gd" id="2_8so5f"]
-[ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/powerSystem/PowerNodePort.gd" id="3_8so5f"]
-[ext_resource type="Script" uid="uid://btu2kunjdvxg7" path="res://scripts/machineScripts/machinePort.gd" id="4_hrgr1"]
-[ext_resource type="Script" uid="uid://ct1vnop5y3256" path="res://scripts/interactionComponent/machinePortInteraction.gd" id="5_4ve7c"]
+[ext_resource type="Script" uid="uid://dkp11tw81unke" path="res://scripts/MachineScripts/miner.gd" id="1_qcpy4"]
+[ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/InteractionComponent/interactioncomponent.gd" id="2_8so5f"]
+[ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/PowerSystem/powerNodePort.gd" id="3_8so5f"]
+[ext_resource type="Script" uid="uid://btu2kunjdvxg7" path="res://scripts/MachineScripts/machinePort.gd" id="4_hrgr1"]
+[ext_resource type="Script" uid="uid://ct1vnop5y3256" path="res://scripts/InteractionComponent/machinePortInteraction.gd" id="5_4ve7c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_607wt"]
 resource_name = "stone"

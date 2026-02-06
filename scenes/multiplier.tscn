@@ -1,8 +1,8 @@
-[gd_scene load_steps=23 format=4 uid="uid://bqim7tnrh22m0"]
+[gd_scene format=4 uid="uid://bqim7tnrh22m0"]
 
-[ext_resource type="Script" uid="uid://cfvvxyurc0x6n" path="res://scripts/powerSystem/multiplier.gd" id="1_dxqaf"]
-[ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/interactionComponent/interactioncomponent.gd" id="2_iryne"]
-[ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/powerSystem/PowerNodePort.gd" id="2_kg0ia"]
+[ext_resource type="Script" uid="uid://cfvvxyurc0x6n" path="res://scripts/PowerSystem/multiplier.gd" id="1_dxqaf"]
+[ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/InteractionComponent/interactioncomponent.gd" id="2_iryne"]
+[ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/PowerSystem/powerNodePort.gd" id="2_kg0ia"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuum4"]
 resource_name = "BaseMetal.001"

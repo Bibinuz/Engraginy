@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Materials" format=4 uid="uid://dmuorwgkindl4"]
 
-[ext_resource type="Script" uid="uid://berfinvgyspa2" path="res://scripts/materials/materials.gd" id="1_au8ox"]
+[ext_resource type="Script" uid="uid://berfinvgyspa2" path="res://scripts/Materials/materials.gd" id="1_au8ox"]
 
 [sub_resource type="Image" id="Image_au8ox"]
 data = {

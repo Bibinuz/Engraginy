@@ -1,7 +1,5 @@
-extends Node3D
-
-#class name
 class_name CameraObject
+extends Node3D
 
 #camera variables
 @export_group("Camera variables")
@@ -57,13 +55,16 @@ func _unhandled_input(event):
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(maxUpAngleView), deg_to_rad(maxDownAngleView))
 
 func _process(delta):
+
 	applies(delta)
 
 	cameraBob(delta)
 
 	cameraTilt(delta)
 
-	#smouseMode()
+
+
+	#mouseMode()
 
 func applies(delta : float):
 	#manage the differents camera modifications relative to a specific state, except for the FOV

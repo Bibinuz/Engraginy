@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://qhgitbm4jhw6"]
 
-[ext_resource type="Script" uid="uid://cje2rwfrv4rws" path="res://scripts/gui/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://cje2rwfrv4rws" path="res://scripts/Gui/main_menu.gd" id="1_l6cm7"]
 
-[sub_resource type="FontFile" id="FontFile_vue75"]
+[sub_resource type="FontFile" id="FontFile_l6cm7"]
 cache/0/variation_coordinates = {}
 cache/0/face_index = 0
 cache/0/embolden = 0.0
@@ -299,11 +299,12 @@ cache/0/81/0/underline_thickness = 0.0
 cache/0/81/0/scale = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_l6cm7"]
-font = SubResource("FontFile_vue75")
+font = SubResource("FontFile_l6cm7")
 font_size = 64
 
 [node name="MainMenu" type="Control" unique_id=956588095]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -313,7 +314,6 @@ size_flags_vertical = 3
 script = ExtResource("1_l6cm7")
 
 [node name="MainScreen" type="TextureRect" parent="." unique_id=1948833305]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -353,7 +353,7 @@ text = "Load game"
 [node name="Tutorials" type="Button" parent="MainScreen/MarginContainer/VBoxContainer" unique_id=376703085]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Tutorials"
+text = "Tutorials (WIP)"
 
 [node name="Exit" type="Button" parent="MainScreen/MarginContainer/VBoxContainer" unique_id=131384531]
 layout_mode = 2
@@ -361,6 +361,7 @@ theme_override_font_sizes/font_size = 32
 text = "Exit"
 
 [node name="TutorialMenu" type="Panel" parent="." unique_id=10874299]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

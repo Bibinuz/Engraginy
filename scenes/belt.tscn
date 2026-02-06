@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dh3x05jge21qi"]
+[gd_scene format=3 uid="uid://dh3x05jge21qi"]
 
-[ext_resource type="Script" uid="uid://cfdannkv1b6f6" path="res://scripts/powerSystem/belt.gd" id="1_80u0l"]
+[ext_resource type="Script" uid="uid://cfdannkv1b6f6" path="res://scripts/PowerSystem/belt.gd" id="1_80u0l"]
 [ext_resource type="Material" uid="uid://cylmvdwlflngl" path="res://assets/materials/belt.tres" id="3_2xc0s"]
-[ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/interactionComponent/interactioncomponent.gd" id="4_km0u5"]
-[ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/powerSystem/PowerNodePort.gd" id="5_km0u5"]
+[ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/InteractionComponent/interactioncomponent.gd" id="4_km0u5"]
+[ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/PowerSystem/powerNodePort.gd" id="5_km0u5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xc0s"]
 albedo_color = Color(0.27752772, 0.27752772, 0.27752772, 1)
