@@ -96,8 +96,6 @@ func _ready():
 	jumpCooldownRef = jumpCooldown
 	nbJumpsInAirAllowedRef = nbJumpsInAirAllowed
 	coyoteJumpCooldownRef = coyoteJumpCooldown
-	print("Player ready")
-
 
 func _process(_delta: float):
 	displayProperties()

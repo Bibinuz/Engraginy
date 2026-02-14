@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://qhgitbm4jhw6"]
 
-[ext_resource type="Script" uid="uid://cje2rwfrv4rws" path="res://scripts/Gui/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://cje2rwfrv4rws" path="res://scripts/gui/main_menu.gd" id="1_l6cm7"]
 
 [sub_resource type="FontFile" id="FontFile_l6cm7"]
 cache/0/variation_coordinates = {}

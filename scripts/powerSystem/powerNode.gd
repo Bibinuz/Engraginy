@@ -4,17 +4,13 @@ class_name PowerNode extends Building
 signal network_changed
 
 @export var cost_per_speed : int = 0
-@export var is_passive:bool=true
-
 @export var center: Vector3 = Vector3.ZERO
 
-# Connections[local_port] = [other_node, other_port]
-# Dictionary[PowerNodePort, Array[PortConnection]]
 var connections : Dictionary[PowerNodePort, Array]= {}
-@export_storage var speed : float = 0.0
-@export_storage var is_overstressed : bool = false
-@export_storage var is_running : bool = false
-@export_storage var is_broken : bool = false
+var speed : float = 0.0
+var is_overstressed : bool = false
+var is_running : bool = false
+var is_broken : bool = false
 
 func _ready() -> void:
 	super()
@@ -123,13 +119,34 @@ func calculate_speed(local_port: PowerNodePort, connected_node: PowerNode, conne
 	return resulting_speed
 
 func interacted() -> void:
-	print(self, ": ", type_string(typeof(self)))
-	print(connections)
-	print(self.get_signal_connection_list("network_changed"))
+	super()
 	return
+	#print(self, ": ", type_string(typeof(self)))
+	#print(connections)
+	#print(self.get_signal_connection_list("network_changed"))
+	#return
 
 	##print(self.name, ": ", self.connections)
 	##for port in connections:
 		##for connection in connections[port]:
 			##if port and connection and connection.node and connection.port:
 				##calculate_speed(port, connection.node, connection.port)
+
+func save_aa() -> Dictionary:
+	var save_data: Dictionary = {}#super()
+	save_data["cost_per_speed"] = cost_per_speed
+	save_data["cen_x"] = center.x
+	save_data["cen_y"] = center.y
+	save_data["cen_z"] = center.z
+
+	return save_data
+
+func load_aa(data: Dictionary) -> void:
+	#super(data)
+	center.x = data["cen_x"]
+	center.y = data["cen_y"]
+	center.z = data["cen_z"]
+
+	data.erase("cen_x")
+	data.erase("cen_y")
+	data.erase("cen_z")

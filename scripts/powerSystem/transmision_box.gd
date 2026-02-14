@@ -23,4 +23,5 @@ func get_port_rotation_axis(port: PowerNodePort) -> Vector3:
 	return global_transform.basis.y.snappedf(1.0)
 
 func interacted() -> void:
-	print(PowerGridManager.find_whole_grid_bfs(self))
+	super()
+	#print(PowerGridManager.find_whole_grid_bfs(self))

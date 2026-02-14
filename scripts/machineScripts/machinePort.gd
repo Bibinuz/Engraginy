@@ -23,7 +23,7 @@ func try_pass_material(mat: Materials) -> bool:
 				pos_in_belt = port_belt.belt_length
 
 			if port_belt.try_add_item(pos_in_belt):
-				port_belt.path.add_child(vis_mat)
+				port_belt.path.call_deferred("add_child", vis_mat)
 				vis_mat.progress = pos_in_belt
 				return true
 			vis_mat.queue_free()

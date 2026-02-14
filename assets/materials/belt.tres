@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://cylmvdwlflngl"]
 
-[ext_resource type="Shader" uid="uid://b8xu2pdtvwev3" path="res://scripts/Shaders/belt.gdshader" id="1_0k2ve"]
+[ext_resource type="Shader" uid="uid://b8xu2pdtvwev3" path="res://scripts/shaders/belt.gdshader" id="1_0k2ve"]
 [ext_resource type="Texture2D" uid="uid://16gih7s73qpy" path="res://assets/textures/belttest.png" id="2_pl2c5"]
 
 [resource]

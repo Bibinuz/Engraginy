@@ -1,11 +1,10 @@
 [gd_scene format=4 uid="uid://bqyrmi6xgjxyl"]
 
-[ext_resource type="Script" uid="uid://cndbnwxgcnkno" path="res://scripts/MachineScripts/furnace.gd" id="1_0uoyi"]
-[ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/InteractionComponent/interactioncomponent.gd" id="3_s82ge"]
-[ext_resource type="PackedScene" uid="uid://dw4acs4p456vx" path="res://scenes/furnace_gui.tscn" id="4_kcyua"]
-[ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/PowerSystem/powerNodePort.gd" id="4_s82ge"]
-[ext_resource type="Script" uid="uid://btu2kunjdvxg7" path="res://scripts/MachineScripts/machinePort.gd" id="5_5cqhb"]
-[ext_resource type="Script" uid="uid://ct1vnop5y3256" path="res://scripts/InteractionComponent/machinePortInteraction.gd" id="6_uxcy8"]
+[ext_resource type="Script" uid="uid://cndbnwxgcnkno" path="res://scripts/machineScripts/furnace.gd" id="1_0uoyi"]
+[ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/interactionComponent/interactioncomponent.gd" id="3_s82ge"]
+[ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/powerSystem/powerNodePort.gd" id="4_s82ge"]
+[ext_resource type="Script" uid="uid://btu2kunjdvxg7" path="res://scripts/machineScripts/machinePort.gd" id="5_5cqhb"]
+[ext_resource type="Script" uid="uid://ct1vnop5y3256" path="res://scripts/interactionComponent/machinePortInteraction.gd" id="6_uxcy8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvnsg"]
 resource_name = "Stone.001"
@@ -257,7 +256,7 @@ size = Vector3(0.1, 0.1, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_58i4n"]
 size = Vector3(0.1, 1.2633301, 1.2536865)
 
-[node name="Furnace" type="Node3D" unique_id=1558815186]
+[node name="Furnace" type="Node3D" unique_id=1558815186 groups=["Persist"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_0uoyi")
 input_ports_path = Array[NodePath]([NodePath("ItemPorts/In1"), NodePath("ItemPorts/In2")])
@@ -299,7 +298,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="InteractionComponent" type="Node" parent="StaticBody3D" unique_id=457703897]
 script = ExtResource("3_s82ge")
-context = "Open furnace menu"
+override_icon = true
 metadata/_custom_type_script = "uid://cw0kcf37813c4"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=663594726]
@@ -383,5 +382,3 @@ shape = SubResource("BoxShape3D_58i4n")
 script = ExtResource("6_uxcy8")
 override_icon = true
 metadata/_custom_type_script = "uid://ct1vnop5y3256"
-
-[node name="FurnaceGUI" parent="." unique_id=1189387271 instance=ExtResource("4_kcyua")]

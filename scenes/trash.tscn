@@ -26,7 +26,7 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_24v10"]
 material = SubResource("StandardMaterial3D_24v10")
 
-[node name="Trash" type="Node3D" unique_id=1842097973]
+[node name="Trash" type="Node3D" unique_id=1842097973 groups=["Persist"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_w6jqc")
 input_ports_path = Array[NodePath]([NodePath("ItemPorts/In1")])

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://b42n1nedoytet"]
 
-[ext_resource type="Script" uid="uid://563d5nfb84m6" path="res://scripts/PowerSystem/generator.gd" id="1_1ijy3"]
+[ext_resource type="Script" uid="uid://563d5nfb84m6" path="res://scripts/powerSystem/generator.gd" id="1_1ijy3"]
 [ext_resource type="ArrayMesh" uid="uid://5jtigcnxqhxl" path="res://assets/models3d/shaft.tres" id="2_g5cqk"]
 [ext_resource type="ArrayMesh" uid="uid://b8xvoe0cg17tk" path="res://assets/models3d/test_motor.tres" id="2_qxltg"]
-[ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/PowerSystem/powerNodePort.gd" id="3_g5cqk"]
-[ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/InteractionComponent/interactioncomponent.gd" id="3_qxltg"]
+[ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/powerSystem/powerNodePort.gd" id="3_g5cqk"]
+[ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/interactionComponent/interactioncomponent.gd" id="3_qxltg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fuv05"]
 
@@ -17,41 +17,42 @@ size = Vector3(0.1, 0.1, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxltg"]
 size = Vector3(0.9, 0.9, 1.9)
 
-[node name="Generator" type="Node3D"]
+[node name="Generator" type="Node3D" unique_id=440978830 groups=["Persist"]]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_1ijy3")
-generate_per_speed = 64
+generate_per_speed = 1024
+generator_speed = 1.0
 meshes_path = Array[NodePath]([NodePath("MeshInstance3D"), NodePath("MeshInstance3D2")])
 areas_path = Array[NodePath]([NodePath("PlacementArea")])
 collisions_path = Array[NodePath]([NodePath("MotorShaftStatic")])
 metadata/_custom_type_script = "uid://563d5nfb84m6"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1787739500]
 mesh = ExtResource("2_g5cqk")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1041928934]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 0)
 mesh = ExtResource("2_qxltg")
 
-[node name="MotorShaftStatic" type="StaticBody3D" parent="."]
+[node name="MotorShaftStatic" type="StaticBody3D" parent="." unique_id=291459230]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="MotorShaftStatic"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MotorShaftStatic" unique_id=119527373]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 shape = SubResource("BoxShape3D_fuv05")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MotorShaftStatic"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MotorShaftStatic" unique_id=636423373]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_1ijy3")
 
-[node name="InteractionComponent" type="Node" parent="MotorShaftStatic"]
+[node name="InteractionComponent" type="Node" parent="MotorShaftStatic" unique_id=694372050]
 script = ExtResource("3_qxltg")
 override_icon = true
 metadata/_custom_type_script = "uid://cw0kcf37813c4"
 
-[node name="ConnectionPorts" type="Node3D" parent="."]
+[node name="ConnectionPorts" type="Node3D" parent="." unique_id=580262722]
 
-[node name="Port1" type="Area3D" parent="ConnectionPorts"]
+[node name="Port1" type="Area3D" parent="ConnectionPorts" unique_id=1846744712]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 collision_layer = 2
 collision_mask = 2
@@ -59,10 +60,10 @@ script = ExtResource("3_g5cqk")
 allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port1" unique_id=1200105768]
 shape = SubResource("BoxShape3D_6vl1m")
 
-[node name="Port2" type="Area3D" parent="ConnectionPorts"]
+[node name="Port2" type="Area3D" parent="ConnectionPorts" unique_id=632423640]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 collision_layer = 2
 collision_mask = 2
@@ -70,11 +71,11 @@ script = ExtResource("3_g5cqk")
 allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port2" unique_id=2083317016]
 shape = SubResource("BoxShape3D_6vl1m")
 
-[node name="PlacementArea" type="Area3D" parent="."]
+[node name="PlacementArea" type="Area3D" parent="." unique_id=1475278969]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlacementArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlacementArea" unique_id=1990309707]
 shape = SubResource("BoxShape3D_qxltg")

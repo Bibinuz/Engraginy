@@ -10,7 +10,6 @@ func _ready() -> void:
 	MessageBus.interaction_focused.connect(update)
 	MessageBus.interaction_unfocused.connect(reset)
 	reset()
-	print("Context component ready")
 
 
 func reset() -> void:

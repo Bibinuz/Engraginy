@@ -26,7 +26,6 @@ enum BuildingCategory {
 
 func _ready() -> void:
 	load_all_buildings()
-	print("Building menu ready")
 
 func load_all_buildings() -> void:
 	for category: BuildingCategory in grids:
@@ -39,7 +38,6 @@ func load_all_buildings() -> void:
 		while file_name != "":
 			if file_name.ends_with(".remap"):
 				file_name = file_name.trim_suffix(".remap")
-			print(file_name)
 			if file_name.ends_with(".tres") or file_name.ends_with(".res"):
 				var resource_path = buildings_data_folder + "/" + file_name
 				var building_data = load(resource_path)
@@ -54,4 +52,4 @@ func create_slot(data: Resource) -> void:
 	new_slot.set_building(data)
 	new_slot.is_read_only = true
 	var target_grid: GridContainer = grids[data.category]
-	target_grid.add_child(new_slot)
+	target_grid.call_deferred("add_child", new_slot)

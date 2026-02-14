@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BuildingData" load_steps=4 format=3 uid="uid://c1h0tkwtmpdik"]
+[gd_resource type="Resource" script_class="BuildingData" format=3 uid="uid://c1h0tkwtmpdik"]
 
 [ext_resource type="Texture2D" uid="uid://bva067uswhr6r" path="res://assets/img/Icons/BigCogIcon.png" id="1_obcgh"]
 [ext_resource type="PackedScene" uid="uid://7rlaqoenwbax" path="res://scenes/cog_big.tscn" id="2_a6eoh"]

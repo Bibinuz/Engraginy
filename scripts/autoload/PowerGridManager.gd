@@ -6,7 +6,6 @@ var last_power_calculation: float = 0.0
 
 
 func _ready() -> void:
-	print("PowerGridManager ready")
 	pass
 
 func register_node(node: Node3D) -> void:

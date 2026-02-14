@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BuildingData" load_steps=4 format=3 uid="uid://chbrkl0nfmvwl"]
+[gd_resource type="Resource" script_class="BuildingData" format=3 uid="uid://chbrkl0nfmvwl"]
 
 [ext_resource type="Texture2D" uid="uid://22y8ke1dej8n" path="res://assets/img/Icons/TransmisionBoxIcon.png" id="1_3i2ug"]
 [ext_resource type="PackedScene" uid="uid://u5rwg6jssoab" path="res://scenes/transmision_box.tscn" id="2_0j02t"]

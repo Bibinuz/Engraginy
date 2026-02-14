@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://u5rwg6jssoab"]
 
-[ext_resource type="Script" uid="uid://bniwpiamhb77d" path="res://scripts/PowerSystem/transmision_box.gd" id="1_divq0"]
-[ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/InteractionComponent/interactioncomponent.gd" id="2_73rmk"]
-[ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/PowerSystem/powerNodePort.gd" id="2_sfie3"]
+[ext_resource type="Script" uid="uid://bniwpiamhb77d" path="res://scripts/powerSystem/transmision_box.gd" id="1_divq0"]
+[ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/interactionComponent/interactioncomponent.gd" id="2_73rmk"]
+[ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/powerSystem/powerNodePort.gd" id="2_sfie3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6aki7"]
 resource_name = "BaseMetal.001"
@@ -188,7 +188,7 @@ size = Vector3(0.9, 0.9, 0.9)
 [sub_resource type="BoxShape3D" id="BoxShape3D_k577w"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="transmision_box" type="Node3D"]
+[node name="transmision_box" type="Node3D" unique_id=217936932 groups=["Persist"]]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_divq0")
 cost_per_speed = 4
@@ -196,44 +196,44 @@ meshes_path = Array[NodePath]([NodePath("Port1"), NodePath("Port2"), NodePath("P
 areas_path = Array[NodePath]([NodePath("PlacementArea")])
 collisions_path = Array[NodePath]([NodePath("StaticBody3D")])
 
-[node name="Port1" type="MeshInstance3D" parent="."]
+[node name="Port1" type="MeshInstance3D" parent="." unique_id=1632665002]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_jwi6e")
 skeleton = NodePath("")
 
-[node name="Port2" type="MeshInstance3D" parent="."]
+[node name="Port2" type="MeshInstance3D" parent="." unique_id=540283716]
 mesh = SubResource("ArrayMesh_lfhej")
 skeleton = NodePath("")
 
-[node name="Port3" type="MeshInstance3D" parent="."]
+[node name="Port3" type="MeshInstance3D" parent="." unique_id=1274046952]
 transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0, 0)
 mesh = SubResource("ArrayMesh_0q7di")
 skeleton = NodePath("")
 
-[node name="Port4" type="MeshInstance3D" parent="."]
+[node name="Port4" type="MeshInstance3D" parent="." unique_id=2130400552]
 transform = Transform3D(-4.371139e-08, -1, 4.371139e-08, 0, -4.371139e-08, -1, 1, -4.371139e-08, 1.9106855e-15, 0, 0, 0)
 mesh = SubResource("ArrayMesh_bqae1")
 skeleton = NodePath("")
 
-[node name="Cube" type="MeshInstance3D" parent="."]
+[node name="Cube" type="MeshInstance3D" parent="." unique_id=1629020472]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_4prnc")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=445565589]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=459908921]
 shape = SubResource("BoxShape3D_awura")
 
-[node name="InteractionComponent" type="Node" parent="StaticBody3D"]
+[node name="InteractionComponent" type="Node" parent="StaticBody3D" unique_id=630410238]
 script = ExtResource("2_73rmk")
 override_icon = true
 metadata/_custom_type_script = "uid://cw0kcf37813c4"
 
-[node name="ConnectionPorts" type="Node3D" parent="."]
+[node name="ConnectionPorts" type="Node3D" parent="." unique_id=1237746920]
 
-[node name="PortUn" type="Area3D" parent="ConnectionPorts"]
+[node name="PortUn" type="Area3D" parent="ConnectionPorts" unique_id=1829786470]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 2
 collision_mask = 2
@@ -241,10 +241,10 @@ script = ExtResource("2_sfie3")
 allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/PortUn"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/PortUn" unique_id=1605860915]
 shape = SubResource("BoxShape3D_k577w")
 
-[node name="PortDos" type="Area3D" parent="ConnectionPorts"]
+[node name="PortDos" type="Area3D" parent="ConnectionPorts" unique_id=1582150436]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 collision_layer = 2
 collision_mask = 2
@@ -253,10 +253,10 @@ direction_flipper = -1
 allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/PortDos"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/PortDos" unique_id=1440608667]
 shape = SubResource("BoxShape3D_k577w")
 
-[node name="PortTres" type="Area3D" parent="ConnectionPorts"]
+[node name="PortTres" type="Area3D" parent="ConnectionPorts" unique_id=2025441159]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 collision_layer = 2
 collision_mask = 2
@@ -264,10 +264,10 @@ script = ExtResource("2_sfie3")
 allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/PortTres"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/PortTres" unique_id=1205566494]
 shape = SubResource("BoxShape3D_k577w")
 
-[node name="PortQuatre" type="Area3D" parent="ConnectionPorts"]
+[node name="PortQuatre" type="Area3D" parent="ConnectionPorts" unique_id=1672957267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 collision_layer = 2
 collision_mask = 2
@@ -276,10 +276,10 @@ direction_flipper = -1
 allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/PortQuatre"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/PortQuatre" unique_id=243460141]
 shape = SubResource("BoxShape3D_k577w")
 
-[node name="PlacementArea" type="Area3D" parent="."]
+[node name="PlacementArea" type="Area3D" parent="." unique_id=1876587042]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlacementArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlacementArea" unique_id=1516665829]
 shape = SubResource("BoxShape3D_awura")

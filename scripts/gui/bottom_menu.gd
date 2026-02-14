@@ -15,7 +15,6 @@ var canPlace : bool = false
 var last_rotation: Vector3 = Vector3(PI/2, 0, 0)
 
 func _ready() -> void:
-	print("Hotbar ready")
 	camera = get_viewport().get_camera_3d()
 	GlobalScript.bottom_menu = self
 	pass # Replace with function body.
@@ -79,11 +78,11 @@ func _input(event: InputEvent) -> void:
 			place()
 		if (event.is_action_pressed("rightClick") or event.is_action_pressed("exit")) and isPlacing and instance:
 			cancel_placement()
-		if event.is_action_pressed("rotateBuildingX"):
+		if event.is_action_pressed("rotateBuildingX") and not instance is Machine:
 			instance.global_rotation.x += PI/2
 		if event.is_action_pressed("rotateBuildingY"):
 			instance.global_rotation.y += PI/2
-		if event.is_action_pressed("rotateBuildingZ"):
+		if event.is_action_pressed("rotateBuildingZ") and not instance is Machine:
 			instance.global_rotation.z += PI/2
 
 func place() -> void:
@@ -94,7 +93,8 @@ func place() -> void:
 	instance = null
 	if current_data:
 		instantiate_building(current_data)
-		instance.global_rotation = last_rotation
+		instance.call_deferred("set", "global_rotation", last_rotation)
+		#instance.add_to_group("Persist", true)
 	else:
 		isPlacing = false
 
@@ -118,7 +118,7 @@ func get_data_from_slot(index: int) -> Resource:
 func instantiate_building(data: Resource) -> void:
 	if data.scene:
 		instance = data.scene.instantiate()
-		GlobalScript.build_list.add_child(instance)
+		GlobalScript.build_list.call_deferred("add_child", instance)
 		isPlacing = true
 
 func cancel_placement():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmh41wtuurl1j"]
+[gd_scene format=3 uid="uid://cmh41wtuurl1j"]
 
 [ext_resource type="Script" uid="uid://c3ffec3w6tnau" path="res://scripts/buildings/poof.gd" id="1_abiov"]
 

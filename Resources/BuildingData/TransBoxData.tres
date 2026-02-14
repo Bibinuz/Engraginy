@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BuildingData" load_steps=4 format=3 uid="uid://c7toptdt7r7vi"]
+[gd_resource type="Resource" script_class="BuildingData" format=3 uid="uid://c7toptdt7r7vi"]
 
 [ext_resource type="Texture2D" uid="uid://delj6uy0tgrlv" path="res://assets/img/Icons/MultiplierIcon.png" id="1_6qq4s"]
 [ext_resource type="PackedScene" uid="uid://bqim7tnrh22m0" path="res://scenes/multiplier.tscn" id="2_q0wn6"]

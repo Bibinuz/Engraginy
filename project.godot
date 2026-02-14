@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="tfg"
+config/name="Engraginy"
 run/main_scene="uid://qhgitbm4jhw6"
 config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=144
@@ -22,10 +22,14 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalScript="*res://scripts/Autoload/globalScript.gd"
-MessageBus="*res://scripts/Autoload/message_bus.gd"
-PowerGridManager="*res://scripts/Autoload/PowerGridManager.gd"
+GlobalScript="*res://scripts/autoload/globalScript.gd"
+MessageBus="*res://scripts/autoload/message_bus.gd"
+PowerGridManager="*res://scripts/autoload/PowerGridManager.gd"
 StateScript="*uid://gjekmtw4eb1e"
+
+[debug]
+
+gdscript/warnings/missing_await=1
 
 [display]
 
@@ -44,6 +48,10 @@ version_control/autoload_on_startup=true
 [filesystem]
 
 import/blender/enabled=false
+
+[global_group]
+
+Persist=""
 
 [input]
 

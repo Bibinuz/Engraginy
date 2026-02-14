@@ -3,7 +3,7 @@ class_name Building extends Node3D
 @onready var placementYesMaterial = preload("res://assets/materials/placement_yes.tres")
 @onready var placementNoMaterial = preload("res://assets/materials/placement_no.tres")
 
-@export var debris_scene: PackedScene = preload("res://scenes/poof.tscn")
+@onready var debris_scene: PackedScene = preload("res://scenes/poof.tscn")
 
 @export_group("Meshes, areas and collistions of the building")
 @export var meshes_path : Array[NodePath]
@@ -14,15 +14,16 @@ var meshes: Array[MeshInstance3D]
 var areas : Array[Area3D]
 var collisions: Array [StaticBody3D]
 
+var is_placed : bool = false
 
-
-@export_storage var is_placed : bool = false
 
 func _ready() -> void:
 	load_node_exports()
-	#await get_tree().physics_frame
+	await get_tree().physics_frame
 	if not is_placed:
 		toggle_collisions(false)
+	else:
+		toggle_collisions(true)
 
 func _process(_delta: float) -> void:
 	pass
@@ -68,6 +69,7 @@ func placed() -> void:
 	is_placed = true
 	for mesh in meshes:
 		mesh.material_override = null
+	add_to_group("Persist", true)
 	toggle_collisions(true)
 
 func break_part() -> void:
@@ -78,11 +80,53 @@ func break_part() -> void:
 func spawn_debris():
 	var spawn_pos: Vector3 = global_position if is_inside_tree() else position
 	var debris: GPUParticles3D = debris_scene.instantiate()
-	get_tree().current_scene.add_child(debris)
-	debris.global_position = spawn_pos
+	get_tree().current_scene.call_deferred("add_child", debris)
+	debris.call_deferred("set", "global_position", spawn_pos)
 
 func toggle_collisions(enabled: bool) -> void:
 	for body:StaticBody3D in collisions:
 		for child in body.get_children():
 			if child is CollisionShape3D or child is CollisionPolygon3D:
 				child.disabled = not enabled
+
+func interacted() -> void:
+	if get_parent():
+		print(self)
+		print(get_groups())
+		print(get_parent().name)
+	else:
+		print("No parent")
+	pass
+
+
+func save() -> Dictionary:
+	var save_data: Dictionary = {
+		"filename": get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x,
+		"pos_y" : position.y,
+		"pos_z" : position.z,
+		"rot_x" : rotation.x,
+		"rot_y" : rotation.y,
+		"rot_z" : rotation.z,
+		"meshes_path" : meshes_path,
+		"areas_path" : areas_path,
+		"collisions_path" : collisions_path,
+
+	}
+	return save_data
+
+func load(data: Dictionary) -> void:
+	position.x = data["pos_x"]
+	position.y = data["pos_y"]
+	position.z = data["pos_z"]
+	rotation.x = data["rot_x"]
+	rotation.y = data["rot_y"]
+	rotation.z = data["rot_z"]
+	data.erase("pos_x")
+	data.erase("pos_y")
+	data.erase("pos_z")
+	data.erase("rot_x")
+	data.erase("rot_y")
+	data.erase("rot_z")
+	placed()

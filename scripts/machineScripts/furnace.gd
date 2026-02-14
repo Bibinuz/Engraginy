@@ -1,6 +1,6 @@
 class_name Furnace extends Machine
 
-@onready var gui : Control = $FurnaceGUI
+#@onready var gui : Control = $FurnaceGUI
 #@onready var itemlist: ItemList = $FurnaceGUI/CenterContainer/ItemList
 
 @export_storage var raw_material: Materials
@@ -19,7 +19,7 @@ func _ready() -> void:
 	await get_tree().physics_frame
 	super()
 	aviable_formulas.append(load("res://Resources/FormulasData/IronOreToIngot.tres") as Formula)
-	gui.hide()
+	#gui.hide()
 
 func _process(delta: float) -> void:
 	if not is_overstressed and abs(speed) > 0 and meshes:
@@ -48,6 +48,9 @@ func process_resources(delta: float) -> void:
 	try_output()
 
 func interacted() -> void:
+	super()
+	return
+	@warning_ignore("UNREACHABLE_CODE")
 	if fuel:
 		print(fuel.name)
 		print(fuel.amount)
@@ -84,7 +87,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("exit") and gui_active:
 		gui_active = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		gui.hide()
+		#gui.hide()
 
 func try_port_input(port: MachinePort, stack: Materials) -> Materials:
 	if port.port_belt and port.port_belt.trying_to_pass:
@@ -106,7 +109,7 @@ func try_add_to_inventory(belt: Belt, stack: Materials) -> Materials:
 		stack.amount = 0
 	if to_pass.material.name == stack.name and stack.amount < stack.max_stack:
 		stack.amount += 1
-		belt.path.remove_child(to_pass)
+		belt.path.call_deferred("remove_child", to_pass)
 		to_pass.queue_free()
 	return stack
 

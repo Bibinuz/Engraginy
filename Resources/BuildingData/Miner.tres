@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BuildingData" load_steps=4 format=3 uid="uid://cq5osckix207e"]
+[gd_resource type="Resource" script_class="BuildingData" format=3 uid="uid://cq5osckix207e"]
 
 [ext_resource type="Texture2D" uid="uid://bbijotqdskudn" path="res://assets/input_prompts/keyboard/keyboard_e.png" id="1_sbpk0"]
 [ext_resource type="PackedScene" uid="uid://bam6m2rgjsofa" path="res://scenes/miner.tscn" id="2_sbpk0"]

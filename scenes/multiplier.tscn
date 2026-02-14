@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://bqim7tnrh22m0"]
 
-[ext_resource type="Script" uid="uid://cfvvxyurc0x6n" path="res://scripts/PowerSystem/multiplier.gd" id="1_dxqaf"]
-[ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/InteractionComponent/interactioncomponent.gd" id="2_iryne"]
-[ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/PowerSystem/powerNodePort.gd" id="2_kg0ia"]
+[ext_resource type="Script" uid="uid://cfvvxyurc0x6n" path="res://scripts/powerSystem/multiplier.gd" id="1_dxqaf"]
+[ext_resource type="Script" uid="uid://cw0kcf37813c4" path="res://scripts/interactionComponent/interactioncomponent.gd" id="2_iryne"]
+[ext_resource type="Script" uid="uid://dbuhw48ma2lnv" path="res://scripts/powerSystem/powerNodePort.gd" id="2_kg0ia"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuum4"]
 resource_name = "BaseMetal.001"
@@ -252,7 +252,7 @@ size = Vector3(0.9, 0.9, 0.9)
 [sub_resource type="BoxShape3D" id="BoxShape3D_k577w"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="multiplier" type="Node3D"]
+[node name="multiplier" type="Node3D" unique_id=1889549298 groups=["Persist"]]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_dxqaf")
 cost_per_speed = 4
@@ -260,53 +260,53 @@ meshes_path = Array[NodePath]([NodePath("Port1"), NodePath("Port2"), NodePath("C
 areas_path = Array[NodePath]([NodePath("PlacementArea")])
 collisions_path = Array[NodePath]([NodePath("StaticBody3D")])
 
-[node name="Port1" type="MeshInstance3D" parent="."]
+[node name="Port1" type="MeshInstance3D" parent="." unique_id=225946300]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_qt8hb")
 skeleton = NodePath("")
 
-[node name="Port2" type="MeshInstance3D" parent="."]
+[node name="Port2" type="MeshInstance3D" parent="." unique_id=1363898537]
 mesh = SubResource("ArrayMesh_o570i")
 skeleton = NodePath("")
 
-[node name="Cube" type="MeshInstance3D" parent="."]
+[node name="Cube" type="MeshInstance3D" parent="." unique_id=1115836191]
 transform = Transform3D(1, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_5yyc0")
 skeleton = NodePath("")
 
-[node name="Cube_001" type="MeshInstance3D" parent="."]
+[node name="Cube_001" type="MeshInstance3D" parent="." unique_id=1100009295]
 transform = Transform3D(0.15, 0, 0, 0, -4.3711387e-10, -0.14999999, 0, 0.01, -6.556708e-09, 0, 0, 0.5)
 mesh = SubResource("ArrayMesh_006yo")
 skeleton = NodePath("")
 
-[node name="Cube_002" type="MeshInstance3D" parent="."]
+[node name="Cube_002" type="MeshInstance3D" parent="." unique_id=436047659]
 transform = Transform3D(0.15, 0, 0, 0, -4.3711387e-10, -0.15, 0, 0.01, -6.5567085e-09, 0, 0, -0.5)
 mesh = SubResource("ArrayMesh_uit8h")
 skeleton = NodePath("")
 
-[node name="Cube_003" type="MeshInstance3D" parent="."]
+[node name="Cube_003" type="MeshInstance3D" parent="." unique_id=1583791270]
 transform = Transform3D(-6.5567085e-09, 0.01, -6.5567085e-09, 0, -4.3711387e-10, -0.15, -0.15, -4.3711387e-10, 2.8660284e-16, 0.5, 0, 0)
 mesh = SubResource("ArrayMesh_6e77o")
 skeleton = NodePath("")
 
-[node name="Cube_004" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.9670125e-08, 0.01, -5.7320567e-16, -6.5567085e-09, 1.9106855e-17, -0.15, -0.15, 1.3113416e-09, 6.5567085e-09, -0.5, 0, 0)
+[node name="Cube_004" type="MeshInstance3D" parent="." unique_id=1154697336]
+transform = Transform3D(1.9670125e-08, 0.01, -5.7320567e-16, -6.5567085e-09, 1.9106853e-17, -0.15, -0.15, 1.3113416e-09, 6.5567085e-09, -0.5033102, 0, 0)
 mesh = SubResource("ArrayMesh_41yue")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1585343668]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1155858587]
 shape = SubResource("BoxShape3D_awura")
 
-[node name="InteractionComponent" type="Node" parent="StaticBody3D"]
+[node name="InteractionComponent" type="Node" parent="StaticBody3D" unique_id=337492662]
 script = ExtResource("2_iryne")
 override_icon = true
 metadata/_custom_type_script = "uid://cw0kcf37813c4"
 
-[node name="ConnectionPorts" type="Node3D" parent="."]
+[node name="ConnectionPorts" type="Node3D" parent="." unique_id=1489701701]
 
-[node name="Port1" type="Area3D" parent="ConnectionPorts"]
+[node name="Port1" type="Area3D" parent="ConnectionPorts" unique_id=818712969]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 2
 collision_mask = 2
@@ -314,10 +314,10 @@ script = ExtResource("2_kg0ia")
 allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port1" unique_id=1285983116]
 shape = SubResource("BoxShape3D_k577w")
 
-[node name="Port2" type="Area3D" parent="ConnectionPorts"]
+[node name="Port2" type="Area3D" parent="ConnectionPorts" unique_id=552358897]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 collision_layer = 2
 collision_mask = 2
@@ -326,10 +326,10 @@ ratio_multiplier = 2.0
 allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port2" unique_id=1967730210]
 shape = SubResource("BoxShape3D_k577w")
 
-[node name="PlacementArea" type="Area3D" parent="."]
+[node name="PlacementArea" type="Area3D" parent="." unique_id=487929054]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlacementArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlacementArea" unique_id=1202697067]
 shape = SubResource("BoxShape3D_awura")

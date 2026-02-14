@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BuildingData" load_steps=4 format=3 uid="uid://br0pnqos11vtf"]
+[gd_resource type="Resource" script_class="BuildingData" format=3 uid="uid://br0pnqos11vtf"]
 
 [ext_resource type="Texture2D" uid="uid://bjpsx3as0pw64" path="res://assets/img/items/stone.png" id="1_7rne4"]
 [ext_resource type="PackedScene" uid="uid://doo220nqhrtg0" path="res://scenes/trash.tscn" id="2_kluic"]

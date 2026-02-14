@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BuildingData" load_steps=4 format=3 uid="uid://brautgyuep0ha"]
+[gd_resource type="Resource" script_class="BuildingData" format=3 uid="uid://brautgyuep0ha"]
 
 [ext_resource type="Texture2D" uid="uid://bwhc25fibelsb" path="res://assets/input_prompts/flair_arrow_long.svg" id="1_qwde1"]
 [ext_resource type="PackedScene" uid="uid://dh3x05jge21qi" path="res://scenes/belt.tscn" id="2_amwtf"]

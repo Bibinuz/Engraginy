@@ -8,7 +8,7 @@ class_name Materials extends Resource
 
 @export var icon : Image
 
-var amount: int = 0
+@export_storage var amount: int = 0
 
 func add(n: int, is_node: bool = false, purity: ResourceNode.Purity = ResourceNode.Purity.IMPURE) -> int:
 	amount += n *(1+(int(is_node)*purity))

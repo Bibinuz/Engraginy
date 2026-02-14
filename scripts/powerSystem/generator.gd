@@ -2,10 +2,12 @@ class_name Generator extends PowerNode
 
 @export var generate_per_speed : int
 
+@export var generator_speed: float
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	is_passive=false
+	speed = generator_speed
 	is_running = true
 	pass # Replace with function body.
 

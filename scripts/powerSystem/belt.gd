@@ -11,9 +11,7 @@ class BeltConnection:
 
 
 @export var shaderMaterial: ShaderMaterial
-@export_storage var allowed_connections: Array = [Shaft, MachinePort]
 @export_storage var belt_length: float = 0.0
-@export_storage var belt_vector: Vector3 = Vector3.ZERO
 
 var time_accum: float = 0.0
 var nodes_connected: Array[Node3D] = []
@@ -28,15 +26,7 @@ var bk_conn: BeltConnection = null
 
 func _ready() -> void:
 	super()
-	bind_ports()
 	path.curve = path.curve.duplicate()
-	if is_placed:
-		scale_path()
-		scale_connection_points()
-		for connection in nodes_connected:
-			if connection is MachinePort:
-				connection.port_belt = self
-		meshes[0].material_override = shaderMaterial
 
 
 func _process(delta: float) -> void:
@@ -55,6 +45,16 @@ func _input(event: InputEvent) -> void:
 	else:
 		if event.is_action_pressed("leftClick"):
 			place_belt()
+
+func placed() -> void:
+	super()
+	bind_ports()
+	scale_path()
+	scale_connection_points()
+	for connection in nodes_connected:
+		if connection is MachinePort:
+			connection.port_belt = self
+	meshes[0].material_override = shaderMaterial
 
 func bind_ports() -> void:
 	front_port.area_entered.connect(_on_port_area_entered.bind("front"))
@@ -101,8 +101,8 @@ func scale_path() -> void:
 func scale_connection_points() -> void:
 	front_port.scale.x = 1/belt_length
 	back_port.scale.x = 1/belt_length
-	front_port.get_child(0).position.x = belt_length/2 + 0.5
-	back_port.get_child(0).position.x = -belt_length/2 - 0.5
+	front_port.position = Vector3(0.5, 0, 0)
+	back_port.position = Vector3(-0.5, 0, 0)
 
 func check_placement() -> bool:
 	if GlobalScript.focused_element and (GlobalScript.focused_element is Belt or GlobalScript.focused_element is MachinePort):
@@ -118,8 +118,9 @@ func get_port_rotation_axis(_port: PowerNodePort) -> Vector3:
 	return global_transform.basis.x.normalized()
 
 func interacted() -> void:
-	print(self, ": ", global_position, ": ", belt_length, ": ", global_rotation)
-	see_inventory_state()
+	super()
+	#print(self, ": ", global_position, ": ", belt_length, ": ", global_rotation)
+	#see_inventory_state()
 
 func break_part() -> void:
 	for connection in nodes_connected:
@@ -160,6 +161,7 @@ func manage_belt_items(delta: float) -> void:
 		# Reescriure perque quan el item arribi al final sigui la cinta que avisi a la maquina, i no la maquina escoltant passivament
 		if not try_pass_item(trying_to_pass):
 			pass
+
 func see_inventory_state() -> void:
 	print("Inventory state")
 	for item: VisualMaterial in path.get_children():
@@ -191,15 +193,17 @@ func try_pass_item(item:VisualMaterial) -> bool:
 	return false
 
 func make_transfer(item: VisualMaterial , conn: BeltConnection) -> void:
-	item.get_parent().remove_child(item)
-	conn.belt.path.add_child(item)
-	item.progress = conn.pos
+	if item:
+		if item.get_parent():
+			item.get_parent().call_deferred("remove_child", item)
+		conn.belt.path.call_deferred("add_child", item)
+		item.progress = conn.pos
 	#conn.belt.path.add_child(item)
 
 func try_remove_item(item:VisualMaterial)-> bool:
 	for i: VisualMaterial in path.get_children():
 		if i == item:
-			path.remove_child(i)
+			path.call_deferred("remove_child", i)
 			i.queue_free()
 			return true
 	return false
@@ -231,3 +235,19 @@ func _on_port_area_exited(area: Area3D, port_id: String) -> void:
 			ft_conn = null
 		elif port_id == "back" and bk_conn and bk_conn.belt == area.get_parent():
 			bk_conn = null
+
+func save() -> Dictionary:
+	var data: Dictionary = super()
+	data["scl_x"] = scale.x
+	data["belt_length"] = belt_length
+	data["shaderMaterial"] = shaderMaterial.resource_path
+	return data
+
+func load(data: Dictionary) -> void:
+	scale.x = data["scl_x"]
+	belt_length = data["belt_length"]
+	shaderMaterial = load(data["shaderMaterial"])
+	data.erase("scl_x")
+	data.erase("belt_length")
+	data.erase("shaderMaterial")
+	super(data)
