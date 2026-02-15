@@ -6,7 +6,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6taao"]
 bg_color = Color(1, 1, 1, 0)
 
-[node name="Building menu" type="Control" node_paths=PackedStringArray("productionGrid", "energyGrid", "fundationsGrid", "decorationGrid")]
+[node name="Building menu" type="Control" unique_id=625110656 node_paths=PackedStringArray("tab_container", "productionGrid", "energyGrid", "fundationsGrid", "decorationGrid")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,12 +18,13 @@ size_flags_vertical = 4
 script = ExtResource("1_updix")
 slot_scene = ExtResource("2_6taao")
 buildings_data_folder = "res://Resources/BuildingData"
+tab_container = NodePath("TabContainer")
 productionGrid = NodePath("TabContainer/Production/ProductionScroller/ProductionGrid")
 energyGrid = NodePath("TabContainer/Energy/EnergyScroller/EnergyGrid")
 fundationsGrid = NodePath("TabContainer/Fundations/FundationsScroller/FundationsGrid")
 decorationGrid = NodePath("TabContainer/Decorations/DecorationsScroller/DecorationsGrid")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=134393448]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,7 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6taao")
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="." unique_id=687135910]
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 1
 anchors_preset = -1
@@ -43,11 +44,11 @@ anchor_bottom = 0.8
 current_tab = 0
 all_tabs_in_front = true
 
-[node name="Production" type="Control" parent="TabContainer"]
+[node name="Production" type="Control" parent="TabContainer" unique_id=1155067338]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="ProductionScroller" type="ScrollContainer" parent="TabContainer/Production"]
+[node name="ProductionScroller" type="ScrollContainer" parent="TabContainer/Production" unique_id=38177626]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -57,19 +58,19 @@ anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ProductionGrid" type="GridContainer" parent="TabContainer/Production/ProductionScroller"]
+[node name="ProductionGrid" type="GridContainer" parent="TabContainer/Production/ProductionScroller" unique_id=590613393]
 layout_mode = 2
 columns = 8
 
-[node name="Building slot" parent="TabContainer/Production/ProductionScroller/ProductionGrid" instance=ExtResource("2_6taao")]
+[node name="Building slot" parent="TabContainer/Production/ProductionScroller/ProductionGrid" unique_id=1442190537 instance=ExtResource("2_6taao")]
 layout_mode = 2
 
-[node name="Energy" type="Control" parent="TabContainer"]
+[node name="Energy" type="Control" parent="TabContainer" unique_id=482419952]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="EnergyScroller" type="ScrollContainer" parent="TabContainer/Energy"]
+[node name="EnergyScroller" type="ScrollContainer" parent="TabContainer/Energy" unique_id=537355588]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -79,19 +80,19 @@ anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="EnergyGrid" type="GridContainer" parent="TabContainer/Energy/EnergyScroller"]
+[node name="EnergyGrid" type="GridContainer" parent="TabContainer/Energy/EnergyScroller" unique_id=30932057]
 layout_mode = 2
 columns = 8
 
-[node name="Building slot" parent="TabContainer/Energy/EnergyScroller/EnergyGrid" instance=ExtResource("2_6taao")]
+[node name="Building slot" parent="TabContainer/Energy/EnergyScroller/EnergyGrid" unique_id=1692190840 instance=ExtResource("2_6taao")]
 layout_mode = 2
 
-[node name="Fundations" type="Control" parent="TabContainer"]
+[node name="Fundations" type="Control" parent="TabContainer" unique_id=663789839]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="FundationsScroller" type="ScrollContainer" parent="TabContainer/Fundations"]
+[node name="FundationsScroller" type="ScrollContainer" parent="TabContainer/Fundations" unique_id=713490991]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -101,19 +102,19 @@ anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FundationsGrid" type="GridContainer" parent="TabContainer/Fundations/FundationsScroller"]
+[node name="FundationsGrid" type="GridContainer" parent="TabContainer/Fundations/FundationsScroller" unique_id=397114061]
 layout_mode = 2
 columns = 8
 
-[node name="Building slot" parent="TabContainer/Fundations/FundationsScroller/FundationsGrid" instance=ExtResource("2_6taao")]
+[node name="Building slot" parent="TabContainer/Fundations/FundationsScroller/FundationsGrid" unique_id=904738623 instance=ExtResource("2_6taao")]
 layout_mode = 2
 
-[node name="Decorations" type="Control" parent="TabContainer"]
+[node name="Decorations" type="Control" parent="TabContainer" unique_id=1387502333]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="DecorationsScroller" type="ScrollContainer" parent="TabContainer/Decorations"]
+[node name="DecorationsScroller" type="ScrollContainer" parent="TabContainer/Decorations" unique_id=1211329848]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -123,11 +124,11 @@ anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DecorationsGrid" type="GridContainer" parent="TabContainer/Decorations/DecorationsScroller"]
+[node name="DecorationsGrid" type="GridContainer" parent="TabContainer/Decorations/DecorationsScroller" unique_id=1384371841]
 layout_mode = 2
 columns = 8
 
-[node name="Building slot" parent="TabContainer/Decorations/DecorationsScroller/DecorationsGrid" instance=ExtResource("2_6taao")]
+[node name="Building slot" parent="TabContainer/Decorations/DecorationsScroller/DecorationsGrid" unique_id=1215860902 instance=ExtResource("2_6taao")]
 layout_mode = 2
 
 [editable path="TabContainer/Production/ProductionScroller/ProductionGrid/Building slot"]

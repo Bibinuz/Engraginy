@@ -6,7 +6,7 @@ class_name Generator extends PowerNode
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	super()
+	await super()
 	speed = generator_speed
 	is_running = true
 	pass # Replace with function body.

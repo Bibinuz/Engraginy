@@ -30,31 +30,32 @@ point_count = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_2xc0s"]
 size = Vector3(0, 0.6, 0.6)
 
-[node name="Belt" type="Node3D"]
+[node name="Belt" type="Node3D" unique_id=1593510324 groups=["Persist"]]
 script = ExtResource("1_80u0l")
 shaderMaterial = ExtResource("3_2xc0s")
 meshes_path = Array[NodePath]([NodePath("MeshInstance3D")])
 areas_path = Array[NodePath]([NodePath("Area3D")])
 collisions_path = Array[NodePath]([NodePath("StaticBody3D")])
 
-[node name="BeltTool" type="Node" parent="."]
+[node name="BeltTool" type="Node" parent="." unique_id=1974282484]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1960255901]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("BoxMesh_ggcs6")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1701175339]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1213353525]
 shape = SubResource("BoxShape3D_ggcs6")
 
-[node name="InteractionComponent" type="Node" parent="StaticBody3D"]
+[node name="InteractionComponent" type="Node" parent="StaticBody3D" unique_id=1952067523]
 script = ExtResource("4_km0u5")
+override_icon = true
 metadata/_custom_type_script = "uid://cw0kcf37813c4"
 
-[node name="ConnectionPorts" type="Node3D" parent="."]
+[node name="ConnectionPorts" type="Node3D" parent="." unique_id=469862777]
 
-[node name="Port1" type="Area3D" parent="ConnectionPorts"]
+[node name="Port1" type="Area3D" parent="ConnectionPorts" unique_id=996136910]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("5_km0u5")
@@ -62,29 +63,27 @@ type = 3
 allow_ports = Array[int]([0])
 metadata/_custom_type_script = "uid://dbuhw48ma2lnv"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConnectionPorts/Port1" unique_id=1438502947]
 shape = SubResource("BoxShape3D_qhsjt")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=2051251048]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=958010954]
 shape = SubResource("BoxShape3D_ggcs6")
 
-[node name="BeltPath" type="Path3D" parent="."]
+[node name="BeltPath" type="Path3D" parent="." unique_id=971174362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2637322, 0)
 curve = SubResource("Curve3D_2xc0s")
 
-[node name="BackPort" type="Area3D" parent="."]
+[node name="BackPort" type="Area3D" parent="." unique_id=711261784]
 collision_layer = 2
 
-[node name="Port" type="CollisionShape3D" parent="BackPort"]
+[node name="Port" type="CollisionShape3D" parent="BackPort" unique_id=1078968707]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 shape = SubResource("BoxShape3D_2xc0s")
 
-[node name="FrontPort" type="Area3D" parent="."]
+[node name="FrontPort" type="Area3D" parent="." unique_id=854900078]
 
-[node name="Port" type="CollisionShape3D" parent="FrontPort"]
+[node name="Port" type="CollisionShape3D" parent="FrontPort" unique_id=2006629246]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 shape = SubResource("BoxShape3D_2xc0s")
-
-[connection signal="area_exited" from="BackPort" to="." method="_on_belt_connections_area_exited"]

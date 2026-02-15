@@ -335,6 +335,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.5, -1)
 script = ExtResource("5_5cqhb")
 
+[node name="Label3D" type="Label3D" parent="ItemPorts/Out1" unique_id=710549025]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0.44058716, 1.0316428, -2.3841858e-07)
+text = "Coal output"
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemPorts/Out1" unique_id=1867693338]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38819408, 0.26219136, -0.012317061)
 shape = SubResource("BoxShape3D_58i4n")
@@ -347,6 +351,10 @@ metadata/_custom_type_script = "uid://ct1vnop5y3256"
 [node name="Out2" type="StaticBody3D" parent="ItemPorts" unique_id=647203264]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.5, -3.5)
 script = ExtResource("5_5cqhb")
+
+[node name="Label3D" type="Label3D" parent="ItemPorts/Out2" unique_id=726145546]
+transform = Transform3D(-4.371139e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.371139e-08, 0.112499714, 1.0316428, -2.6710086e-07)
+text = "Processed material input"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemPorts/Out2" unique_id=277043282]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22851664, 0)
@@ -361,6 +369,10 @@ metadata/_custom_type_script = "uid://ct1vnop5y3256"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, -1)
 script = ExtResource("5_5cqhb")
 
+[node name="Label3D" type="Label3D" parent="ItemPorts/In1" unique_id=2083047066]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 0.042194128, 1.0316428, -2.3841858e-07)
+text = "Coal input"
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemPorts/In1" unique_id=1629656273]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22044277, 0.20504975, 0)
 shape = SubResource("BoxShape3D_58i4n")
@@ -373,6 +385,10 @@ metadata/_custom_type_script = "uid://ct1vnop5y3256"
 [node name="In2" type="StaticBody3D" parent="ItemPorts" unique_id=2010849411]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.5, 3.5)
 script = ExtResource("5_5cqhb")
+
+[node name="Label3D" type="Label3D" parent="ItemPorts/In2" unique_id=1874894182]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, -0.13904548, 1.0316428, -2.5426309e-07)
+text = "Raw material input"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemPorts/In2" unique_id=1534117526]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010448933, 0.19814098, -0.012317032)

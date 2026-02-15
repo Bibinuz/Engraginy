@@ -1,7 +1,8 @@
-extends Control
+class_name BuildingMenu extends Control
 
 @export var slot_scene: PackedScene
 @export_dir var buildings_data_folder: String
+@export var tab_container: TabContainer
 
 @export var productionGrid: GridContainer
 @export var energyGrid: GridContainer
@@ -25,6 +26,8 @@ enum BuildingCategory {
 }
 
 func _ready() -> void:
+	GlobalScript.building_menu = self
+	print("Ready")
 	load_all_buildings()
 
 func load_all_buildings() -> void:
@@ -53,3 +56,12 @@ func create_slot(data: Resource) -> void:
 	new_slot.is_read_only = true
 	var target_grid: GridContainer = grids[data.category]
 	target_grid.call_deferred("add_child", new_slot)
+
+func hide_tabs(to_hide: Array[String]) -> void:
+	for tab in to_hide:
+		var i: int = 0
+		while i < tab_container.get_tab_count():
+			if tab == tab_container.get_tab_title(i):
+				tab_container.set_tab_hidden(i, true)
+				break
+			i += 1

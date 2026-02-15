@@ -21,7 +21,7 @@ var output_ports: Array[MachinePort] = []
 @export var production_speed : float = 1.0
 
 func _ready() -> void:
-	super()
+	await super()
 	cost_per_speed = -1
 
 func _process(_delta: float) -> void:

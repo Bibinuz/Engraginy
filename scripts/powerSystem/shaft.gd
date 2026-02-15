@@ -4,7 +4,7 @@ class_name Shaft extends PowerNode
 
 
 func _ready() -> void:
-	super()
+	await super()
 
 
 func _process(delta: float) -> void:

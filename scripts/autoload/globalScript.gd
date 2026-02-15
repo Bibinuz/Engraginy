@@ -6,24 +6,26 @@ var player: PlayerCharacter
 var ui_context: ContextComponent
 var bottom_menu: BottomMenu
 var focused_element: Node3D
-
+var building_menu: BuildingMenu
 var opened_gui : Control
-
 var pending_load_action = false
 
 var folder_save_path: String = "user://saves/"
 var file_save_path: String = "slot1.json"
+var to_load: String = ""
 
 var MAIN_MENU: String = "res://scenes/main_menu.tscn"
+var EMPTY_GAME_SCENE = "res://scenes/world.scn"
+var TUTORIAL_LEVELS: String = "res://tutorials/"
 
 func _process(_delta: float) -> void:
-	if pending_load_action:
-		if get_tree() and get_tree().current_scene and get_tree().current_scene is Level:
-			print(build_list, " ",folder_save_path+file_save_path)
-			load_game(folder_save_path+file_save_path)
-			pending_load_action = false
-			PowerGridManager.recalculate_all_grids()
-
+	if pending_load_action and get_tree() and get_tree().current_scene and get_tree().current_scene is Level:
+		print("Hello")
+		print(build_list, " ", to_load)
+		load_game()
+		pending_load_action = false
+		to_load = ""
+		PowerGridManager.recalculate_all_grids()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("closeProject"):
@@ -56,8 +58,10 @@ func save_game() -> void:
 	save_file.close()
 	return
 
-func load_game(save_path: String) -> void:
-	if not FileAccess.file_exists(save_path):
+func load_game() -> void:
+	print("Loading...")
+
+	if not FileAccess.file_exists(to_load):
 		push_warning("Save file not found.")
 		return
 
@@ -65,7 +69,7 @@ func load_game(save_path: String) -> void:
 	for node: Node in save_nodes:
 		node.queue_free()
 
-	var save_file: FileAccess = FileAccess.open(save_path, FileAccess.READ)
+	var save_file: FileAccess = FileAccess.open(to_load, FileAccess.READ)
 	while save_file.get_position() < save_file.get_length():
 		var json_string: String = save_file.get_line()
 		var json: JSON = JSON.new()
@@ -84,9 +88,18 @@ func load_game(save_path: String) -> void:
 	save_file.close()
 	MessageBus.load_finished.emit()
 
+func load_tutorial(level: int) -> void:
+	if !pending_load_action:
+		if level == 1:
+			building_menu.hide_tabs(["Production","Fundations", "Decorations"])
+			to_load = TUTORIAL_LEVELS + "tutorial1.json"
+		pending_load_action = true
 
 
-#Proces super ineficient, el temps de proces del forn es de 2.87ms i aquesta funcio ocupa 2.84ms
+# Proces super ineficient, el temps de proces del forn es de 2.87ms i aquesta funcio ocupa 2.84ms
+# (Temps acomulat durant nosequan, no ho vaig apuntar)
+# Potser es podrien utilitzar les MultiMeshInstance? Per multiplicar totes les vegades necessaries el item.
+# S'ha d'investigar
 @onready var iron_ore: VisualMaterial 		= load("res://scenes/iron_ore.tscn").instantiate() as VisualMaterial
 @onready var iron_ingot: VisualMaterial 	= load("res://scenes/iron_ingot.tscn").instantiate() as VisualMaterial
 @onready var coal_ore: VisualMaterial 		= load("res://scenes/coal_ore.tscn").instantiate() as VisualMaterial

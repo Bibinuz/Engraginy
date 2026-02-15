@@ -13,14 +13,13 @@ var is_running : bool = false
 var is_broken : bool = false
 
 func _ready() -> void:
-	super()
+	await super()
 	for port in $ConnectionPorts.get_children():
 		if port is PowerNodePort:
 			connections.set(port, [])
 			port.area_entered.connect(_on_area_entered.bind(port))
 			port.area_exited.connect(_on_area_exited.bind(port))
 			if is_placed:
-				PowerGridManager.register_node(self)
 				continue
 			port.monitorable = false
 			port.monitoring = false
@@ -131,22 +130,3 @@ func interacted() -> void:
 		##for connection in connections[port]:
 			##if port and connection and connection.node and connection.port:
 				##calculate_speed(port, connection.node, connection.port)
-
-func save_aa() -> Dictionary:
-	var save_data: Dictionary = {}#super()
-	save_data["cost_per_speed"] = cost_per_speed
-	save_data["cen_x"] = center.x
-	save_data["cen_y"] = center.y
-	save_data["cen_z"] = center.z
-
-	return save_data
-
-func load_aa(data: Dictionary) -> void:
-	#super(data)
-	center.x = data["cen_x"]
-	center.y = data["cen_y"]
-	center.z = data["cen_z"]
-
-	data.erase("cen_x")
-	data.erase("cen_y")
-	data.erase("cen_z")

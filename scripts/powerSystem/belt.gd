@@ -25,7 +25,7 @@ var bk_conn: BeltConnection = null
 
 
 func _ready() -> void:
-	super()
+	await super()
 	path.curve = path.curve.duplicate()
 
 func _process(delta: float) -> void:
@@ -58,7 +58,6 @@ func placed() -> void:
 	meshes[0].material_override = shaderMaterial
 	for body: Node3D in areas[0].get_overlapping_bodies():
 		if body is MachinePort and !body.port_belt:
-			print("Connected")
 			body.port_belt = self
 
 func bind_ports() -> void:

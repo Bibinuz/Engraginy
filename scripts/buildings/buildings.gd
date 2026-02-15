@@ -42,9 +42,6 @@ func load_singular_node_path(paths: Array[NodePath], nodes: Array, type) -> void
 			if not is_instance_of(node, type) or nodes.has(node): continue
 			nodes.append(node)
 
-
-
-
 func check_placement() -> bool:
 	for area in areas:
 		if area.get_overlapping_areas() != []:

@@ -1,0 +1,2 @@
+{"areas_path":["PlacementArea"],"collisions_path":["Collisions"],"filename":"res://scenes/miner.tscn","meshes_path":["Support","Drill","OutPort"],"parent":"/root/World/Buildings","pos_x":7.0,"pos_y":1.0,"pos_z":-5.0,"rot_x":0.0,"rot_y":-1.57079613208771,"rot_z":0.0}
+{"areas_path":["PlacementArea"],"collisions_path":["Collisions"],"filename":"res://scenes/trash.tscn","meshes_path":["MeshInstance3D","MeshInstance3D2"],"parent":"/root/World/Buildings","pos_x":7.0,"pos_y":1.0,"pos_z":10.0,"rot_x":0.0,"rot_y":1.57079637050629,"rot_z":0.0}

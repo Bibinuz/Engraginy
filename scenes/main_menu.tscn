@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://qhgitbm4jhw6"]
 
 [ext_resource type="Script" uid="uid://cje2rwfrv4rws" path="res://scripts/gui/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://buesa86gsxxki" path="res://scripts/gui/tutorial_menu.gd" id="2_ekxnf"]
 
 [sub_resource type="FontFile" id="FontFile_l6cm7"]
 cache/0/variation_coordinates = {}
@@ -351,7 +352,6 @@ theme_override_font_sizes/font_size = 32
 text = "Load game"
 
 [node name="Tutorials" type="Button" parent="MainScreen/MarginContainer/VBoxContainer" unique_id=376703085]
-visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Tutorials (WIP)"
@@ -369,6 +369,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_ekxnf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TutorialMenu" unique_id=2062792650]
 layout_mode = 1
@@ -410,3 +411,7 @@ text = "Back"
 [connection signal="pressed" from="MainScreen/MarginContainer/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
 [connection signal="pressed" from="MainScreen/MarginContainer/VBoxContainer/Tutorials" to="." method="_on_tutorials_pressed"]
 [connection signal="pressed" from="MainScreen/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="TutorialMenu/VBoxContainer/Iniciate" to="TutorialMenu" method="_on_iniciate_pressed"]
+[connection signal="pressed" from="TutorialMenu/VBoxContainer/Intermediary" to="TutorialMenu" method="_on_intermediary_pressed"]
+[connection signal="pressed" from="TutorialMenu/VBoxContainer/Advanced" to="TutorialMenu" method="_on_advanced_pressed"]
+[connection signal="pressed" from="TutorialMenu/VBoxContainer/Back" to="TutorialMenu" method="_on_back_pressed"]
