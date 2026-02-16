@@ -10,3 +10,6 @@ signal network_changed
 
 @warning_ignore("unused_signal")
 signal load_finished
+
+@warning_ignore("unused_signal")
+signal trash_deleted

@@ -1,5 +1,6 @@
 class_name Trash extends Machine
 
+signal trash_deleted
 
 func _ready() -> void:
 	super()
@@ -18,4 +19,5 @@ func accept_input() -> void:
 		var temp: Belt = input_ports[0].port_belt
 		if temp.trying_to_pass:
 			if temp.try_remove_item(temp.trying_to_pass):
+				emit_signal("trash_deleted", temp.trying_to_pass.material.name)
 				temp.trying_to_pass.queue_free()

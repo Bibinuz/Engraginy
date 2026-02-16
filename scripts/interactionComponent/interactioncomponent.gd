@@ -29,7 +29,8 @@ func connect_parent() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("removeBuilding"):
 		if main_object.has_method("break_part") and focused:
-			main_object.break_part()
+			if not main_object.unbreakable:
+				main_object.break_part()
 			get_viewport().set_input_as_handled()
 
 func in_range() -> void:

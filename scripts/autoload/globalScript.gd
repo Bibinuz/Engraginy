@@ -91,7 +91,6 @@ func load_game() -> void:
 func load_tutorial(level: int) -> void:
 	if !pending_load_action:
 		if level == 1:
-			building_menu.hide_tabs(["Production","Fundations", "Decorations"])
 			to_load = TUTORIAL_LEVELS + "tutorial1.json"
 		pending_load_action = true
 

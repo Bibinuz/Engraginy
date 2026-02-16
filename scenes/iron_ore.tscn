@@ -248,3 +248,4 @@ collision_mask = 128
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1334695439]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0024566203, 0.11019642, -0.0012367964)
 shape = SubResource("BoxShape3D_26d1w")
+debug_color = Color(1, 0, 0, 0.72156864)

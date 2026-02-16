@@ -10,9 +10,9 @@ func _on_back_pressed() -> void:
 	self.hide()
 
 func _on_iniciate_pressed() -> void:
-	await get_tree().change_scene_to_file(TUTORIAL_EASY_MAP)
-	GlobalScript.building_menu.hide_tabs(["Production","Fundations", "Decorations"])
-	GlobalScript.load_tutorial(1)
+	get_tree().change_scene_to_file(TUTORIAL_EASY_MAP)
+	#GlobalScript.building_menu.hide_tabs(["Production","Fundations", "Decorations"])
+	#GlobalScript.load_tutorial(1)
 	pass
 
 func _on_intermediary_pressed() -> void:

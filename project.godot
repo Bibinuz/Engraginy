@@ -17,7 +17,6 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Engraginy"
 run/main_scene="uid://qhgitbm4jhw6"
 config/features=PackedStringArray("4.6", "Forward Plus")
-run/max_fps=144
 config/icon="res://icon.svg"
 
 [autoload]
@@ -38,7 +37,6 @@ window/size/viewport_height=1080
 window/size/mode=1
 window/size/initial_position_type=3
 window/size/initial_screen=1
-window/vsync/vsync_mode=2
 
 [editor]
 

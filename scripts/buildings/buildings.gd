@@ -14,14 +14,16 @@ var meshes: Array[MeshInstance3D]
 var areas : Array[Area3D]
 var collisions: Array [StaticBody3D]
 
-var is_placed : bool = false
-
+@export var is_placed : bool = false
+@export var unbreakable: bool = false
 
 func _ready() -> void:
 	load_node_exports()
 	await get_tree().physics_frame
 	if not is_placed:
 		toggle_collisions(false)
+	else:
+		placed()
 
 func _process(_delta: float) -> void:
 	pass

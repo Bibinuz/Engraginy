@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3 uid="uid://8fu2sypuq78d"]
+
+[ext_resource type="Texture2D" uid="uid://1xwga4bumr46" path="res://assets/img/Icons/ShaftIcon.png" id="1_vfj5h"]
+[ext_resource type="PackedScene" uid="uid://lpqhjxv7crjj" path="res://scenes/shaft.tscn" id="2_qbmse"]
+[ext_resource type="Script" uid="uid://c4xyga3k1meut" path="res://scripts/buildings/building_data.gd" id="3_24mso"]
+
+[resource]
+script = ExtResource("3_24mso")
+display_name = "Shaft"
+category = 2
+icon = ExtResource("1_vfj5h")
+scene = ExtResource("2_qbmse")
+metadata/_custom_type_script = "uid://c4xyga3k1meut"
