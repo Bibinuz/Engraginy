@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3 uid="uid://bvou71mddpv54"]
+
+[ext_resource type="Texture2D" uid="uid://22y8ke1dej8n" path="res://assets/img/Icons/TransmisionBoxIcon.png" id="1_3i2ug"]
+[ext_resource type="PackedScene" uid="uid://u5rwg6jssoab" path="res://scenes/transmision_box.tscn" id="2_0j02t"]
+[ext_resource type="Script" uid="uid://c4xyga3k1meut" path="res://scripts/buildings/building_data.gd" id="3_vwlij"]
+
+[resource]
+script = ExtResource("3_vwlij")
+display_name = "Transmission Box"
+category = 2
+icon = ExtResource("1_3i2ug")
+scene = ExtResource("2_0j02t")
+metadata/_custom_type_script = "uid://c4xyga3k1meut"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3 uid="uid://f6jpyxobpdae"]
+
+[ext_resource type="Texture2D" uid="uid://ulfyvqslg1a6" path="res://assets/img/Icons/SmallCogIcon.png" id="1_p8otn"]
+[ext_resource type="PackedScene" uid="uid://bto1023pw2jd3" path="res://scenes/cog_small.tscn" id="2_a4ked"]
+[ext_resource type="Script" uid="uid://c4xyga3k1meut" path="res://scripts/buildings/building_data.gd" id="3_cprdb"]
+
+[resource]
+script = ExtResource("3_cprdb")
+display_name = "Small Cog"
+category = 2
+icon = ExtResource("1_p8otn")
+scene = ExtResource("2_a4ked")
+metadata/_custom_type_script = "uid://c4xyga3k1meut"

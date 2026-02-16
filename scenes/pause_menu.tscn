@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://cyclyorsac4kb" path="res://scripts/gui/pause_menu.gd" id="1_n87rw"]
 
 [sub_resource type="FontFile" id="FontFile_vue75"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/variation_coordinates = {}
 cache/0/face_index = 0
 cache/0/embolden = 0.0
@@ -330,24 +333,24 @@ layout_mode = 2
 
 [node name="Options" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1477699594]
 layout_mode = 2
-text = "Options"
+text = "Opcions"
 label_settings = SubResource("LabelSettings_uahpa")
 horizontal_alignment = 1
 
 [node name="Resume" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1278140833]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Resume"
+text = "Continuar"
 
 [node name="SaveGame" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1244954542]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Save game"
+text = "Guardar partida"
 
 [node name="Quit" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1867427630]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Quit"
+text = "Sortir"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/SaveGame" to="." method="_on_save_game_pressed"]

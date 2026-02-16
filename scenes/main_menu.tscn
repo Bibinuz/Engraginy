@@ -344,22 +344,22 @@ horizontal_alignment = 1
 [node name="NewGame" type="Button" parent="MainScreen/MarginContainer/VBoxContainer" unique_id=1850630219]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "New game"
+text = "Nova partida"
 
 [node name="LoadGame" type="Button" parent="MainScreen/MarginContainer/VBoxContainer" unique_id=1583251982]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Load game"
+text = "Carregar partida"
 
 [node name="Tutorials" type="Button" parent="MainScreen/MarginContainer/VBoxContainer" unique_id=376703085]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Tutorials (WIP)"
+text = "Tutorials"
 
 [node name="Exit" type="Button" parent="MainScreen/MarginContainer/VBoxContainer" unique_id=131384531]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Exit"
+text = "Sortir"
 
 [node name="TutorialMenu" type="Panel" parent="." unique_id=10874299]
 visible = false
@@ -390,22 +390,22 @@ horizontal_alignment = 1
 [node name="Iniciate" type="Button" parent="TutorialMenu/VBoxContainer" unique_id=4799612]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Iniciate"
+text = "Fàcil"
 
 [node name="Intermediary" type="Button" parent="TutorialMenu/VBoxContainer" unique_id=1975127370]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Intermediary"
+text = "Intermig"
 
 [node name="Advanced" type="Button" parent="TutorialMenu/VBoxContainer" unique_id=1436797068]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Advanced"
+text = "Avançat"
 
 [node name="Back" type="Button" parent="TutorialMenu/VBoxContainer" unique_id=243947279]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Back"
+text = "Tornar"
 
 [connection signal="pressed" from="MainScreen/MarginContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="MainScreen/MarginContainer/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]

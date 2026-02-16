@@ -61,6 +61,7 @@ func placed() -> void:
 			body.port_belt = self
 
 func bind_ports() -> void:
+
 	front_port.area_entered.connect(_on_port_area_entered.bind("front"))
 	front_port.area_exited.connect(_on_port_area_exited.bind("front"))
 	back_port.area_entered.connect(_on_port_area_entered.bind("back"))
