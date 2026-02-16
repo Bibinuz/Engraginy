@@ -120,11 +120,10 @@ shape = SubResource("BoxShape3D_w6jqc")
 [node name="ItemPorts" type="Node3D" parent="." unique_id=1526059367]
 
 [node name="In1" type="StaticBody3D" parent="ItemPorts" unique_id=748700799]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 script = ExtResource("3_2g7r5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemPorts/In1" unique_id=1253225461]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15866864, 0.6778007, 6.4146137e-09)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.051370382, 0.1937558, 2.2454707e-09)
 shape = SubResource("BoxShape3D_hrgr1")
 
 [node name="MachinePortInteraction" type="Node" parent="ItemPorts/In1" unique_id=1001704174]

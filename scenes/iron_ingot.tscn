@@ -54,10 +54,9 @@ metadata/_custom_type_script = "uid://biabriu637tk7"
 [node name="ironIngot" type="Node3D" parent="." unique_id=865016888]
 
 [node name="Meshes" type="Node3D" parent="." unique_id=73865961]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07790904, 0, 0)
 
 [node name="Cube" type="MeshInstance3D" parent="Meshes" unique_id=1122350278]
-transform = Transform3D(-3.2991046e-08, 0, 1.4524416, 0, 0.5683502, 0, -0.75474715, 0, -6.348824e-08, 0, 0.042919606, 0)
+transform = Transform3D(-3.2991046e-08, 0, 1.4524416, 0, 0.38054717, 0, -0.75474715, 0, -6.348824e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_51ii1")
 skeleton = NodePath("")
 
@@ -66,5 +65,5 @@ collision_layer = 128
 collision_mask = 128
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1334695439]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07538201, 0.023987912, -0.0012367964)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011855468, 0.023987912, -0.0012367964)
 shape = SubResource("BoxShape3D_26d1w")
